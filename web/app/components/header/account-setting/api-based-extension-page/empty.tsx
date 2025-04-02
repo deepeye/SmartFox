@@ -13,14 +13,14 @@ const Empty = () => {
         <RiPuzzle2Line className='h-5 w-5 text-text-accent' />
       </div>
       <div className='system-sm-medium mb-1 text-text-secondary'>{t('common.apiBasedExtension.title')}</div>
-      <a
+      {/* <a
         className='system-xs-regular flex items-center text-text-accent'
         href={t('common.apiBasedExtension.linkUrl') || '/'}
         target='_blank' rel='noopener noreferrer'
       >
         {t('common.apiBasedExtension.link')}
         <RiExternalLinkLine className='ml-1 h-3 w-3' />
-      </a>
+      </a> */}
     </div>
   )
 }

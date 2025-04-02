@@ -98,14 +98,14 @@ const ApiBasedExtensionModal: FC<ApiBasedExtensionModalProps> = ({
       <div className='py-2'>
         <div className='flex h-9 items-center justify-between text-sm font-medium text-text-primary'>
           {t('common.apiBasedExtension.modal.apiEndpoint.title')}
-          <a
+          {/* <a
             href={t('common.apiBasedExtension.linkUrl') || '/'}
             target='_blank' rel='noopener noreferrer'
             className='group flex items-center text-xs font-normal text-text-accent'
           >
             <BookOpen01 className='mr-1 h-3 w-3' />
             {t('common.apiBasedExtension.link')}
-          </a>
+          </a> */}
         </div>
         <input
           value={localeData.api_endpoint || ''}

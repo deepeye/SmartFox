@@ -126,7 +126,7 @@ export default function AppSelector() {
                       </div>
                     </MenuItem>
                   </div>
-                  <div className='p-1'>
+                  {/* <div className='p-1'>
                     <MenuItem>
                       <Link
                         className={cn(itemClassName, 'group justify-between',
@@ -143,8 +143,8 @@ export default function AppSelector() {
                     </MenuItem>
                     <Support />
                     {IS_CLOUD_EDITION && isCurrentWorkspaceOwner && <Compliance />}
-                  </div>
-                  <div className='p-1'>
+                  </div> */}
+                  {/* <div className='p-1'>
                     <MenuItem>
                       <Link
                         className={cn(itemClassName, 'group justify-between',
@@ -188,7 +188,7 @@ export default function AppSelector() {
                         </MenuItem>
                       )
                     }
-                  </div>
+                  </div> */}
                   <MenuItem>
                     <div className='p-1' onClick={() => handleLogout()}>
                       <div
@@ -207,9 +207,6 @@ export default function AppSelector() {
           )
         }
       </Menu>
-      {
-        aboutVisible && <AccountAbout onCancel={() => setAboutVisible(false)} langeniusVersionInfo={langeniusVersionInfo} />
-      }
     </div >
   )
 }
