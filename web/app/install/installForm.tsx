@@ -168,15 +168,6 @@ const InstallForm = () => {
                 </Button>
               </div>
             </form>
-            <div className="mt-2 block w-full text-xs text-gray-600">
-              {t('login.license.tip')}
-              &nbsp;
-              <Link
-                className='text-primary-600'
-                target='_blank' rel='noopener noreferrer'
-                href={'https://docs.dify.ai/user-agreement/open-source'}
-              >{t('login.license.link')}</Link>
-            </div>
           </div>
         </div>
       </>

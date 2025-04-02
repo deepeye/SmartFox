@@ -84,11 +84,11 @@ const InstallPluginDropdown = ({
             />
             <div className='w-full'>
               {[
-                ...(
-                  (enable_marketplace && true)
-                    ? [{ icon: MagicBox, text: t('plugin.source.marketplace'), action: 'marketplace' }]
-                    : []
-                ),
+                // ...(
+                //   (enable_marketplace && true)
+                //     ? [{ icon: MagicBox, text: t('plugin.source.marketplace'), action: 'marketplace' }]
+                //     : []
+                // ),
                 { icon: Github, text: t('plugin.source.github'), action: 'github' },
                 { icon: FileZip, text: t('plugin.source.local'), action: 'local' },
               ].map(({ icon: Icon, text, action }) => (

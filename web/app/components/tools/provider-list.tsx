@@ -130,7 +130,7 @@ const ProviderList = () => {
           {!filteredCollectionList.length && activeTab === 'builtin' && (
             <Empty lightCard text={t('tools.noTools')} className='h-[224px] px-12' />
           )}
-          {
+          {/* {
             enable_marketplace && activeTab === 'builtin' && (
               <Marketplace
                 onMarketplaceScroll={() => {
@@ -140,7 +140,7 @@ const ProviderList = () => {
                 filterPluginTags={tagFilterValue}
               />
             )
-          }
+          } */}
         </div>
       </div>
       {currentProvider && !currentProvider.plugin_id && (

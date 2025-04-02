@@ -163,7 +163,7 @@ const PanelOperatorPopup = ({
           </>
         )
       }
-      {
+      {/* {
         showHelpLink && (
           <>
             <div className='p-1'>
@@ -178,16 +178,16 @@ const PanelOperatorPopup = ({
             <div className='h-[1px] bg-gray-100'></div>
           </>
         )
-      }
+      } */}
       <div className='p-1'>
         <div className='px-3 py-2 text-xs text-gray-500'>
           <div className='mb-1 flex h-[22px] items-center font-medium'>
             {t('workflow.panel.about').toLocaleUpperCase()}
           </div>
           <div className='mb-1 leading-[18px] text-gray-700'>{about}</div>
-          <div className='leading-[18px]'>
+          {/* <div className='leading-[18px]'>
             {t('workflow.panel.createdBy')} {author}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -241,14 +241,14 @@ const ExternalDataToolModal: FC<ExternalDataToolModalProps> = ({
           <div className='py-2'>
             <div className='flex h-9 items-center justify-between text-sm font-medium text-gray-900'>
               {t('common.apiBasedExtension.selector.title')}
-              <a
+              {/* <a
                 href={t('common.apiBasedExtension.linkUrl') || '/'}
                 target='_blank' rel='noopener noreferrer'
                 className='group flex items-center text-xs font-normal text-gray-500 hover:text-primary-600'
               >
                 <BookOpen01 className='mr-1 h-3 w-3 text-gray-500 group-hover:text-primary-600' />
                 {t('common.apiBasedExtension.link')}
-              </a>
+              </a> */}
             </div>
             <ApiBasedExtensionSelector
               value={localeData.config?.api_based_extension_id || ''}

@@ -158,14 +158,14 @@ const PluginPage = ({
       >
         <div className='flex w-full items-center justify-between'>
           <div className='flex-1'>
-            <TabSlider
+            {/* <TabSlider
               value={activeTab}
               onChange={setActiveTab}
               options={options}
-            />
+            /> */}
           </div>
           <div className='flex shrink-0 items-center gap-1'>
-            {
+            {/* {
               activeTab === 'discover' && (
                 <>
                   <Link
@@ -183,18 +183,18 @@ const PluginPage = ({
                   <div className='mx-2 h-3.5 w-[1px] bg-divider-regular'></div>
                 </>
               )
-            }
+            } */}
             <PluginTasks />
             {canManagement && (
               <InstallPluginDropdown
-                onSwitchToMarketplaceTab={() => setActiveTab('discover')}
+                onSwitchToMarketplaceTab={() => setActiveTab('github')}
               />
             )}
-            {
+            {/* {
               canDebugger && (
                 <DebugInfo />
               )
-            }
+            } */}
             {
               canSetPermissions && (
                 <Tooltip
