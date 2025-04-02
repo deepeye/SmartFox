@@ -91,7 +91,7 @@ const List = (
           onClick={handleHeadClick}
         >
           <span>{t('plugin.fromMarketplace')}</span>
-          <Link
+          {/* <Link
             href={urlWithSearchText}
             target='_blank'
             className='flex items-center text-text-accent-light-mode-only'
@@ -99,7 +99,7 @@ const List = (
           >
             <span>{t('plugin.searchInMarketplace')}</span>
             <RiArrowRightUpLine className='ml-0.5 h-3 w-3' />
-          </Link>
+          </Link> */}
         </div>
       )}
       <div className={cn('p-1', !disableMaxWidth && maxWidthClassName)} ref={nextToStickyELemRef}>
@@ -110,7 +110,7 @@ const List = (
             onAction={() => { }}
           />
         ))}
-        <div className='mb-3 mt-2 flex items-center justify-center space-x-2'>
+        {/* <div className='mb-3 mt-2 flex items-center justify-center space-x-2'>
           <div className="h-[2px] w-[90px] bg-gradient-to-l from-[rgba(16,24,40,0.08)] to-[rgba(255,255,255,0.01)]"></div>
           <Link
             href={urlWithSearchText}
@@ -121,7 +121,7 @@ const List = (
             <span>{t('plugin.searchInMarketplace')}</span>
           </Link>
           <div className="h-[2px] w-[90px] bg-gradient-to-l from-[rgba(255,255,255,0.01)] to-[rgba(16,24,40,0.08)]"></div>
-        </div>
+        </div> */}
       </div>
     </>
   )
