@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { RiAddLine } from '@remixicon/react'
 import Split from '../_base/components/split'
@@ -51,21 +51,7 @@ const Panel: FC<NodePanelProps<LoopNodeType>> = ({
     handleUpdateLoopVariable,
   } = useConfig(id, data)
 
-  const nodeInfo = useMemo(() => {
-    const formattedNodeInfo = formatTracing(loopRunResult, t)[0]
-
-    if (runResult && formattedNodeInfo) {
-      return {
-        ...formattedNodeInfo,
-        execution_metadata: {
-          ...runResult.execution_metadata,
-          ...formattedNodeInfo.execution_metadata,
-        },
-      }
-    }
-
-    return formattedNodeInfo
-  }, [runResult, loopRunResult, t])
+  const nodeInfo = formatTracing(loopRunResult, t)[0]
   const logsParams = useLogs()
 
   return (
