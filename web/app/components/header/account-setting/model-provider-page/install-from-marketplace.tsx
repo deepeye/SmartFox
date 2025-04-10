@@ -1,9 +1,7 @@
 import { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import Link from 'next/link'
 import {
   RiArrowDownSLine,
-  RiArrowRightUpLine,
 } from '@remixicon/react'
 import type {
   ModelProvider,
@@ -16,7 +14,6 @@ import Loading from '@/app/components/base/loading'
 import ProviderCard from '@/app/components/plugins/provider-card'
 import List from '@/app/components/plugins/marketplace/list'
 import type { Plugin } from '@/app/components/plugins/types'
-import { MARKETPLACE_URL_PREFIX } from '@/config'
 import cn from '@/utils/classnames'
 import { getLocaleOnClient } from '@/i18n'
 
@@ -51,13 +48,13 @@ const InstallFromMarketplace = ({
           <RiArrowDownSLine className={cn('h-4 w-4', collapse && '-rotate-90')} />
           {t('common.modelProvider.installProvider')}
         </div>
-        <div className='mb-2 flex items-center pt-2'>
+        {/* <div className='mb-2 flex items-center pt-2'>
           <span className='system-sm-regular pr-1 text-text-tertiary'>{t('common.modelProvider.discoverMore')}</span>
           <Link target="_blank" href={`${MARKETPLACE_URL_PREFIX}`} className='system-sm-medium inline-flex items-center text-text-accent'>
             {t('plugin.marketplace.difyMarketplace')}
             <RiArrowRightUpLine className='h-4 w-4' />
           </Link>
-        </div>
+        </div> */}
       </div>
       {!collapse && isAllPluginsLoading && <Loading type='area' />}
       {

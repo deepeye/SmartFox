@@ -33,6 +33,9 @@ if $api_modified; then
         poetry install -C api --only lint
     fi
 
+    source /Users/felixwang/miniconda3/bin/activate
+    conda activate smartfox
+
     # run Ruff linter auto-fixing
     ruff check --fix ./api
 
