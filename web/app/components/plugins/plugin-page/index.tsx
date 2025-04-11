@@ -3,9 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useContext } from 'use-context-selector'
-import Link from 'next/link'
 import {
-  RiBookOpenLine,
   RiDragDropLine,
   RiEqualizer2Line,
 } from '@remixicon/react'
@@ -18,10 +16,8 @@ import {
 import InstallPluginDropdown from './install-plugin-dropdown'
 import { useUploader } from './use-uploader'
 import usePermission from './use-permission'
-import DebugInfo from './debug-info'
 import PluginTasks from './plugin-tasks'
 import Button from '@/app/components/base/button'
-import TabSlider from '@/app/components/base/tab-slider'
 import Tooltip from '@/app/components/base/tooltip'
 import cn from '@/utils/classnames'
 import PermissionSetModal from '@/app/components/plugins/permission-setting-modal/modal'
@@ -37,9 +33,10 @@ import { sleep } from '@/utils'
 import { fetchBundleInfoFromMarketPlace, fetchManifestFromMarketPlace } from '@/service/plugins'
 import { marketplaceApiPrefix } from '@/config'
 import { SUPPORT_INSTALL_LOCAL_FILE_EXTENSIONS } from '@/config'
-import { LanguagesSupported } from '@/i18n/language'
 import I18n from '@/context/i18n'
 import { noop } from 'lodash-es'
+import { PLUGIN_TYPE_SEARCH_MAP } from '../marketplace/plugin-type-switch'
+import { PLUGIN_PAGE_TABS_MAP } from '../hooks'
 
 const PACKAGE_IDS_KEY = 'package-ids'
 const BUNDLE_INFO_KEY = 'bundle-info'
@@ -136,40 +133,45 @@ const PluginPage = ({
   const setActiveTab = usePluginPageContext(v => v.setActiveTab)
   const { enable_marketplace } = useAppContextSelector(s => s.systemFeatures)
 
+  const isPluginsTab = useMemo(() => activeTab === PLUGIN_PAGE_TABS_MAP.plugins, [activeTab])
+  const isExploringMarketplace = useMemo(() => {
+    const values = Object.values(PLUGIN_TYPE_SEARCH_MAP)
+    return activeTab === PLUGIN_PAGE_TABS_MAP.marketplace || values.includes(activeTab)
+  }, [activeTab])
+
   const uploaderProps = useUploader({
     onFileChange: setCurrentFile,
     containerRef,
-    enabled: activeTab === 'plugins',
+    enabled: isPluginsTab,
   })
 
   const { dragging, fileUploader, fileChangeHandle, removeFile } = uploaderProps
-
   return (
     <div
       id='marketplace-container'
       ref={containerRef}
       style={{ scrollbarGutter: 'stable' }}
-      className={cn('relative flex grow flex-col overflow-y-auto border-t border-divider-subtle', activeTab === 'plugins'
+      className={cn('relative flex grow flex-col overflow-y-auto border-t border-divider-subtle', isPluginsTab
         ? 'rounded-t-xl bg-components-panel-bg'
         : 'bg-background-body',
       )}
     >
       <div
         className={cn(
-          'sticky top-0 z-10 flex min-h-[60px] items-center gap-1 self-stretch bg-components-panel-bg px-12 pb-2 pt-4', activeTab === 'discover' && 'bg-background-body',
+          'sticky top-0 z-10 flex min-h-[60px] items-center gap-1 self-stretch bg-components-panel-bg px-12 pb-2 pt-4', isExploringMarketplace && 'bg-background-body',
         )}
       >
         <div className='flex w-full items-center justify-between'>
           <div className='flex-1'>
             {/* <TabSlider
-              value={activeTab}
+              value={isPluginsTab ? PLUGIN_PAGE_TABS_MAP.plugins : PLUGIN_PAGE_TABS_MAP.marketplace}
               onChange={setActiveTab}
               options={options}
             /> */}
           </div>
           <div className='flex shrink-0 items-center gap-1'>
             {/* {
-              activeTab === 'discover' && (
+              isExploringMarketplace && (
                 <>
                   <Link
                     href={`https://docs.dify.ai/${locale === LanguagesSupported[1] ? 'v/zh-hans/' : ''}plugins/publish-plugins/publish-to-dify-marketplace`}
@@ -215,7 +217,7 @@ const PluginPage = ({
           </div>
         </div>
       </div>
-      {activeTab === 'plugins' && (
+      {isPluginsTab && (
         <>
           {plugins}
           {dragging && (
@@ -246,7 +248,7 @@ const PluginPage = ({
         </>
       )}
       {
-        activeTab === 'discover' && enable_marketplace && marketplace
+        isExploringMarketplace && enable_marketplace && marketplace
       }
 
       {showPluginSettingModal && (
