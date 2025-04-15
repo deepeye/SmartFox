@@ -1,5 +1,5 @@
 # base image
-FROM python:3.12-slim-bookworm AS base
+FROM registry.cn-beijing.aliyuncs.com/pdmi-bigdate/python:3.12-slim-bookworm AS base
 
 WORKDIR /app/api
 
