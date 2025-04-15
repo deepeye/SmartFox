@@ -3,7 +3,6 @@
 import { useRef, useState } from 'react'
 import { RiAddLine, RiArrowDownSLine } from '@remixicon/react'
 import Button from '@/app/components/base/button'
-import { MagicBox } from '@/app/components/base/icons/src/vender/solid/mediaAndDevices'
 import { FileZip } from '@/app/components/base/icons/src/vender/solid/files'
 import { Github } from '@/app/components/base/icons/src/vender/solid/general'
 import InstallFromGitHub from '@/app/components/plugins/install-plugin/install-from-github'
@@ -86,7 +85,7 @@ const InstallPluginDropdown = ({
             <div className='w-full'>
               {[
                 // ...(
-                //   (enable_marketplace && true)
+                //   (enable_marketplace)
                 //     ? [{ icon: MagicBox, text: t('plugin.source.marketplace'), action: 'marketplace' }]
                 //     : []
                 // ),

@@ -1,15 +1,14 @@
 'use client'
-import React, { useEffect, useImperativeHandle, useMemo, useRef } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStickyScroll, { ScrollPosition } from '../use-sticky-scroll'
 import Item from './item'
 import type { Plugin } from '@/app/components/plugins/types.ts'
 import cn from '@/utils/classnames'
 import { marketplaceUrlPrefix } from '@/config'
-// import { RiArrowRightUpLine } from '@remixicon/react'
 import { noop } from 'lodash-es'
 
-type Props = {
+export type ListProps = {
   wrapElemRef: React.RefObject<HTMLElement>
   list: Plugin[]
   searchText: string
@@ -18,17 +17,16 @@ type Props = {
   disableMaxWidth?: boolean
 }
 
-const List = (
-  {
-    ref,
-    wrapElemRef,
-    searchText,
-    tags,
-    list,
-    toolContentClassName,
-    disableMaxWidth = false,
-  },
-) => {
+export type ListRef = { handleScroll: () => void }
+
+const List = forwardRef<ListRef, ListProps>(({
+  wrapElemRef,
+  searchText,
+  tags,
+  list,
+  toolContentClassName,
+  disableMaxWidth = false,
+}, ref) => {
   const { t } = useTranslation()
   const hasFilter = !searchText
   const hasRes = list.length > 0
@@ -124,7 +122,7 @@ const List = (
       </div>
     </>
   )
-}
+})
 
 List.displayName = 'List'
 

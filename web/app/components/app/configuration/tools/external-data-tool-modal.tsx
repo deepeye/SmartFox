@@ -8,7 +8,6 @@ import Modal from '@/app/components/base/modal'
 import Button from '@/app/components/base/button'
 import EmojiPicker from '@/app/components/base/emoji-picker'
 import ApiBasedExtensionSelector from '@/app/components/header/account-setting/api-based-extension-page/selector'
-import { BookOpen01 } from '@/app/components/base/icons/src/vender/line/education'
 import { fetchCodeBasedExtensionList } from '@/service/common'
 import { SimpleSelect } from '@/app/components/base/select'
 import I18n from '@/context/i18n'
@@ -151,7 +150,7 @@ const ExternalDataToolModal: FC<ExternalDataToolModalProps> = ({
       return
     }
 
-    if (localeData.variable && !/[a-zA-Z_][a-zA-Z0-9_]{0,29}/g.test(localeData.variable)) {
+    if (localeData.variable && !/[a-zA-Z_]\w{0,29}/g.test(localeData.variable)) {
       notify({ type: 'error', message: t('appDebug.varKeyError.notValid', { key: t('appDebug.feature.tools.modal.variableName.title') }) })
       return
     }
