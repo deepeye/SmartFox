@@ -3,7 +3,6 @@ import React, { useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDebounceFn } from 'ahooks'
 
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import type { SubmitHandler } from 'react-hook-form'
@@ -16,6 +15,7 @@ import Button from '@/app/components/base/button'
 
 import { fetchInitValidateStatus, fetchSetupStatus, setup } from '@/service/common'
 import type { InitValidateStatusResponse, SetupStatusResponse } from '@/models/common'
+import { basePath } from '@/utils/var'
 
 const validPassword = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/
 
@@ -80,12 +80,12 @@ const InstallForm = () => {
     fetchSetupStatus().then((res: SetupStatusResponse) => {
       if (res.step === 'finished') {
         localStorage.setItem('setup_status', 'finished')
-        window.location.href = '/signin'
+        router.push(`${basePath}/signin`)
       }
       else {
         fetchInitValidateStatus().then((res: InitValidateStatusResponse) => {
           if (res.status === 'not_started')
-            window.location.href = '/init'
+            router.push(`${basePath}/init`)
         })
       }
       setLoading(false)

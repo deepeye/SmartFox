@@ -1,5 +1,5 @@
 from flask import request
-from flask_restful import marshal, reqparse  # type: ignore
+from flask_restful import marshal, reqparse
 from werkzeug.exceptions import Forbidden, NotFound
 
 import services.dataset_service
@@ -139,7 +139,9 @@ class DatasetListApi(DatasetApiResource):
                 external_knowledge_id=args["external_knowledge_id"],
                 embedding_model_provider=args["embedding_model_provider"],
                 embedding_model_name=args["embedding_model"],
-                retrieval_model=RetrievalModel(**args["retrieval_model"]),
+                retrieval_model=RetrievalModel(**args["retrieval_model"])
+                if args["retrieval_model"] is not None
+                else None,
             )
         except services.errors.dataset.DatasetNameDuplicateError:
             raise DatasetNameDuplicateError()

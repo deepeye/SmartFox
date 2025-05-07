@@ -56,6 +56,7 @@ const translation = {
     regenerate: '重新生成',
     submit: '提交',
     skip: '跳过',
+    format: '格式化',
   },
   errorMsg: {
     fieldRequired: '{{field}} 为必填项',
@@ -474,7 +475,7 @@ const translation = {
   apiBasedExtension: {
     title: 'API 扩展提供了一个集中式的 API 管理，在此统一添加 API 配置后，方便在 Smartfox 上的各类应用中直接使用。',
     link: '了解如何开发您自己的 API 扩展。',
-    linkUrl: 'https://docs.dify.ai/v/zh-hans/guides/extension/api-based-extension',
+    linkUrl: 'https://docs.dify.ai/zh-hans/guides/extension/api-based-extension',
     add: '新增 API 扩展',
     selector: {
       title: 'API 扩展',
@@ -562,6 +563,7 @@ const translation = {
     inputPlaceholder: '和机器人聊天',
     thinking: '深度思考中...',
     thought: '已深度思考',
+    resend: '重新发送',
   },
   promptEditor: {
     placeholder: '在这里写你的提示词，输入\'{\' 插入变量、输入\'/\' 插入提示内容块',

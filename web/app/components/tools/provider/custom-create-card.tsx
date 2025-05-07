@@ -8,8 +8,6 @@ import {
 import type { CustomCollectionBackend } from '../types'
 import I18n from '@/context/i18n'
 import { getLanguage } from '@/i18n/language'
-import { BookOpen01 } from '@/app/components/base/icons/src/vender/line/education'
-import { ArrowUpRight } from '@/app/components/base/icons/src/vender/line/arrows'
 import EditCustomToolModal from '@/app/components/tools/edit-custom-collection-modal'
 import { createCustomCollection } from '@/service/tools'
 import Toast from '@/app/components/base/toast'
@@ -28,7 +26,7 @@ const Contribute = ({ onRefreshData }: Props) => {
   const linkUrl = useMemo(() => {
     if (language.startsWith('zh_'))
       return 'https://docs.dify.ai/zh-hans/guides/tools#ru-he-chuang-jian-zi-ding-yi-gong-ju'
-    return 'https://docs.dify.ai/guides/tools#how-to-create-custom-tools'
+    return 'https://docs.dify.ai/en/guides/tools#how-to-create-custom-tools'
   }, [language])
 
   const [isShowEditCollectionToolModal, setIsShowEditCustomCollectionModal] = useState(false)
