@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useContext, useContextSelector } from 'use-context-selector'
 import { RiArrowRightLine, RiCommandLine, RiCornerDownLeftLine, RiExchange2Fill } from '@remixicon/react'
-import Link from 'next/link'
 import { useDebounceFn, useKeyPress } from 'ahooks'
 import Image from 'next/image'
 import AppIconPicker from '../../base/app-icon-picker'
@@ -338,7 +337,7 @@ function AppPreview({ mode }: { mode: AppMode }) {
     <h4 className='system-sm-semibold-uppercase text-text-secondary'>{previewInfo.title}</h4>
     <div className='system-xs-regular mt-1 min-h-8 max-w-96 text-text-tertiary'>
       <span>{previewInfo.description}</span>
-      {previewInfo.link && <Link target='_blank' href={previewInfo.link} className='ml-1 text-text-accent'>{t('app.newApp.learnMore')}</Link>}
+      {/* {previewInfo.link && <Link target='_blank' href={previewInfo.link} className='ml-1 text-text-accent'>{t('app.newApp.learnMore')}</Link>} */}
     </div>
   </div>
 }
