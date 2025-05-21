@@ -1,8 +1,9 @@
 import json
+import logging
 from collections.abc import Mapping, Sequence
 from datetime import UTC, datetime
 from enum import Enum, StrEnum
-from typing import TYPE_CHECKING, Any, Optional, Self, Union
+from typing import TYPE_CHECKING, Any, Optional, Union
 from uuid import uuid4
 
 from core.variables import utils as variable_utils
@@ -13,7 +14,7 @@ if TYPE_CHECKING:
     from models.model import AppMode
 
 import sqlalchemy as sa
-from sqlalchemy import func
+from sqlalchemy import UniqueConstraint, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 import contexts
@@ -26,7 +27,10 @@ from libs import helper
 from .account import Account
 from .base import Base
 from .engine import db
-from .types import StringUUID
+from .enums import CreatorUserRole, DraftVariableType
+from .types import EnumText, StringUUID
+
+_logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
     from models.model import AppMode
@@ -146,7 +150,7 @@ class Workflow(Base):
         conversation_variables: Sequence[Variable],
         marked_name: str = "",
         marked_comment: str = "",
-    ) -> Self:
+    ) -> "Workflow":
         workflow = Workflow()
         workflow.id = str(uuid4())
         workflow.tenant_id = tenant_id
