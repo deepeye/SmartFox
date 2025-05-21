@@ -8,12 +8,14 @@ import {
   RiGraduationCapFill,
   RiLogoutBoxRLine,
   RiSettings3Line,
+  RiTShirt2Line,
 } from '@remixicon/react'
 import Link from 'next/link'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import PremiumBadge from '@/app/components/base/premium-badge'
 import { useGetDocLanguage } from '@/context/i18n'
 import Avatar from '@/app/components/base/avatar'
+import ThemeSwitcher from '@/app/components/base/theme-switcher'
 import { logout } from '@/service/common'
 import { useAppContext } from '@/context/app-context'
 import { useProviderContext } from '@/context/provider-context'
@@ -70,8 +72,8 @@ export default function AppSelector() {
                 <MenuItems
                   className="
                     absolute right-0 mt-1.5 w-60 max-w-80
-                    origin-top-right divide-y divide-divider-subtle rounded-xl bg-components-panel-bg-blur
-                    shadow-lg focus:outline-none
+                    origin-top-right divide-y divide-divider-subtle rounded-xl bg-components-panel-bg-blur shadow-lg
+                    backdrop-blur-sm focus:outline-none
                   "
                 >
                   <MenuItem disabled>
@@ -113,69 +115,6 @@ export default function AppSelector() {
                       </div>
                     </MenuItem>
                   </div>
-                  {/* {!systemFeatures.branding.enabled && <>
-                    <div className='p-1'>
-                      <MenuItem>
-                        <Link
-                          className={cn(itemClassName, 'group justify-between',
-                            'data-[active]:bg-state-base-hover',
-                          )}
-                          href={`https://docs.dify.ai/${docLanguage}/introduction`}
-                          target='_blank' rel='noopener noreferrer'>
-                          <RiBookOpenLine className='size-4 shrink-0 text-text-tertiary' />
-                          <div className='system-md-regular grow px-1 text-text-secondary'>{t('common.userProfile.helpCenter')}</div>
-                          <RiArrowRightUpLine className='size-[14px] shrink-0 text-text-tertiary' />
-                        </Link>
-                      </MenuItem>
-                      <Support />
-                      {IS_CLOUD_EDITION && isCurrentWorkspaceOwner && <Compliance />}
-                    </div>
-                    <div className='p-1'>
-                      <MenuItem>
-                        <Link
-                          className={cn(itemClassName, 'group justify-between',
-                            'data-[active]:bg-state-base-hover',
-                          )}
-                          href='https://roadmap.dify.ai'
-                          target='_blank' rel='noopener noreferrer'>
-                          <RiMap2Line className='size-4 shrink-0 text-text-tertiary' />
-                          <div className='system-md-regular grow px-1 text-text-secondary'>{t('common.userProfile.roadmap')}</div>
-                          <RiArrowRightUpLine className='size-[14px] shrink-0 text-text-tertiary' />
-                        </Link>
-                      </MenuItem>
-                      <MenuItem>
-                        <Link
-                          className={cn(itemClassName, 'group justify-between',
-                            'data-[active]:bg-state-base-hover',
-                          )}
-                          href='https://github.com/langgenius/dify'
-                          target='_blank' rel='noopener noreferrer'>
-                          <RiGithubLine className='size-4 shrink-0 text-text-tertiary' />
-                          <div className='system-md-regular grow px-1 text-text-secondary'>{t('common.userProfile.github')}</div>
-                          <div className='flex items-center gap-0.5 rounded-[5px] border border-divider-deep bg-components-badge-bg-dimm px-[5px] py-[3px]'>
-                            <RiStarLine className='size-3 shrink-0 text-text-tertiary' />
-                            <GithubStar className='system-2xs-medium-uppercase text-text-tertiary' />
-                          </div>
-                        </Link>
-                      </MenuItem>
-                      {
-                        document?.body?.getAttribute('data-public-site-about') !== 'hide' && (
-                          <MenuItem>
-                            <div className={cn(itemClassName, 'justify-between',
-                              'data-[active]:bg-state-base-hover',
-                            )} onClick={() => setAboutVisible(true)}>
-                              <RiInformation2Line className='size-4 shrink-0 text-text-tertiary' />
-                              <div className='system-md-regular grow px-1 text-text-secondary'>{t('common.userProfile.about')}</div>
-                              <div className='flex shrink-0 items-center'>
-                                <div className='system-xs-regular mr-2 text-text-tertiary'>{langeniusVersionInfo.current_version}</div>
-                                <Indicator color={langeniusVersionInfo.current_version === langeniusVersionInfo.latest_version ? 'green' : 'orange'} />
-                              </div>
-                            </div>
-                          </MenuItem>
-                        )
-                      }
-                    </div>
-                  </>} */}
                   <MenuItem disabled>
                     <div className='p-1'>
                       <div className={cn(itemClassName, 'hover:bg-transparent')}>

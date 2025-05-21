@@ -1,5 +1,4 @@
 import json
-import logging
 from collections.abc import Mapping, Sequence
 from datetime import UTC, datetime
 from enum import Enum, StrEnum
@@ -14,7 +13,7 @@ if TYPE_CHECKING:
     from models.model import AppMode
 
 import sqlalchemy as sa
-from sqlalchemy import UniqueConstraint, func
+from sqlalchemy import func
 from sqlalchemy.orm import Mapped, mapped_column
 
 import contexts
@@ -27,10 +26,7 @@ from libs import helper
 from .account import Account
 from .base import Base
 from .engine import db
-from .enums import CreatorUserRole, DraftVariableType
-from .types import EnumText, StringUUID
-
-_logger = logging.getLogger(__name__)
+from .types import StringUUID
 
 if TYPE_CHECKING:
     from models.model import AppMode
