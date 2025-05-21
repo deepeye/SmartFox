@@ -30,9 +30,4 @@ const Layout = ({ children }: { children: ReactNode }) => {
     </>
   )
 }
-
-export const metadata = {
-  title: 'Smartfox',
-}
-
 export default Layout

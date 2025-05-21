@@ -141,6 +141,8 @@ const translation = {
     status: 'ベータ版',
     explore: '探索',
     apps: 'スタジオ',
+    appDetail: 'アプリの詳細',
+    account: 'アカウント',
     plugins: 'プラグイン',
     pluginsTips: 'サードパーティのプラグインを統合するか、ChatGPT互換のAIプラグインを作成します。',
     datasets: 'ナレッジ',
@@ -198,8 +200,8 @@ const translation = {
     newPassword: '新しいパスワード',
     confirmPassword: 'パスワードを確認',
     notEqual: '2つのパスワードが異なります。',
-    langGeniusAccount: 'Difyアカウント',
-    langGeniusAccountTip: 'Difyアカウントと関連するユーザーデータ。',
+    langGeniusAccount: 'アカウント関連データ',
+    langGeniusAccountTip: 'アカウントに関連するユーザーデータ。',
     editName: '名前を編集',
     showAppLength: '{{length}}アプリを表示',
     delete: 'アカウントを削除',
@@ -207,7 +209,7 @@ const translation = {
     deleteConfirmTip: '確認のため、登録したメールから次の内容をに送信してください ',
     account: 'アカウント',
     myAccount: 'マイアカウント',
-    studio: 'Difyスタジオ',
+    studio: 'スタジオ',
     deletePrivacyLinkTip: 'お客様のデータの取り扱い方法の詳細については、当社の',
     deletePrivacyLink: 'プライバシーポリシー。',
     deleteSuccessTip: 'アカウントの削除が完了するまでに時間が必要です。すべて完了しましたら、メールでお知らせします。',
@@ -653,6 +655,12 @@ const translation = {
   },
   pagination: {
     perPage: 'ページあたりのアイテム数',
+  },
+  you: 'あなた',
+  imageInput: {
+    browse: 'ブラウズする',
+    supportedFormats: 'PNG、JPG、JPEG、WEBP、およびGIFをサポートしています。',
+    dropImageHere: 'ここに画像をドロップするか、',
   },
 }
 
