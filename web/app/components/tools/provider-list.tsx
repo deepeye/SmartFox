@@ -1,8 +1,8 @@
 'use client'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { Collection } from './types'
-import Marketplace from './marketplace'
+// import Marketplace from './marketplace'
 import cn from '@/utils/classnames'
 import { useTabSearchParams } from '@/hooks/use-tab-searchparams'
 import TabSliderNew from '@/app/components/base/tab-slider-new'
@@ -18,7 +18,6 @@ import PluginDetailPanel from '@/app/components/plugins/plugin-detail-panel'
 import MCPList from './mcp'
 import { useAllToolProviders } from '@/service/use-tools'
 import { useInstalledPluginList, useInvalidateInstalledPluginList } from '@/service/use-plugins'
-import { useGlobalPublicStore } from '@/context/global-public-context'
 import { ToolTypeEnum } from '../workflow/block-selector/types'
 import { useMarketplace } from './marketplace/hooks'
 
@@ -40,7 +39,7 @@ const ProviderList = () => {
   // const searchParams = useSearchParams()
   // searchParams.get('category') === 'workflow'
   const { t } = useTranslation()
-  const { enable_marketplace } = useGlobalPublicStore(s => s.systemFeatures)
+  // const { enable_marketplace } = useGlobalPublicStore(s => s.systemFeatures)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const [activeTab, setActiveTab] = useTabSearchParams({
@@ -85,21 +84,21 @@ const ProviderList = () => {
   }, [currentProvider?.plugin_id, pluginList?.plugins])
 
   const toolListTailRef = useRef<HTMLDivElement>(null)
-  const showMarketplacePanel = useCallback(() => {
-    containerRef.current?.scrollTo({
-      top: toolListTailRef.current
-        ? toolListTailRef.current?.offsetTop - 80
-        : 0,
-      behavior: 'smooth',
-    })
-  }, [toolListTailRef])
+  // const showMarketplacePanel = useCallback(() => {
+  //   containerRef.current?.scrollTo({
+  //     top: toolListTailRef.current
+  //       ? toolListTailRef.current?.offsetTop - 80
+  //       : 0,
+  //     behavior: 'smooth',
+  //   })
+  // }, [toolListTailRef])
 
   const marketplaceContext = useMarketplace(keywords, tagFilterValue)
   const {
     handleScroll,
   } = marketplaceContext
 
-  const [isMarketplaceArrowVisible, setIsMarketplaceArrowVisible] = useState(true)
+  const [setIsMarketplaceArrowVisible] = useState(true)
   const onContainerScroll = useMemo(() => {
     return (e: Event) => {
       handleScroll(e)
@@ -191,15 +190,7 @@ const ProviderList = () => {
             <Empty lightCard text={t('tools.noTools')} className='h-[224px] shrink-0 px-12' />
           )}
           <div ref={toolListTailRef} />
-          {enable_marketplace && activeTab === 'builtin' && (
-            <Marketplace
-              searchPluginText={keywords}
-              filterPluginTags={tagFilterValue}
-              isMarketplaceArrowVisible={isMarketplaceArrowVisible}
-              showMarketplacePanel={showMarketplacePanel}
-              marketplaceContext={marketplaceContext}
-            />
-          )}
+
           {activeTab === 'mcp' && (
             <MCPList searchText={keywords} />
           )}

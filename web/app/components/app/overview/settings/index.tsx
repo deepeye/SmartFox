@@ -25,7 +25,6 @@ import { useModalContext } from '@/context/modal-context'
 import type { AppIconSelection } from '@/app/components/base/app-icon-picker'
 import AppIconPicker from '@/app/components/base/app-icon-picker'
 import cn from '@/utils/classnames'
-import { useDocLink } from '@/context/i18n'
 
 export type ISettingsModalProps = {
   isChat: boolean
@@ -97,7 +96,7 @@ const SettingsModal: FC<ISettingsModalProps> = ({
   const [language, setLanguage] = useState(default_language)
   const [saveLoading, setSaveLoading] = useState(false)
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
 
   const [showAppIconPicker, setShowAppIconPicker] = useState(false)
   const [appIcon, setAppIcon] = useState<AppIconSelection>(
@@ -237,10 +236,7 @@ const SettingsModal: FC<ISettingsModalProps> = ({
           </div>
           <div className='system-xs-regular mt-0.5 text-text-tertiary'>
             <span>{t(`${prefixSettings}.modalTip`)}</span>
-            <Link href={docLink('/guides/application-publishing/launch-your-webapp-quickly/README', {
-              'zh-Hans': '/guides/application-publishing/launch-your-webapp-quickly/readme',
-            })}
-              target='_blank' rel='noopener noreferrer' className='text-text-accent'>{t('common.operation.learnMore')}</Link>
+
           </div>
         </div>
         {/* form body */}

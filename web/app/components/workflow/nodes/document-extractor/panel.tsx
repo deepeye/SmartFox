@@ -6,12 +6,11 @@ import { useContext } from 'use-context-selector'
 import VarReferencePicker from '../_base/components/variable/var-reference-picker'
 import OutputVars, { VarItem } from '../_base/components/output-vars'
 import Split from '../_base/components/split'
-import { useNodeHelpLink } from '../_base/hooks/use-node-help-link'
 import useConfig from './use-config'
 import type { DocExtractorNodeType } from './types'
 import { fetchSupportFileTypes } from '@/service/datasets'
 import Field from '@/app/components/workflow/nodes/_base/components/field'
-import { BlockEnum, type NodePanelProps } from '@/app/components/workflow/types'
+import type { NodePanelProps } from '@/app/components/workflow/types'
 import I18n from '@/context/i18n'
 import { LanguagesSupported } from '@/i18n-config/language'
 
@@ -23,7 +22,7 @@ const Panel: FC<NodePanelProps<DocExtractorNodeType>> = ({
 }) => {
   const { t } = useTranslation()
   const { locale } = useContext(I18n)
-  const link = useNodeHelpLink(BlockEnum.DocExtractor)
+
   const { data: supportFileTypesResponse } = useSWR({ url: '/files/support-type' }, fetchSupportFileTypes)
   const supportTypes = supportFileTypesResponse?.allowed_extensions || []
   const supportTypesShowNames = (() => {
@@ -67,7 +66,7 @@ const Panel: FC<NodePanelProps<DocExtractorNodeType>> = ({
             />
             <div className='body-xs-regular mt-1 py-0.5 text-text-tertiary'>
               {t(`${i18nPrefix}.supportFileTypes`, { types: supportTypesShowNames })}
-              <a className='text-text-accent' href={link} target='_blank'>{t(`${i18nPrefix}.learnMore`)}</a>
+
             </div>
           </>
         </Field>

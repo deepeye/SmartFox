@@ -28,7 +28,6 @@ import type {
 } from '@/types/workflow'
 import ErrorHandleTip from '@/app/components/workflow/nodes/_base/components/error-handle/error-handle-tip'
 import { hasRetryNode } from '@/app/components/workflow/utils'
-import { useDocLink } from '@/context/i18n'
 import Tooltip from '@/app/components/base/tooltip'
 
 type Props = {
@@ -67,7 +66,6 @@ const NodePanel: FC<Props> = ({
     doSetCollapseState(state)
   }, [hideProcessDetail])
   const { t } = useTranslation()
-  const docLink = useDocLink()
 
   const getTime = (time: number) => {
     if (time < 1)
@@ -203,13 +201,7 @@ const NodePanel: FC<Props> = ({
               {(nodeInfo.status === 'exception') && (
                 <StatusContainer status='stopped'>
                   {nodeInfo.error}
-                  <a
-                    href={docLink('/guides/workflow/error-handling/error-type')}
-                    target='_blank'
-                    className='text-text-accent'
-                  >
-                    {t('workflow.common.learnMore')}
-                  </a>
+
                 </StatusContainer>
               )}
               {nodeInfo.status === 'failed' && (

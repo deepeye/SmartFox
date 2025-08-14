@@ -190,7 +190,7 @@ const translation = {
   },
   stepThree: {
     creationTitle: '🎉 Knowledge created',
-    creationContent: 'We automatically named the Knowledge, you can modify it at any time.',
+    creationContent: 'We automatically named the Knowledge, you can moSmartfox it at any time.',
     label: 'Knowledge name',
     additionTitle: '🎉 Document uploaded',
     additionP1: 'The document has been uploaded to the Knowledge',
@@ -207,7 +207,7 @@ const translation = {
   },
   otherDataSource: {
     title: 'Connect to other data sources?',
-    description: 'Currently, Dify\'s knowledge base only has limited data sources. Contributing a data source to the Dify knowledge base is a fantastic way to help enhance the platform\'s flexibility and power for all users. Our contribution guide makes it easy to get started. Please click on the link below to learn more.',
+    description: 'Currently, Smartfox\'s knowledge base only has limited data sources. Contributing a data source to the Smartfox knowledge base is a fantastic way to help enhance the platform\'s flexibility and power for all users. Our contribution guide makes it easy to get started. Please click on the link below to learn more.',
     learnMore: 'Learn more',
   },
 }

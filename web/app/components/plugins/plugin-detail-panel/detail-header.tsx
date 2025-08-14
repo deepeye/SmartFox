@@ -26,7 +26,6 @@ import Badge from '@/app/components/base/badge'
 import Confirm from '@/app/components/base/confirm'
 import Tooltip from '@/app/components/base/tooltip'
 import Toast from '@/app/components/base/toast'
-import { BoxSparkleFill } from '@/app/components/base/icons/src/vender/plugin'
 import { Github } from '@/app/components/base/icons/src/public/common'
 import { uninstallPlugin } from '@/service/plugins'
 import { useGetLanguage, useI18N } from '@/context/i18n'
@@ -275,11 +274,7 @@ const DetailHeader = ({
                 packageName={name}
               />
               <div className='system-xs-regular ml-1 mr-0.5 text-text-quaternary'>·</div>
-              {detail.source === PluginSource.marketplace && (
-                <Tooltip popupContent={t('plugin.detailPanel.categoryTip.marketplace')} >
-                  <div><BoxSparkleFill className='h-3.5 w-3.5 text-text-tertiary hover:text-text-accent' /></div>
-                </Tooltip>
-              )}
+
               {detail.source === PluginSource.github && (
                 <Tooltip popupContent={t('plugin.detailPanel.categoryTip.github')} >
                   <div><Github className='h-3.5 w-3.5 text-text-secondary hover:text-text-primary' /></div>

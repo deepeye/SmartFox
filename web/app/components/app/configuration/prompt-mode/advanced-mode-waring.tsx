@@ -2,7 +2,6 @@
 import type { FC } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useDocLink } from '@/context/i18n'
 type Props = {
   onReturnToSimpleMode: () => void
 }
@@ -11,7 +10,7 @@ const AdvancedModeWarning: FC<Props> = ({
   onReturnToSimpleMode,
 }) => {
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
   const [show, setShow] = React.useState(true)
   if (!show)
     return null
@@ -21,13 +20,7 @@ const AdvancedModeWarning: FC<Props> = ({
       <div className='flex items-center justify-between'>
         <div className='text-xs leading-[18px] '>
           <span className='text-gray-700'>{t('appDebug.promptMode.advancedWarning.description')}</span>
-          <a
-            className='font-medium text-[#155EEF]'
-            href={docLink('/guides/features/prompt-engineering')}
-            target='_blank' rel='noopener noreferrer'
-          >
-            {t('appDebug.promptMode.advancedWarning.learnMore')}
-          </a>
+
         </div>
 
         <div className='flex items-center space-x-1'>

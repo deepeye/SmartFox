@@ -45,17 +45,8 @@ export default function AccountAbout({
 
           <div className='text-center text-xs font-normal text-text-tertiary'>Version {langGeniusVersionInfo?.current_version}</div>
           <div className='flex flex-col items-center gap-2 text-center text-xs font-normal text-text-secondary'>
-            <div>© {dayjs().year()} LangGenius, Inc., Contributors.</div>
-            <div className='text-text-accent'>
-              {
-                IS_CE_EDITION
-                  ? <Link href={'https://github.com/langgenius/dify/blob/main/LICENSE'} target='_blank' rel='noopener noreferrer'>Open Source License</Link>
-                  : <>
-                    <Link href='https://dify.ai/privacy' target='_blank' rel='noopener noreferrer'>Privacy Policy</Link>,&nbsp;
-                    <Link href='https://dify.ai/terms' target='_blank' rel='noopener noreferrer'>Terms of Service</Link>
-                  </>
-              }
-            </div>
+            <div>© {dayjs().year()} DeepEye, Inc., Contributors.</div>
+
           </div>
         </div>
         <div className='-mx-8 mb-4 h-[0.5px] bg-divider-regular' />

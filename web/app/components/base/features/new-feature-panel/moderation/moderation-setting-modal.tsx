@@ -10,7 +10,6 @@ import ApiBasedExtensionSelector from '@/app/components/header/account-setting/a
 import Modal from '@/app/components/base/modal'
 import Button from '@/app/components/base/button'
 import Divider from '@/app/components/base/divider'
-import { BookOpen01 } from '@/app/components/base/icons/src/vender/line/education'
 import type { ModerationConfig, ModerationContentConfig } from '@/models/debug'
 import { useToastContext } from '@/app/components/base/toast'
 import {
@@ -25,7 +24,6 @@ import { useModalContext } from '@/context/modal-context'
 import { CustomConfigurationStatusEnum } from '@/app/components/header/account-setting/model-provider-page/declarations'
 import cn from '@/utils/classnames'
 import { noop } from 'lodash-es'
-import { useDocLink } from '@/context/i18n'
 
 const systemTypes = ['openai_moderation', 'keywords', 'api']
 
@@ -47,7 +45,7 @@ const ModerationSettingModal: FC<ModerationSettingModalProps> = ({
   onSave,
 }) => {
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
   const { notify } = useToastContext()
   const { locale } = useContext(I18n)
   const { data: modelProviders, isLoading, mutate } = useSWR('/workspaces/current/model-providers', fetchModelProviders)
@@ -317,14 +315,7 @@ const ModerationSettingModal: FC<ModerationSettingModalProps> = ({
           <div className='py-2'>
             <div className='flex h-9 items-center justify-between'>
               <div className='text-sm font-medium text-text-primary'>{t('common.apiBasedExtension.selector.title')}</div>
-              <a
-                href={docLink('/guides/extension/api-based-extension/README')}
-                target='_blank' rel='noopener noreferrer'
-                className='group flex items-center text-xs text-text-tertiary hover:text-primary-600'
-              >
-                <BookOpen01 className='mr-1 h-3 w-3 text-text-tertiary group-hover:text-primary-600' />
-                {t('common.apiBasedExtension.link')}
-              </a>
+
             </div>
             <ApiBasedExtensionSelector
               value={localeData.config?.api_based_extension_id || ''}

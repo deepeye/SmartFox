@@ -30,7 +30,7 @@ const List = forwardRef<ListRef, ListProps>(({
   disableMaxWidth = false,
 }, ref) => {
   const { t } = useTranslation()
-  const hasFilter = !searchText
+  // const hasFilter = !searchText
   const hasRes = list.length > 0
   const urlWithSearchText = getMarketplaceUrl('', { q: searchText, tags: tags.join(',') })
   const nextToStickyELemRef = useRef<HTMLDivElement>(null)
@@ -56,7 +56,6 @@ const List = forwardRef<ListRef, ListProps>(({
 
   useEffect(() => {
     handleScroll()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [list])
 
   const handleHeadClick = () => {
@@ -65,19 +64,6 @@ const List = forwardRef<ListRef, ListProps>(({
       return
     }
     window.open(urlWithSearchText, '_blank')
-  }
-
-  if (hasFilter) {
-    return (
-      <Link
-        className='system-sm-medium sticky bottom-0 z-10 flex h-8 cursor-pointer items-center rounded-b-lg border-[0.5px] border-t border-components-panel-border bg-components-panel-bg-blur px-4 py-1 text-text-accent-light-mode-only shadow-lg'
-        href={getMarketplaceUrl('')}
-        target='_blank'
-      >
-        <span>{t('plugin.findMoreInMarketplace')}</span>
-        <RiArrowRightUpLine className='ml-0.5 h-3 w-3' />
-      </Link>
-    )
   }
 
   const maxWidthClassName = toolContentClassName || 'max-w-[100%]'

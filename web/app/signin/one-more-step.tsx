@@ -1,7 +1,6 @@
 'use client'
 import React, { type Reducer, useEffect, useReducer } from 'react'
 import { useTranslation } from 'react-i18next'
-import Link from 'next/link'
 import useSWR from 'swr'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Input from '../components/base/input'
@@ -12,7 +11,6 @@ import { timezones } from '@/utils/timezone'
 import { LanguagesSupported, languages } from '@/i18n-config/language'
 import { oneMoreStep } from '@/service/common'
 import Toast from '@/app/components/base/toast'
-import { useDocLink } from '@/context/i18n'
 
 type IState = {
   formState: 'processing' | 'error' | 'success' | 'initial'
@@ -52,7 +50,7 @@ const reducer: Reducer<IState, IAction> = (state: IState, action: IAction) => {
 
 const OneMoreStep = () => {
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -98,9 +96,7 @@ const OneMoreStep = () => {
                 popupContent={
                   <div className='w-[256px] text-xs font-medium'>
                     <div className='font-medium'>{t('login.sendUsMail')}</div>
-                    <div className='cursor-pointer text-xs font-medium text-text-accent-secondary'>
-                      <a href="mailto:request-invitation@langgenius.ai">request-invitation@langgenius.ai</a>
-                    </div>
+
                   </div>
                 }
               >
@@ -159,15 +155,7 @@ const OneMoreStep = () => {
               {t('login.go')}
             </Button>
           </div>
-          <div className="system-xs-regular mt-2 block w-full text-text-tertiary">
-            {t('login.license.tip')}
-            &nbsp;
-            <Link
-              className='system-xs-medium text-text-accent-secondary'
-              target='_blank' rel='noopener noreferrer'
-              href={docLink('/policies/agreement/README')}
-            >{t('login.license.link')}</Link>
-          </div>
+
         </div>
       </div>
     </>

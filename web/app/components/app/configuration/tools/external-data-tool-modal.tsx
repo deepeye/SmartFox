@@ -250,7 +250,7 @@ const ExternalDataToolModal: FC<ExternalDataToolModalProps> = ({
                 className='group flex items-center text-xs font-normal text-gray-500 hover:text-primary-600'
               >
                 <BookOpen01 className='mr-1 h-3 w-3 text-gray-500 group-hover:text-primary-600' />
-                {t('common.apiBasedExtension.link')}
+
               </a>
             </div>
             <ApiBasedExtensionSelector

@@ -3,7 +3,6 @@ import { type CredentialFormSchema, FormTypeEnum, ModelTypeEnum } from '@/app/co
 import type { ToolVarInputs } from '../../tool/types'
 import ListEmpty from '@/app/components/base/list-empty'
 import { AgentStrategySelector } from './agent-strategy-selector'
-import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import Form from '@/app/components/header/account-setting/model-provider-page/model-modal/Form'
 import { Agent } from '@/app/components/base/icons/src/vender/workflow'
@@ -21,7 +20,6 @@ import type { NodeOutPutVar } from '../../../types'
 import type { Node } from 'reactflow'
 import type { PluginMeta } from '@/app/components/plugins/types'
 import { noop } from 'lodash-es'
-import { useDocLink } from '@/context/i18n'
 
 export type Strategy = {
   agent_strategy_provider_name: string
@@ -54,7 +52,7 @@ type CustomField = ToolSelectorSchema | MultipleToolSelectorSchema
 export const AgentStrategy = memo((props: AgentStrategyProps) => {
   const { strategy, onStrategyChange, formSchema, formValue, onFormValueChange, nodeOutputVars, availableNodes, nodeId, canChooseMCPTool } = props
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
   const defaultModel = useDefaultModel(ModelTypeEnum.textGeneration)
   const renderI18nObject = useRenderI18nObject()
   const workflowStore = useWorkflowStore()
@@ -231,13 +229,7 @@ export const AgentStrategy = memo((props: AgentStrategyProps) => {
           title={t('workflow.nodes.agent.strategy.configureTip')}
           description={<div className='text-xs text-text-tertiary'>
             {t('workflow.nodes.agent.strategy.configureTipDesc')} <br />
-            <Link href={docLink('/guides/workflow/node/agent#select-an-agent-strategy', {
-              'zh-Hans': '/guides/workflow/node/agent#选择-agent-策略',
-              'ja-JP': '/guides/workflow/node/agent#エージェント戦略の選択',
-            })}
-              className='text-text-accent-secondary' target='_blank'>
-              {t('workflow.nodes.agent.learnMore')}
-            </Link>
+
           </div>}
         />
     }

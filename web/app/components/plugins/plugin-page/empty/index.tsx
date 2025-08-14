@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { MagicBox } from '@/app/components/base/icons/src/vender/solid/mediaAndDevices'
 import { FileZip } from '@/app/components/base/icons/src/vender/solid/files'
 import { Github } from '@/app/components/base/icons/src/vender/solid/general'
 import InstallFromGitHub from '@/app/components/plugins/install-plugin/install-from-github'
@@ -49,17 +48,20 @@ const Empty = () => {
   const [installMethods, setInstallMethods] = useState<InstallMethod[]>([])
   useEffect(() => {
     const methods = []
-    if (enable_marketplace)
-      methods.push({ icon: MagicBox, text: t('plugin.source.marketplace'), action: 'marketplace' })
+    // if (enable_marketplace)
+    //   methods.push({ icon: MagicBox, text: t('plugin.source.marketplace'), action: 'marketplace' })
 
-    if (plugin_installation_permission.restrict_to_marketplace_only) {
-      setInstallMethods(methods)
-    }
-    else {
-      methods.push({ icon: Github, text: t('plugin.source.github'), action: 'github' })
-      methods.push({ icon: FileZip, text: t('plugin.source.local'), action: 'local' })
-      setInstallMethods(methods)
-    }
+    // if (plugin_installation_permission.restrict_to_marketplace_only) {
+    //   setInstallMethods(methods)
+    // }
+    // else {
+    //   methods.push({ icon: Github, text: t('plugin.source.github'), action: 'github' })
+    //   methods.push({ icon: FileZip, text: t('plugin.source.local'), action: 'local' })
+    //   setInstallMethods(methods)
+    // }
+    methods.push({ icon: Github, text: t('plugin.source.github'), action: 'github' })
+    methods.push({ icon: FileZip, text: t('plugin.source.local'), action: 'local' })
+    setInstallMethods(methods)
   }, [plugin_installation_permission, enable_marketplace, t])
 
   return (

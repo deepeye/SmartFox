@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useDebounce, useDebounceFn } from 'ahooks'
 import { groupBy } from 'lodash-es'
 import { PlusIcon } from '@heroicons/react/24/solid'
-import { RiDraftLine, RiExternalLinkLine } from '@remixicon/react'
+import { RiDraftLine } from '@remixicon/react'
 import AutoDisabledDocument from '../common/document-status-with-action/auto-disabled-document'
 import List from './list'
 import s from './style.module.css'
@@ -30,7 +30,6 @@ import useDocumentListQueryState from './hooks/use-document-list-query-state'
 import useEditDocumentMetadata from '../metadata/hooks/use-edit-dataset-metadata'
 import DatasetMetadataDrawer from '../metadata/metadata-dataset/dataset-metadata-drawer'
 import StatusWithAction from '../common/document-status-with-action/status-with-action'
-import { useDocLink } from '@/context/i18n'
 import { useFetchDefaultProcessRule } from '@/service/knowledge/use-create-dataset'
 
 const FolderPlusIcon = ({ className }: React.SVGProps<SVGElement>) => {
@@ -86,7 +85,7 @@ export const fetcher = (url: string) => get(url, {}, {})
 
 const Documents: FC<IDocumentsProps> = ({ datasetId }) => {
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
   const { plan } = useProviderContext()
   const isFreePlan = plan.type === 'sandbox'
   const [inputValue, setInputValue] = useState<string>('') // the input value
@@ -310,14 +309,7 @@ const Documents: FC<IDocumentsProps> = ({ datasetId }) => {
         <h1 className='text-base font-semibold text-text-primary'>{t('datasetDocuments.list.title')}</h1>
         <div className='flex items-center space-x-0.5 text-sm font-normal text-text-tertiary'>
           <span>{t('datasetDocuments.list.desc')}</span>
-          <a
-            className='flex items-center text-text-accent'
-            target='_blank'
-            href={docLink('/guides/knowledge-base/integrate-knowledge-within-application')}
-          >
-            <span>{t('datasetDocuments.list.learnMore')}</span>
-            <RiExternalLinkLine className='h-3 w-3' />
-          </a>
+
         </div>
       </div>
       <div className='flex flex-1 flex-col px-6 py-4'>

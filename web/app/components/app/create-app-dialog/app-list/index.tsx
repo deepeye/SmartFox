@@ -169,9 +169,9 @@ const Apps = ({
   return (
     <div className='flex h-full flex-col'>
       <div className='flex items-center justify-between border-b border-divider-burn py-3'>
-        <div className='min-w-[180px] pl-5'>
+        {/* <div className='min-w-[180px] pl-5'>
           <span className='title-xl-semi-bold text-text-primary'>{t('app.newApp.startFromTemplate')}</span>
-        </div>
+        </div> */}
         <div className='flex max-w-[548px] flex-1 items-center rounded-xl border border-components-panel-border bg-components-panel-bg-blur p-1.5 shadow-md'>
           <AppTypeSelector value={currentType} onChange={setCurrentType} />
           <div className='h-[14px]'>

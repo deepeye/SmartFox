@@ -11,7 +11,6 @@ import EconomicalRetrievalMethodConfig from '@/app/components/datasets/common/ec
 import Button from '@/app/components/base/button'
 import { isReRankModelSelected } from '@/app/components/datasets/common/check-rerank-model'
 import { useModelListAndDefaultModelAndCurrentProviderAndModel } from '@/app/components/header/account-setting/model-provider-page/hooks'
-import { useDocLink } from '@/context/i18n'
 
 type Props = {
   indexMethod: string
@@ -30,7 +29,7 @@ const ModifyRetrievalModal: FC<Props> = ({
 }) => {
   const ref = useRef(null)
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
   const [retrievalConfig, setRetrievalConfig] = useState(value)
 
   // useClickAway(() => {
@@ -71,17 +70,7 @@ const ModifyRetrievalModal: FC<Props> = ({
         <div className='text-base font-semibold text-text-primary'>
           <div>{t('datasetSettings.form.retrievalSetting.title')}</div>
           <div className='text-xs font-normal leading-[18px] text-text-tertiary'>
-            <a
-              target='_blank'
-              rel='noopener noreferrer'
-              href={docLink('/guides/knowledge-base/retrieval-test-and-citation#modify-text-retrieval-setting', {
-                'zh-Hans': '/guides/knowledge-base/retrieval-test-and-citation#修改文本检索方式',
-                'ja-JP': '/guides/knowledge-base/retrieval-test-and-citation',
-              })}
-              className='text-text-accent'
-            >
-              {t('datasetSettings.form.retrievalSetting.learnMore')}
-            </a>
+
             {t('datasetSettings.form.retrievalSetting.description')}
           </div>
         </div>

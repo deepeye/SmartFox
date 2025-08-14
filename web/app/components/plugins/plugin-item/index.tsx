@@ -1,7 +1,6 @@
 'use client'
 import type { FC } from 'react'
 import React, { useCallback, useMemo } from 'react'
-import { useTheme } from 'next-themes'
 import {
   RiArrowRightUpLine,
   RiBugLine,
@@ -28,7 +27,6 @@ import useRefreshPluginList from '@/app/components/plugins/install-plugin/hooks/
 import { useAppContext } from '@/context/app-context'
 import { gte } from 'semver'
 import Tooltip from '@/app/components/base/tooltip'
-import { getMarketplaceUrl } from '@/utils/var'
 import { useGlobalPublicStore } from '@/context/global-public-context'
 
 type Props = {
@@ -41,7 +39,7 @@ const PluginItem: FC<Props> = ({
   plugin,
 }) => {
   const { t } = useTranslation()
-  const { theme } = useTheme()
+  // const { theme } = useTheme()
   const { categoriesMap } = useSingleCategories()
   const currentPluginID = usePluginPageContext(v => v.currentPluginID)
   const setCurrentPluginID = usePluginPageContext(v => v.setCurrentPluginID)
@@ -180,14 +178,7 @@ const PluginItem: FC<Props> = ({
               </a>
             </>
           }
-          {source === PluginSource.marketplace && enable_marketplace
-            && <>
-              <a href={getMarketplaceUrl(`/plugins/${author}/${name}`, { theme })} target='_blank' className='flex items-center gap-0.5'>
-                <div className='system-2xs-medium-uppercase text-text-tertiary'>{t('plugin.from')} <span className='text-text-secondary'>marketplace</span></div>
-                <RiArrowRightUpLine className='h-3 w-3 text-text-tertiary' />
-              </a>
-            </>
-          }
+
           {source === PluginSource.local
             && <>
               <div className='flex items-center gap-1'>

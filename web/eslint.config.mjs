@@ -57,6 +57,7 @@ export default combine(
       // original config
       'ts/consistent-type-definitions': ['warn', 'type'],
 
+      'no-unused-vars': 'off',
       // useful, but big change
       'ts/no-empty-object-type': 'off',
     },

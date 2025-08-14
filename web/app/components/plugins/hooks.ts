@@ -95,14 +95,14 @@ export const useSingleCategories = (translateFromOut?: TFunction) => {
 
 export const PLUGIN_PAGE_TABS_MAP = {
   plugins: 'plugins',
-  marketplace: 'discover',
+  // marketplace: 'discover',
 }
 
 export const usePluginPageTabs = () => {
   const { t } = useTranslation()
   const tabs = [
     { value: PLUGIN_PAGE_TABS_MAP.plugins, text: t('common.menus.plugins') },
-    { value: PLUGIN_PAGE_TABS_MAP.marketplace, text: t('common.menus.exploreMarketplace') },
+    // { value: PLUGIN_PAGE_TABS_MAP.marketplace, text: t('common.menus.exploreMarketplace') },
   ]
   return tabs
 }

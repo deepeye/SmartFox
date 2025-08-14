@@ -249,7 +249,7 @@ const translation = {
     empower: 'Empower your AI development',
     discover: 'Discover',
     and: 'and',
-    difyMarketplace: 'Dify Marketplace',
+    SmartfoxMarketplace: 'Smartfox Marketplace',
     moreFrom: 'More from Marketplace',
     noPluginFound: 'No plugin found',
     pluginsResult: '{{num}} results',
@@ -261,8 +261,8 @@ const translation = {
       firstReleased: 'First Released',
     },
     viewMore: 'View more',
-    verifiedTip: 'Verified by Dify',
-    partnerTip: 'Verified by a Dify partner',
+    verifiedTip: 'Verified by Smartfox',
+    partnerTip: 'Verified by a Smartfox partner',
   },
   task: {
     installing: 'Installing {{installingLength}} plugins, 0 done.',
@@ -274,7 +274,7 @@ const translation = {
   },
   requestAPlugin: 'Request a plugin',
   publishPlugins: 'Publish plugins',
-  difyVersionNotCompatible: 'The current Dify version is not compatible with this plugin, please upgrade to the minimum version required: {{minimalDifyVersion}}',
+  SmartfoxVersionNotCompatible: 'The current Smartfox version is not compatible with this plugin, please upgrade to the minimum version required: {{minimalSmartfoxVersion}}',
   auth: {
     default: 'Default',
     custom: 'Custom',

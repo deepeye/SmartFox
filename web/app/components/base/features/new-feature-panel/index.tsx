@@ -18,7 +18,6 @@ import Moderation from '@/app/components/base/features/new-feature-panel/moderat
 import AnnotationReply from '@/app/components/base/features/new-feature-panel/annotation-reply'
 import type { PromptVariable } from '@/models/debug'
 import type { InputVar } from '@/app/components/workflow/types'
-import { useDocLink } from '@/context/i18n'
 
 type Props = {
   show: boolean
@@ -46,7 +45,7 @@ const NewFeaturePanel = ({
   onAutoAddPromptVariable,
 }: Props) => {
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
   const { data: speech2textDefaultModel } = useDefaultModel(ModelTypeEnum.speech2text)
   const { data: text2speechDefaultModel } = useDefaultModel(ModelTypeEnum.tts)
 
@@ -76,11 +75,7 @@ const NewFeaturePanel = ({
                 </div>
                 <div className='system-xs-medium p-1 text-text-primary'>
                   <span>{isChatMode ? t('workflow.common.fileUploadTip') : t('workflow.common.ImageUploadLegacyTip')}</span>
-                  <a
-                    className='text-text-accent'
-                    href={docLink('/guides/workflow/bulletin')}
-                    target='_blank' rel='noopener noreferrer'
-                  >{t('workflow.common.featuresDocLink')}</a>
+
                 </div>
               </div>
             </div>

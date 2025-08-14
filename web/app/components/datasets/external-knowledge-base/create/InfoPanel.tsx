@@ -1,10 +1,9 @@
 import { RiBookOpenLine } from '@remixicon/react'
 import { useTranslation } from 'react-i18next'
-import { useDocLink } from '@/context/i18n'
 
 const InfoPanel = () => {
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
 
   return (
     <div className='flex w-[360px] flex-col items-start pb-2 pr-8 pt-[108px]'>
@@ -18,17 +17,10 @@ const InfoPanel = () => {
           </span>
           <span className='system-sm-regular text-text-tertiary'>
             {t('dataset.connectDatasetIntro.content.front')}
-            <a className='system-sm-regular ml-1 text-text-accent' href={docLink('/guides/knowledge-base/external-knowledge-api')} target='_blank' rel="noopener noreferrer">
-              {t('dataset.connectDatasetIntro.content.link')}
-            </a>
+
             {t('dataset.connectDatasetIntro.content.end')}
           </span>
-          <a className='system-sm-regular self-stretch text-text-accent'
-             href={docLink('/guides/knowledge-base/connect-external-knowledge-base')}
-             target='_blank'
-             rel="noopener noreferrer">
-            {t('dataset.connectDatasetIntro.learnMore')}
-          </a>
+
         </p>
       </div>
     </div>

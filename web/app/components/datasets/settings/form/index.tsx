@@ -32,7 +32,6 @@ import { ModelTypeEnum } from '@/app/components/header/account-setting/model-pro
 import { fetchMembers } from '@/service/common'
 import type { Member } from '@/models/common'
 import AlertTriangle from '@/app/components/base/icons/src/vender/solid/alertsAndFeedback/AlertTriangle'
-import { useDocLink } from '@/context/i18n'
 
 const rowClass = 'flex'
 const labelClass = `
@@ -47,7 +46,7 @@ const getKey = (pageIndex: number, previousPageData: DataSetListResponse) => {
 
 const Form = () => {
   const { t } = useTranslation()
-  const docLink = useDocLink()
+  // const docLink = useDocLink()
   const { notify } = useContext(ToastContext)
   const { mutate } = useSWRConfig()
   const { isCurrentWorkspaceDatasetOperator } = useAppContext()
@@ -310,16 +309,7 @@ const Form = () => {
                 <div>
                   <div className='system-sm-semibold text-text-secondary'>{t('datasetSettings.form.retrievalSetting.title')}</div>
                   <div className='body-xs-regular text-text-tertiary'>
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      href={docLink('/guides/knowledge-base/create-knowledge-and-upload-documents/setting-indexing-methods#setting-the-retrieval-setting', {
-                        'zh-Hans': '/guides/knowledge-base/create-knowledge-and-upload-documents/setting-indexing-methods#指定检索方式',
-                        'ja-JP': '/guides/knowledge-base/create-knowledge-and-upload-documents/setting-indexing-methods#検索方法の指定',
-                      })}
-                      className='text-text-accent'>
-                      {t('datasetSettings.form.retrievalSetting.learnMore')}
-                    </a>
+
                     {t('datasetSettings.form.retrievalSetting.description')}
                   </div>
                 </div>
