@@ -144,7 +144,6 @@ const PluginItem: FC<Props> = ({
         {/* Organization & Name */}
         <div className='flex grow items-center overflow-hidden'>
           <OrgInfo
-            className='mt-0.5'
             orgName={orgName}
             packageName={name}
             packageNameClassName='w-auto max-w-[150px]'
@@ -152,8 +151,8 @@ const PluginItem: FC<Props> = ({
           {category === PluginType.extension && (
             <>
               <div className='system-xs-regular mx-2 text-text-quaternary'>·</div>
-              <div className='system-xs-regular flex space-x-1 overflow-hidden text-text-tertiary'>
-                <RiLoginCircleLine className='h-4 w-4 shrink-0' />
+              <div className='system-xs-regular flex items-center gap-x-1 overflow-hidden text-text-tertiary'>
+                <RiLoginCircleLine className='size-3 shrink-0' />
                 <span
                   className='truncate'
                   title={t('plugin.endpointsEnabled', { num: endpoints_active })}
@@ -178,7 +177,6 @@ const PluginItem: FC<Props> = ({
               </a>
             </>
           }
-
           {source === PluginSource.local
             && <>
               <div className='flex items-center gap-1'>

@@ -85,6 +85,7 @@ export const AgentStrategy = memo((props: AgentStrategyProps) => {
             headerClassName='bg-transparent px-0 text-text-secondary system-sm-semibold-uppercase'
             containerBackgroundClassName='bg-transparent'
             gradientBorder={false}
+            nodeId={nodeId}
             isSupportPromptGenerator={!!def.auto_generate?.type}
             titleTooltip={schema.tooltip && renderI18nObject(schema.tooltip)}
             editorContainerClassName='px-0'
@@ -229,7 +230,6 @@ export const AgentStrategy = memo((props: AgentStrategyProps) => {
           title={t('workflow.nodes.agent.strategy.configureTip')}
           description={<div className='text-xs text-text-tertiary'>
             {t('workflow.nodes.agent.strategy.configureTipDesc')} <br />
-
           </div>}
         />
     }

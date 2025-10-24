@@ -20,7 +20,6 @@ const InfoPanel = () => {
 
             {t('dataset.connectDatasetIntro.content.end')}
           </span>
-
         </p>
       </div>
     </div>

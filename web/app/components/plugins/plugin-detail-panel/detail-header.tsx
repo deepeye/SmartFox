@@ -44,6 +44,7 @@ import { convertUTCDaySecondsToLocalSeconds, timeOfDayToDayjs } from '../referen
 import useReferenceSetting from '../plugin-page/use-reference-setting'
 import { AUTO_UPDATE_MODE } from '../reference-setting-modal/auto-update-setting/types'
 import { useAppContext } from '@/context/app-context'
+import { useGlobalPublicStore } from '@/context/global-public-context'
 
 const i18nPrefix = 'plugin.action'
 
@@ -59,7 +60,7 @@ const DetailHeader = ({
   onUpdate,
 }: Props) => {
   const { t } = useTranslation()
-    const { userProfile: { timezone } } = useAppContext()
+  const { userProfile: { timezone } } = useAppContext()
 
   const { theme } = useTheme()
   const locale = useGetLanguage()
@@ -68,6 +69,7 @@ const DetailHeader = ({
   const { setShowUpdatePluginModal } = useModalContext()
   const { refreshModelProviders } = useProviderContext()
   const invalidateAllToolProviders = useInvalidateAllToolProviders()
+  const { enable_marketplace } = useGlobalPublicStore(s => s.systemFeatures)
 
   const {
     installation_id,
@@ -121,6 +123,8 @@ const DetailHeader = ({
   const { referenceSetting } = useReferenceSetting()
   const { auto_upgrade: autoUpgradeInfo } = referenceSetting || {}
   const isAutoUpgradeEnabled = useMemo(() => {
+    if (!enable_marketplace)
+      return false
     if (!autoUpgradeInfo || !isFromMarketplace)
       return false
     if(autoUpgradeInfo.strategy_setting === 'disabled')

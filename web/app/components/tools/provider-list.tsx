@@ -17,9 +17,10 @@ import CardMoreInfo from '@/app/components/plugins/card/card-more-info'
 import PluginDetailPanel from '@/app/components/plugins/plugin-detail-panel'
 import MCPList from './mcp'
 import { useAllToolProviders } from '@/service/use-tools'
-import { useInstalledPluginList, useInvalidateInstalledPluginList } from '@/service/use-plugins'
+import { useCheckInstalled, useInvalidateInstalledPluginList } from '@/service/use-plugins'
 import { ToolTypeEnum } from '../workflow/block-selector/types'
 import { useMarketplace } from './marketplace/hooks'
+import { useTags } from '@/app/components/plugins/hooks'
 
 const getToolType = (type: string) => {
   switch (type) {
@@ -39,6 +40,7 @@ const ProviderList = () => {
   // const searchParams = useSearchParams()
   // searchParams.get('category') === 'workflow'
   const { t } = useTranslation()
+  const { getTagLabel } = useTags()
   // const { enable_marketplace } = useGlobalPublicStore(s => s.systemFeatures)
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -76,12 +78,14 @@ const ProviderList = () => {
   const currentProvider = useMemo<Collection | undefined>(() => {
     return filteredCollectionList.find(collection => collection.id === currentProviderId)
   }, [currentProviderId, filteredCollectionList])
-  const { data: pluginList } = useInstalledPluginList()
+  const { data: checkedInstalledData } = useCheckInstalled({
+    pluginIds: currentProvider?.plugin_id ? [currentProvider.plugin_id] : [],
+    enabled: !!currentProvider?.plugin_id,
+  })
   const invalidateInstalledPluginList = useInvalidateInstalledPluginList()
   const currentPluginDetail = useMemo(() => {
-    const detail = pluginList?.plugins.find(plugin => plugin.plugin_id === currentProvider?.plugin_id)
-    return detail
-  }, [currentProvider?.plugin_id, pluginList?.plugins])
+    return checkedInstalledData?.plugins?.[0]
+  }, [checkedInstalledData])
 
   const toolListTailRef = useRef<HTMLDivElement>(null)
   // const showMarketplacePanel = useCallback(() => {
@@ -177,7 +181,7 @@ const ProviderList = () => {
                     } as any}
                     footer={
                       <CardMoreInfo
-                        tags={collection.labels}
+                        tags={collection.labels?.map(label => getTagLabel(label)) || []}
                       />
                     }
                   />

@@ -8,8 +8,6 @@ import {
 import SystemModelSelector from './system-model-selector'
 import ProviderAddedCard from './provider-added-card'
 import type {
-  ConfigurationMethodEnum,
-  CustomConfigurationModelFixedFields,
   ModelProvider,
 } from './declarations'
 import {
@@ -18,7 +16,6 @@ import {
 } from './declarations'
 import {
   useDefaultModel,
-  useModelModalHandler,
 } from './hooks'
 // import InstallFromMarketplace from './install-from-marketplace'
 import { useProviderContext } from '@/context/provider-context'
@@ -83,8 +80,6 @@ const ModelProviderPage = ({ searchText }: Props) => {
     return [filteredConfiguredProviders, filteredNotConfiguredProviders]
   }, [configuredProviders, debouncedSearchText, notConfiguredProviders])
 
-  const handleOpenModal = useModelModalHandler()
-
   return (
     <div className='relative -mt-2 pt-1'>
       <div className={cn('mb-2 flex items-center')}>
@@ -125,7 +120,6 @@ const ModelProviderPage = ({ searchText }: Props) => {
             <ProviderAddedCard
               key={provider.provider}
               provider={provider}
-              onOpenModal={(configurationMethod: ConfigurationMethodEnum, currentCustomConfigurationModelFixedFields?: CustomConfigurationModelFixedFields) => handleOpenModal(provider, configurationMethod, currentCustomConfigurationModelFixedFields)}
             />
           ))}
         </div>
@@ -139,7 +133,6 @@ const ModelProviderPage = ({ searchText }: Props) => {
                 notConfigured
                 key={provider.provider}
                 provider={provider}
-                onOpenModal={(configurationMethod: ConfigurationMethodEnum, currentCustomConfigurationModelFixedFields?: CustomConfigurationModelFixedFields) => handleOpenModal(provider, configurationMethod, currentCustomConfigurationModelFixedFields)}
               />
             ))}
           </div>
