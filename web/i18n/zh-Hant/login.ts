@@ -1,5 +1,6 @@
 const translation = {
   pageTitle: '嗨，近來可好',
+  pageTitleForE: '嗨，近來可好',
   welcome: '👋 歡迎來到 Smartfox, 登入以繼續',
   email: '郵箱',
   emailPlaceholder: '輸入郵箱地址',
