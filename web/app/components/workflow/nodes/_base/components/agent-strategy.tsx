@@ -21,6 +21,8 @@ import type { Node } from 'reactflow'
 import type { PluginMeta } from '@/app/components/plugins/types'
 import { noop } from 'lodash-es'
 
+import { AppModeEnum } from '@/types/app'
+
 export type Strategy = {
   agent_strategy_provider_name: string
   agent_strategy_name: string
@@ -97,7 +99,7 @@ export const AgentStrategy = memo((props: AgentStrategyProps) => {
             modelConfig={
               defaultModel.data
                 ? {
-                  mode: 'chat',
+                  mode: AppModeEnum.CHAT,
                   name: defaultModel.data.model,
                   provider: defaultModel.data.provider.provider,
                   completion_params: {},

@@ -1,7 +1,25 @@
-import React, { useCallback, useMemo, useState } from 'react'
-import { useTheme } from 'next-themes'
-import { useTranslation } from 'react-i18next'
-import { useBoolean } from 'ahooks'
+import ActionButton from '@/app/components/base/action-button'
+import Badge from '@/app/components/base/badge'
+import Button from '@/app/components/base/button'
+import Confirm from '@/app/components/base/confirm'
+import { Github } from '@/app/components/base/icons/src/public/common'
+import Toast from '@/app/components/base/toast'
+import Tooltip from '@/app/components/base/tooltip'
+import { AuthCategory, PluginAuth } from '@/app/components/plugins/plugin-auth'
+import OperationDropdown from '@/app/components/plugins/plugin-detail-panel/operation-dropdown'
+import PluginInfo from '@/app/components/plugins/plugin-page/plugin-info'
+import UpdateFromMarketplace from '@/app/components/plugins/update-plugin/from-market-place'
+import PluginVersionPicker from '@/app/components/plugins/update-plugin/plugin-version-picker'
+import { API_PREFIX } from '@/config'
+import { useAppContext } from '@/context/app-context'
+import { useGlobalPublicStore } from '@/context/global-public-context'
+import { useGetLanguage, useI18N } from '@/context/i18n'
+import { useModalContext } from '@/context/modal-context'
+import { useProviderContext } from '@/context/provider-context'
+import { uninstallPlugin } from '@/service/plugins'
+import { useAllToolProviders, useInvalidateAllToolProviders } from '@/service/use-tools'
+import cn from '@/utils/classnames'
+import { getMarketplaceUrl } from '@/utils/var'
 import {
   RiArrowLeftRightLine,
   RiBugLine,
@@ -9,53 +27,35 @@ import {
   RiHardDrive3Line,
   RiVerifiedBadgeLine,
 } from '@remixicon/react'
-import type { PluginDetail } from '../types'
-import { PluginSource, PluginType } from '../types'
-import Description from '../card/base/description'
-import Icon from '../card/base/card-icon'
-import Title from '../card/base/title'
-import OrgInfo from '../card/base/org-info'
-import { useGitHubReleases } from '../install-plugin/hooks'
-import PluginVersionPicker from '@/app/components/plugins/update-plugin/plugin-version-picker'
-import UpdateFromMarketplace from '@/app/components/plugins/update-plugin/from-market-place'
-import OperationDropdown from '@/app/components/plugins/plugin-detail-panel/operation-dropdown'
-import PluginInfo from '@/app/components/plugins/plugin-page/plugin-info'
-import ActionButton from '@/app/components/base/action-button'
-import Button from '@/app/components/base/button'
-import Badge from '@/app/components/base/badge'
-import Confirm from '@/app/components/base/confirm'
-import Tooltip from '@/app/components/base/tooltip'
-import Toast from '@/app/components/base/toast'
-import { Github } from '@/app/components/base/icons/src/public/common'
-import { uninstallPlugin } from '@/service/plugins'
-import { useGetLanguage, useI18N } from '@/context/i18n'
-import { useModalContext } from '@/context/modal-context'
-import { useProviderContext } from '@/context/provider-context'
-import { useInvalidateAllToolProviders } from '@/service/use-tools'
-import { API_PREFIX } from '@/config'
-import cn from '@/utils/classnames'
-import { getMarketplaceUrl } from '@/utils/var'
-import { PluginAuth } from '@/app/components/plugins/plugin-auth'
-import { AuthCategory } from '@/app/components/plugins/plugin-auth'
-import { useAllToolProviders } from '@/service/use-tools'
-import DeprecationNotice from '../base/deprecation-notice'
+import { useBoolean } from 'ahooks'
+import { useTheme } from 'next-themes'
+import React, { useCallback, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { AutoUpdateLine } from '../../base/icons/src/vender/system'
-import { convertUTCDaySecondsToLocalSeconds, timeOfDayToDayjs } from '../reference-setting-modal/auto-update-setting/utils'
+import DeprecationNotice from '../base/deprecation-notice'
+import Icon from '../card/base/card-icon'
+import Description from '../card/base/description'
+import OrgInfo from '../card/base/org-info'
+import Title from '../card/base/title'
+import { useGitHubReleases } from '../install-plugin/hooks'
 import useReferenceSetting from '../plugin-page/use-reference-setting'
 import { AUTO_UPDATE_MODE } from '../reference-setting-modal/auto-update-setting/types'
-import { useAppContext } from '@/context/app-context'
-import { useGlobalPublicStore } from '@/context/global-public-context'
+import { convertUTCDaySecondsToLocalSeconds, timeOfDayToDayjs } from '../reference-setting-modal/auto-update-setting/utils'
+import type { PluginDetail } from '../types'
+import { PluginCategoryEnum, PluginSource } from '../types'
 
 const i18nPrefix = 'plugin.action'
 
 type Props = {
   detail: PluginDetail
-  onHide: () => void
-  onUpdate: (isDelete?: boolean) => void
+  isReadmeView?: boolean
+  onHide?: () => void
+  onUpdate?: (isDelete?: boolean) => void
 }
 
 const DetailHeader = ({
   detail,
+  isReadmeView = false,
   onHide,
   onUpdate,
 }: Props) => {
@@ -84,8 +84,9 @@ const DetailHeader = ({
     deprecated_reason,
     alternative_plugin_id,
   } = detail
-  const { author, category, name, label, description, icon, verified, tool } = detail.declaration
-  const isTool = category === PluginType.tool
+
+  const { author, category, name, label, description, icon, verified, tool } = detail.declaration || detail
+  const isTool = category === PluginCategoryEnum.tool
   const providerBriefInfo = tool?.identity
   const providerKey = `${plugin_id}/${providerBriefInfo?.name}`
   const { data: collectionList = [] } = useAllToolProviders(isTool)
@@ -127,13 +128,13 @@ const DetailHeader = ({
       return false
     if (!autoUpgradeInfo || !isFromMarketplace)
       return false
-    if(autoUpgradeInfo.strategy_setting === 'disabled')
+    if (autoUpgradeInfo.strategy_setting === 'disabled')
       return false
-    if(autoUpgradeInfo.upgrade_mode === AUTO_UPDATE_MODE.update_all)
+    if (autoUpgradeInfo.upgrade_mode === AUTO_UPDATE_MODE.update_all)
       return true
-    if(autoUpgradeInfo.upgrade_mode === AUTO_UPDATE_MODE.partial && autoUpgradeInfo.include_plugins.includes(plugin_id))
+    if (autoUpgradeInfo.upgrade_mode === AUTO_UPDATE_MODE.partial && autoUpgradeInfo.include_plugins.includes(plugin_id))
       return true
-    if(autoUpgradeInfo.upgrade_mode === AUTO_UPDATE_MODE.exclude && !autoUpgradeInfo.exclude_plugins.includes(plugin_id))
+    if (autoUpgradeInfo.upgrade_mode === AUTO_UPDATE_MODE.exclude && !autoUpgradeInfo.exclude_plugins.includes(plugin_id))
       return true
     return false
   }, [autoUpgradeInfo, plugin_id, isFromMarketplace])
@@ -155,7 +156,7 @@ const DetailHeader = ({
     if (needUpdate) {
       setShowUpdatePluginModal({
         onSaveCallback: () => {
-          onUpdate()
+          onUpdate?.()
         },
         payload: {
           type: PluginSource.github,
@@ -175,7 +176,7 @@ const DetailHeader = ({
   }
 
   const handleUpdatedFromMarketplace = () => {
-    onUpdate()
+    onUpdate?.()
     hideUpdateModal()
   }
 
@@ -200,26 +201,26 @@ const DetailHeader = ({
     hideDeleting()
     if (res.success) {
       hideDeleteConfirm()
-      onUpdate(true)
-      if (PluginType.model.includes(category))
+      onUpdate?.(true)
+      if (PluginCategoryEnum.model.includes(category))
         refreshModelProviders()
-      if (PluginType.tool.includes(category))
+      if (PluginCategoryEnum.tool.includes(category))
         invalidateAllToolProviders()
     }
   }, [showDeleting, id, hideDeleting, hideDeleteConfirm, onUpdate, category, refreshModelProviders, invalidateAllToolProviders])
 
   return (
-    <div className={cn('shrink-0 border-b border-divider-subtle bg-components-panel-bg p-4 pb-3')}>
+    <div className={cn('shrink-0 border-b border-divider-subtle bg-components-panel-bg p-4 pb-3', isReadmeView && 'border-b-0 bg-transparent p-0')}>
       <div className="flex">
-        <div className='overflow-hidden rounded-xl border border-components-panel-border-subtle'>
-          <Icon src={`${API_PREFIX}/workspaces/current/plugin/icon?tenant_id=${tenant_id}&filename=${icon}`} />
+        <div className={cn('overflow-hidden rounded-xl border border-components-panel-border-subtle', isReadmeView && 'bg-components-panel-bg')}>
+          <Icon src={icon.startsWith('http') ? icon : `${API_PREFIX}/workspaces/current/plugin/icon?tenant_id=${tenant_id}&filename=${icon}`} />
         </div>
         <div className="ml-3 w-0 grow">
           <div className="flex h-5 items-center">
             <Title title={label[locale]} />
-            {verified && <RiVerifiedBadgeLine className="ml-0.5 h-4 w-4 shrink-0 text-text-accent" />}
-            <PluginVersionPicker
-              disabled={!isFromMarketplace}
+            {verified && !isReadmeView && <RiVerifiedBadgeLine className="ml-0.5 h-4 w-4 shrink-0 text-text-accent" />}
+            {version && <PluginVersionPicker
+              disabled={!isFromMarketplace || isReadmeView}
               isShow={isShow}
               onShowChange={setIsShow}
               pluginID={plugin_id}
@@ -239,15 +240,15 @@ const DetailHeader = ({
                   text={
                     <>
                       <div>{isFromGitHub ? meta!.version : version}</div>
-                      {isFromMarketplace && <RiArrowLeftRightLine className='ml-1 h-3 w-3 text-text-tertiary' />}
+                      {isFromMarketplace && !isReadmeView && <RiArrowLeftRightLine className='ml-1 h-3 w-3 text-text-tertiary' />}
                     </>
                   }
                   hasRedCornerMark={hasNewVersion}
                 />
               }
-            />
+            />}
             {/* Auto update info */}
-            {isAutoUpgradeEnabled && (
+            {isAutoUpgradeEnabled && !isReadmeView && (
               <Tooltip popupContent={t('plugin.autoUpdate.nextUpdateTime', { time: timeOfDayToDayjs(convertUTCDaySecondsToLocalSeconds(autoUpgradeInfo?.upgrade_time_of_day || 0, timezone!)).format('hh:mm A') })}>
                 {/* add a a div to fix tooltip hover not show problem */}
                 <div>
@@ -275,40 +276,47 @@ const DetailHeader = ({
               <OrgInfo
                 packageNameClassName='w-auto'
                 orgName={author}
-                packageName={name}
+                packageName={name?.includes('/') ? (name.split('/').pop() || '') : name}
               />
-              <div className='system-xs-regular ml-1 mr-0.5 text-text-quaternary'>·</div>
-
-              {detail.source === PluginSource.github && (
-                <Tooltip popupContent={t('plugin.detailPanel.categoryTip.github')} >
-                  <div><Github className='h-3.5 w-3.5 text-text-secondary hover:text-text-primary' /></div>
-                </Tooltip>
-              )}
-              {detail.source === PluginSource.local && (
-                <Tooltip popupContent={t('plugin.detailPanel.categoryTip.local')} >
-                  <div><RiHardDrive3Line className='h-3.5 w-3.5 text-text-tertiary' /></div>
-                </Tooltip>
-              )}
-              {detail.source === PluginSource.debugging && (
-                <Tooltip popupContent={t('plugin.detailPanel.categoryTip.debugging')} >
-                  <div><RiBugLine className='h-3.5 w-3.5 text-text-tertiary hover:text-text-warning' /></div>
-                </Tooltip>
-              )}
+              {source && <>
+                <div className='system-xs-regular ml-1 mr-0.5 text-text-quaternary'>·</div>
+                {/* {source === PluginSource.marketplace && (
+                  <Tooltip popupContent={t('plugin.detailPanel.categoryTip.marketplace')} >
+                    <div><BoxSparkleFill className='h-3.5 w-3.5 text-text-tertiary hover:text-text-accent' /></div>
+                  </Tooltip>
+                )} */}
+                {source === PluginSource.github && (
+                  <Tooltip popupContent={t('plugin.detailPanel.categoryTip.github')} >
+                    <div><Github className='h-3.5 w-3.5 text-text-secondary hover:text-text-primary' /></div>
+                  </Tooltip>
+                )}
+                {source === PluginSource.local && (
+                  <Tooltip popupContent={t('plugin.detailPanel.categoryTip.local')} >
+                    <div><RiHardDrive3Line className='h-3.5 w-3.5 text-text-tertiary' /></div>
+                  </Tooltip>
+                )}
+                {source === PluginSource.debugging && (
+                  <Tooltip popupContent={t('plugin.detailPanel.categoryTip.debugging')} >
+                    <div><RiBugLine className='h-3.5 w-3.5 text-text-tertiary hover:text-text-warning' /></div>
+                  </Tooltip>
+                )}
+              </>}
             </div>
           </div>
         </div>
-        <div className='flex gap-1'>
-          <OperationDropdown
-            source={detail.source}
-            onInfo={showPluginInfo}
-            onCheckVersion={handleUpdate}
-            onRemove={showDeleteConfirm}
-            detailUrl={detailUrl}
-          />
-          <ActionButton onClick={onHide}>
-            <RiCloseLine className='h-4 w-4' />
-          </ActionButton>
-        </div>
+        {!isReadmeView && (
+          <div className='flex gap-1'>
+            <OperationDropdown
+              source={source}
+              onInfo={showPluginInfo}
+              onCheckVersion={handleUpdate}
+              onRemove={showDeleteConfirm}
+              detailUrl={detailUrl}
+            />
+            <ActionButton onClick={onHide}>
+              <RiCloseLine className='h-4 w-4' />
+            </ActionButton>
+          </div>)}
       </div>
       {isFromMarketplace && (
         <DeprecationNotice
@@ -319,14 +327,15 @@ const DetailHeader = ({
           className='mt-3'
         />
       )}
-      <Description className='mb-2 mt-3 h-auto' text={description[locale]} descriptionLineRows={2}></Description>
+      {!isReadmeView && <Description className='mb-2 mt-3 h-auto' text={description[locale]} descriptionLineRows={2}></Description>}
       {
-        category === PluginType.tool && (
+        category === PluginCategoryEnum.tool && !isReadmeView && (
           <PluginAuth
             pluginPayload={{
               provider: provider?.name || '',
               category: AuthCategory.tool,
               providerType: provider?.type || '',
+              detail,
             }}
           />
         )

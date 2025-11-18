@@ -11,7 +11,7 @@ import Input from '@/app/components/base/input'
 import ProviderDetail from '@/app/components/tools/provider/detail'
 import Empty from '@/app/components/plugins/marketplace/empty'
 import CustomCreateCard from '@/app/components/tools/provider/custom-create-card'
-import WorkflowToolEmpty from '@/app/components/tools/add-tool-modal/empty'
+import WorkflowToolEmpty from '@/app/components/tools/provider/empty'
 import Card from '@/app/components/plugins/card'
 import CardMoreInfo from '@/app/components/plugins/card/card-more-info'
 import PluginDetailPanel from '@/app/components/plugins/plugin-detail-panel'
@@ -106,8 +106,8 @@ const ProviderList = () => {
   const onContainerScroll = useMemo(() => {
     return (e: Event) => {
       handleScroll(e)
-      if (containerRef.current && toolListTailRef.current)
-        setIsMarketplaceArrowVisible(containerRef.current.scrollTop < (toolListTailRef.current?.offsetTop - 80))
+      // if (containerRef.current && toolListTailRef.current)
+      //   setIsMarketplaceArrowVisible(containerRef.current.scrollTop < (toolListTailRef.current?.offsetTop - 80))
     }
   }, [handleScroll, containerRef, toolListTailRef, setIsMarketplaceArrowVisible])
 
