@@ -29,6 +29,7 @@ import { getRedirection } from '@/utils/app-redirection'
 import FullScreenModal from '@/app/components/base/fullscreen-modal'
 import useTheme from '@/hooks/use-theme'
 import { useDocLink } from '@/context/i18n'
+import { trackEvent } from '@/app/components/base/amplitude'
 
 type CreateAppProps = {
   onSuccess: () => void
@@ -81,6 +82,13 @@ function CreateApp({ onClose, onSuccess, onCreateFromTemplate, defaultAppMode }:
         icon_background: appIcon.type === 'emoji' ? appIcon.background : undefined,
         mode: appMode,
       })
+
+      // Track app creation success
+      trackEvent('create_app', {
+        app_mode: appMode,
+        description,
+      })
+
       notify({ type: 'success', message: t('app.newApp.appCreated') })
       onSuccess()
       onClose()

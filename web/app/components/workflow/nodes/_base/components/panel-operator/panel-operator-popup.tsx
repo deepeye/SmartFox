@@ -1,5 +1,6 @@
 import {
   memo,
+  useMemo,
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useEdges } from 'reactflow'
@@ -16,6 +17,10 @@ import {
 } from '@/app/components/workflow/hooks'
 import ShortcutsName from '@/app/components/workflow/shortcuts-name'
 import type { Node } from '@/app/components/workflow/types'
+import { BlockEnum } from '@/app/components/workflow/types'
+import { CollectionType } from '@/app/components/tools/types'
+import { useAllWorkflowTools } from '@/service/use-tools'
+import { canFindTool } from '@/utils'
 
 type PanelOperatorPopupProps = {
   id: string
@@ -44,6 +49,14 @@ const PanelOperatorPopup = ({
   const nodeMetaData = useNodeMetaData({ id, data } as Node)
   const showChangeBlock = !nodeMetaData.isTypeFixed && !nodesReadOnly
   const isChildNode = !!(data.isInIteration || data.isInLoop)
+
+  const { data: workflowTools } = useAllWorkflowTools()
+  const isWorkflowTool = data.type === BlockEnum.Tool && data.provider_type === CollectionType.workflow
+  const workflowAppId = useMemo(() => {
+    if (!isWorkflowTool || !workflowTools || !data.provider_id) return undefined
+    const workflowTool = workflowTools.find(item => canFindTool(item.id, data.provider_id))
+    return workflowTool?.workflow_app_id
+  }, [isWorkflowTool, workflowTools, data.provider_id])
 
   return (
     <div className='w-[240px] rounded-lg border-[0.5px] border-components-panel-border bg-components-panel-bg shadow-xl'>
@@ -137,16 +150,25 @@ const PanelOperatorPopup = ({
           </>
         )
       }
+      {
+        isWorkflowTool && workflowAppId && (
+          <>
+            <div className='p-1'>
+              <a
+                href={`/app/${workflowAppId}/workflow`}
+                target='_blank'
+                className='flex h-8 cursor-pointer items-center rounded-lg px-3 text-sm text-text-secondary hover:bg-state-base-hover'
+              >
+                {t('workflow.panel.openWorkflow')}
+              </a>
+            </div>
+            <div className='h-px bg-divider-regular'></div>
+          </>
+        )
+      }
+      
       <div className='p-1'>
-        {/* <div className='px-3 py-2 text-xs text-text-tertiary'>
-          <div className='mb-1 flex h-[22px] items-center font-medium'>
-            {t('workflow.panel.about').toLocaleUpperCase()}
-          </div>
-          <div className='mb-1 leading-[18px] text-text-secondary'>{nodeMetaData.description}</div>
-          <div className='leading-[18px]'>
-            {t('workflow.panel.createdBy')} {nodeMetaData.author}
-          </div>
-        </div> */}
+        
       </div>
     </div>
   )
