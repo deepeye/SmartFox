@@ -79,6 +79,7 @@ export default combine(
   },
   {
     ignores: [
+      'storybook-static/**',
       '**/node_modules/*',
       '**/dist/',
       '**/build/',
@@ -256,10 +257,5 @@ export default combine(
       'tailwindcss/migration-from-tailwind-2': 'warn',
     },
   },
-  oxlint.configs['flat/recommended'],
-  {
-    rules: {
-      'react-hooks/exhaustive-deps': 'warn',
-    },
-  },
+  ...oxlint.buildFromOxlintConfigFile('./.oxlintrc.json'),
 )
