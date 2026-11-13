@@ -316,7 +316,7 @@ describe.each([false, true])('Human input share form with IM gate %s', (enabled)
     render(<FormContent />)
     await screen.findByRole('textbox', { name: 'summary' })
     expect(screen.queryByText('share.chat.poweredBy')).not.toBeInTheDocument()
-    expect(screen.queryByRole('img', { name: 'Dify' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('img', { name: 'SmartFox' })).not.toBeInTheDocument()
   })
 
   it('renders the configured custom branding logo', async () => {
@@ -336,6 +336,6 @@ describe.each([false, true])('Human input share form with IM gate %s', (enabled)
       'https://example.com/custom-logo.png',
     )
     expect(screen.getByText('share.chat.poweredBy')).toBeInTheDocument()
-    expect(screen.queryByRole('img', { name: 'Dify' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('img', { name: 'SmartFox' })).not.toBeInTheDocument()
   })
 })

@@ -36,7 +36,7 @@ const HomeHeader = ({
           // In the embedded console "/" leaves the marketplace entirely, so
           // the brand mark points back at the marketplace home instead.
           href={isMarketplacePlatform ? '/' : '/marketplace'}
-          aria-label="Dify Marketplace"
+          aria-label="Marketplace"
           className="flex h-full w-[141.933px] shrink-0 items-center"
         >
           <MarketplaceLogo />

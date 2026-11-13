@@ -63,10 +63,8 @@ it.each([
     const screen = await render(
       <ConsoleProvider>
         <TemplateCollectionList
-          becomePartnerText="Become a Partner"
           collections={[collection]}
           locale="en-US"
-          partnerText="Verified"
           templatesByCollection={{ [collection.name]: buildTemplates(prefix, 9) }}
           viewMoreText="View more"
         />

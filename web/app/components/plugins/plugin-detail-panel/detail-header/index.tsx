@@ -32,7 +32,6 @@ import { useResolvedTheme } from '@/features/theme/hooks'
 import useTimestamp from '@/hooks/use-timestamp'
 import { consoleQuery } from '@/service/console'
 import { isEarlierThanVersion } from '@/utils/semver'
-import Verified from '../../base/badges/verified'
 import DeprecationNotice from '../../base/deprecation-notice'
 import Icon from '../../card/base/card-icon'
 import Description from '../../card/base/description'
@@ -104,7 +103,7 @@ const DetailHeader = ({
     alternative_plugin_id,
   } = detail
 
-  const { author, category, name, label, description, icon, icon_dark, verified, tool } =
+  const { author, category, name, label, description, icon, icon_dark, tool } =
     detail.declaration || detail
 
   const {
@@ -204,12 +203,6 @@ const DetailHeader = ({
           {/* Title Row */}
           <div className="flex h-5 items-center">
             <Title title={label[locale]} />
-            {verified && !isReadmeView && (
-              <Verified
-                className="ms-0.5 size-4"
-                text={t(($) => $['marketplace.verifiedTip'], { ns: 'plugin' })}
-              />
-            )}
 
             {/* Version Picker */}
             <Menu

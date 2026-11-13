@@ -49,17 +49,11 @@ function EmptyState({ children }: { children: React.ReactNode }) {
   )
 }
 
-function TemplateGrid({
-  partnerText,
-  templates,
-}: {
-  partnerText: string
-  templates: MarketplaceTemplate[]
-}) {
+function TemplateGrid({ templates }: { templates: MarketplaceTemplate[] }) {
   return (
     <div className={GRID_CLASS}>
       {templates.map((template) => (
-        <TemplateCard key={template.id} partnerText={partnerText} template={template} />
+        <TemplateCard key={template.id} template={template} />
       ))}
     </div>
   )
@@ -174,7 +168,6 @@ export async function EmbeddedTemplatesMarketplace({
   )
   const pluginsLabel = tPlugin(($) => $['marketplace.home.plugins'], { ns: 'plugin' })
   const templatesLabel = tPlugin(($) => $['marketplace.home.templates'], { ns: 'plugin' })
-  const partnerText = tPlugin(($) => $['marketplace.partnerTip'], { ns: 'plugin' })
   const loadFailed = collectionsResult
     ? !collectionsResult.ok
     : searchResult
@@ -253,12 +246,8 @@ export async function EmbeddedTemplatesMarketplace({
         ) : collectionsResult ? (
           hasVisibleCollections ? (
             <TemplateCollectionList
-              becomePartnerText={tPlugin(($) => $['marketplace.becomePartner'], {
-                ns: 'plugin',
-              })}
               collections={collectionsResult.collections}
               locale={locale}
-              partnerText={partnerText}
               templatesByCollection={visibleTemplatesByCollection}
               viewMoreText={tPlugin(($) => $['marketplace.viewMore'], { ns: 'plugin' })}
             />
@@ -270,11 +259,11 @@ export async function EmbeddedTemplatesMarketplace({
             {/* The locale filter runs after pagination, so the API total
                 does not describe what is on screen; show the number of
                 templates actually rendered on this page instead. */}
-            <div className="mb-5 text-right text-sm text-text-tertiary">
+            <div className="mb-5 text-end text-sm text-text-tertiary">
               {tExplore(($) => $['apps.resultNum'], { ns: 'explore', num: templates.length })}
             </div>
             {templates.length > 0 ? (
-              <TemplateGrid partnerText={partnerText} templates={templates} />
+              <TemplateGrid templates={templates} />
             ) : (
               <EmptyState>{tApp(($) => $['newApp.noTemplateFound'], { ns: 'app' })}</EmptyState>
             )}

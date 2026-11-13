@@ -22,7 +22,6 @@ import { useResolvedTheme } from '@/features/theme/hooks'
 import { useRenderI18nObject } from '@/hooks/use-i18n'
 import { isEqualOrLaterThanVersion } from '@/utils/semver'
 import Badge from '../../base/badge'
-import Verified from '../base/badges/verified'
 import Description from '../card/base/description'
 import OrgInfo from '../card/base/org-info'
 import Title from '../card/base/title'
@@ -69,7 +68,6 @@ const PluginItem: FC<Props> = ({
     description,
     icon,
     icon_dark,
-    verified,
     meta: declarationMeta,
   } = plugin.declaration
   const endpointCount =
@@ -155,12 +153,6 @@ const PluginItem: FC<Props> = ({
               <div id={titleId} className="min-w-0">
                 <Title title={title} />
               </div>
-              {verified && (
-                <Verified
-                  className="ms-0.5 size-4"
-                  text={t(($) => $['marketplace.verifiedTip'], { ns: 'plugin' })}
-                />
-              )}
               {!isDifyVersionCompatible && (
                 <Popover>
                   <PopoverTrigger

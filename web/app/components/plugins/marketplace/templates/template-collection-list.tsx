@@ -7,23 +7,16 @@ import type {
 import { cn } from '@langgenius/dify-ui/cn'
 import { useId } from 'react'
 import Link from '@/next/link'
-import { trackMarketplaceSiteEvent } from '@/utils/marketplace-site-track'
 import Carousel from '../list/carousel'
-import {
-  BECOME_PARTNER_URL,
-  GRID_CLASS,
-  PARTNER_COLLECTION_NAMES,
-} from '../list/collection-constants'
+import { GRID_CLASS, PARTNER_COLLECTION_NAMES } from '../list/collection-constants'
 import styles from '../list/partner-header.module.css'
 import { useCarouselItemsPerPage } from '../list/use-carousel-items-per-page'
 import TemplateCard from './template-card'
 import { getTemplateCollectionText } from './template-language'
 
 type TemplateCollectionListProps = {
-  becomePartnerText: string
   collections: MarketplaceTemplateCollection[]
   locale: string
-  partnerText: string
   /**
    * Templates per collection, already filtered for the request locale by the
    * caller; this component only renders what it receives.
@@ -44,10 +37,8 @@ function getViewMoreHref(collection: MarketplaceTemplateCollection) {
 }
 
 export default function TemplateCollectionList({
-  becomePartnerText,
   collections,
   locale,
-  partnerText,
   templatesByCollection,
   viewMoreText,
 }: TemplateCollectionListProps) {
@@ -95,34 +86,6 @@ export default function TemplateCollectionList({
               ) : (
                 getTemplateCollectionText(collection.description, locale)
               )}
-              {isPartnerCollection && (
-                <>
-                  <span className={cn(styles.partnerSeparator, 'text-divider-regular')}>|</span>
-                  <a
-                    href={BECOME_PARTNER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(
-                      styles.partnerAction,
-                      'flex items-center gap-x-0.5 text-text-accent hover:underline',
-                    )}
-                    onClick={() => {
-                      trackMarketplaceSiteEvent('marketplace_creator_partner_click', {
-                        click_target: 'Become a Partner',
-                      })
-                    }}
-                  >
-                    <span className={styles.partnerActionLabel}>{becomePartnerText}</span>
-                    <span
-                      aria-hidden
-                      className={cn(
-                        styles.partnerActionIcon,
-                        'i-ri-external-link-line size-3 [&:dir(rtl)]:-scale-x-100',
-                      )}
-                    />
-                  </a>
-                </>
-              )}
             </div>
           </div>
           {collection.searchable && (
@@ -138,7 +101,7 @@ export default function TemplateCollectionList({
         {collection.searchable ? (
           <div className={GRID_CLASS}>
             {templates.slice(0, 4).map((template) => (
-              <TemplateCard key={template.id} partnerText={partnerText} template={template} />
+              <TemplateCard key={template.id} template={template} />
             ))}
           </div>
         ) : (
@@ -157,7 +120,7 @@ export default function TemplateCollectionList({
                     <div className={cn(GRID_CLASS)}>
                       {pageTemplates.map((template) => (
                         <div key={template.id} className="min-w-0 *:w-full">
-                          <TemplateCard partnerText={partnerText} template={template} />
+                          <TemplateCard template={template} />
                         </div>
                       ))}
                     </div>

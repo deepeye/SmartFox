@@ -28,7 +28,7 @@ export default function CreatorProfileHeader({
       <div className="flex min-w-0 flex-1 items-center gap-4">
         <Link
           href="/marketplace"
-          aria-label="Dify Marketplace"
+          aria-label="Marketplace"
           className="flex h-full w-[141.933px] shrink-0 items-center"
         >
           <MarketplaceLogo />

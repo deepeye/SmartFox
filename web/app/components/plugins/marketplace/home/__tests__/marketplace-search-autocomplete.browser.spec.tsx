@@ -105,7 +105,7 @@ function PinnedHeaderState() {
   const isCatalogPinned = useAtomValue(homeCatalogPinnedAtom)
   return (
     <header className="sticky top-0 z-50 flex h-12 items-center bg-background-default">
-      <span>Dify Marketplace</span>
+      <span>Marketplace</span>
       {isCatalogPinned && (
         <div role="tablist" aria-label="Header catalog tabs">
           Plugins and templates

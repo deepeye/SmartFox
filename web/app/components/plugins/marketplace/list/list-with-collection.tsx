@@ -6,13 +6,12 @@ import { cn } from '@langgenius/dify-ui/cn'
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { useLocale, useTranslation } from '#i18n'
 import { getPluginLanguage } from '@/i18n/metadata'
-import { trackMarketplaceSiteEvent } from '@/utils/marketplace-site-track'
 import { useMarketplaceMoreClick } from '../atoms'
 import { MARKETPLACE_CONTAINER_ID } from '../constants'
 import { buildCarouselPages } from '../utils'
 import CardWrapper from './card-wrapper'
 import Carousel from './carousel'
-import { BECOME_PARTNER_URL, GRID_CLASS, PARTNER_COLLECTION_NAMES } from './collection-constants'
+import { GRID_CLASS, PARTNER_COLLECTION_NAMES } from './collection-constants'
 import styles from './partner-header.module.css'
 import { useCarouselItemsPerPage } from './use-carousel-items-per-page'
 
@@ -210,36 +209,6 @@ const CollectionSection = ({
               </span>
             ) : (
               collection.description[getPluginLanguage(locale)]
-            )}
-            {isPartnersCollection && (
-              <>
-                <span className={cn(styles.partnerSeparator, 'text-divider-regular')}>|</span>
-                <a
-                  href={BECOME_PARTNER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    styles.partnerAction,
-                    'flex items-center gap-x-0.5 text-text-accent hover:underline',
-                  )}
-                  onClick={() => {
-                    trackMarketplaceSiteEvent('marketplace_creator_partner_click', {
-                      click_target: 'Become a Partner',
-                    })
-                  }}
-                >
-                  <span className={styles.partnerActionLabel}>
-                    {t(($) => $['marketplace.becomePartner'], { ns: 'plugin' })}
-                  </span>
-                  <span
-                    aria-hidden
-                    className={cn(
-                      styles.partnerActionIcon,
-                      'i-ri-external-link-line size-3 [&:dir(rtl)]:-scale-x-100',
-                    )}
-                  />
-                </a>
-              </>
             )}
           </div>
         </div>

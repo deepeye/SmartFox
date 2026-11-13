@@ -2882,11 +2882,6 @@
       "count": 4
     }
   },
-  "web/app/components/plugins/marketplace/creator-profile/creator-sidebar.tsx": {
-    "better-tailwindcss/enforce-logical-properties": {
-      "count": 1
-    }
-  },
   "web/app/components/plugins/marketplace/creator-profile/view.tsx": {
     "better-tailwindcss/enforce-logical-properties": {
       "count": 2
@@ -2898,11 +2893,6 @@
     }
   },
   "web/app/components/plugins/marketplace/home/catalog-languages-filter.tsx": {
-    "better-tailwindcss/enforce-logical-properties": {
-      "count": 3
-    }
-  },
-  "web/app/components/plugins/marketplace/home/home-trending-slides.tsx": {
     "better-tailwindcss/enforce-logical-properties": {
       "count": 3
     }
@@ -2949,16 +2939,6 @@
     }
   },
   "web/app/components/plugins/marketplace/sort-menu/index.tsx": {
-    "better-tailwindcss/enforce-logical-properties": {
-      "count": 2
-    }
-  },
-  "web/app/components/plugins/marketplace/templates/index.tsx": {
-    "better-tailwindcss/enforce-logical-properties": {
-      "count": 1
-    }
-  },
-  "web/app/components/plugins/marketplace/templates/template-card.tsx": {
     "better-tailwindcss/enforce-logical-properties": {
       "count": 2
     }

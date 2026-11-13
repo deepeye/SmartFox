@@ -15,8 +15,6 @@ import { cn } from '@langgenius/dify-ui/cn'
 import { useState } from 'react'
 import { useTranslation } from '#i18n'
 import { trackEvent } from '@/app/components/base/amplitude'
-import Partner from '@/app/components/plugins/base/badges/partner'
-import Verified from '@/app/components/plugins/base/badges/verified'
 import useCheckInstalled from '@/app/components/plugins/install-plugin/hooks/use-check-installed'
 import { PluginCategoryEnum } from '@/app/components/plugins/types'
 import { resolveMarketplaceAssetUrl } from '@/features/marketplace/api'
@@ -256,8 +254,6 @@ function RecommendCardFace({ card }: { card: BannerRecommendCard }) {
   const { t } = useTranslation(['plugin'])
   const iconURL = resolveMarketplaceAssetUrl(card.icon_url)
   const creator = getCardCreator(card)
-  const isPartner = card.badges?.includes('partner')
-  const isVerified = card.badges?.includes('verified')
 
   return (
     <>
@@ -292,16 +288,6 @@ function RecommendCardFace({ card }: { card: BannerRecommendCard }) {
             <h3 className="min-w-0 truncate text-sm leading-[normal] font-medium text-text-primary">
               {card.display_name}
             </h3>
-            {(isPartner || isVerified) && (
-              <div className="flex shrink-0 items-start gap-[3.5px]">
-                {isPartner && (
-                  <Partner className="size-3.5" text={t(($) => $['marketplace.partnerTip'])} />
-                )}
-                {isVerified && (
-                  <Verified className="size-3.5" text={t(($) => $['marketplace.verifiedTip'])} />
-                )}
-              </div>
-            )}
           </div>
           {creator && (
             <p className="w-full truncate text-xs leading-[normal] font-normal text-text-tertiary">
@@ -365,7 +351,7 @@ function CloudRecommendPluginCard({
       <button
         type="button"
         aria-label={card.display_name}
-        className={cn(recommendCardClassName, 'cursor-pointer border-0 text-left')}
+        className={cn(recommendCardClassName, 'cursor-pointer border-0 text-start')}
         onClick={() => {
           trackRecommendCardClick(banner, card, page, href)
           setOpen(true)
@@ -437,7 +423,7 @@ function CloudRecommendTemplateCard({
       <button
         type="button"
         aria-label={card.display_name}
-        className={cn(recommendCardClassName, 'cursor-pointer border-0 text-left')}
+        className={cn(recommendCardClassName, 'cursor-pointer border-0 text-start')}
         onClick={() => {
           trackRecommendCardClick(banner, card, page, href)
           if (templateDetailRoute) templateDetailRoute.open(template)
@@ -554,7 +540,7 @@ function TrendingRecommendationSlide({
           aria-hidden
           className={cn(
             styles.recommendBackdrop,
-            'absolute top-[-173px] left-[-990px] h-[1201px] w-[2135px] max-w-none opacity-80',
+            'absolute inset-s-[-990px] top-[-173px] h-[1201px] w-[2135px] max-w-none opacity-80',
           )}
         />
         <div

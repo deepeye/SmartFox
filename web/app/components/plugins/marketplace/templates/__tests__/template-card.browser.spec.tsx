@@ -28,7 +28,6 @@ const template: MarketplaceTemplate = {
   publisher_unique_handle: 'dify',
   usage_count: 1200,
   categories: ['marketing'],
-  badges: ['partner'],
 }
 
 beforeEach(() => {
@@ -41,7 +40,7 @@ async function renderCard(edition: 'CLOUD' | 'COMMUNITY' | 'ENTERPRISE' = 'CLOUD
   const { wrapper: ConsoleProvider } = createConsoleQueryWrapper({
     systemFeatures: { deployment_edition: edition },
   })
-  const card = <TemplateCard partnerText="Verified by a Dify partner" template={template} />
+  const card = <TemplateCard template={template} />
   return render(
     <ConsoleProvider>
       <ThemeProvider defaultPreference="dark">

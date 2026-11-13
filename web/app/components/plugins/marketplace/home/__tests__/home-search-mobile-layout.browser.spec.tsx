@@ -56,7 +56,7 @@ describe('Marketplace mobile search layout', () => {
       .element(screen.getByRole('textbox', { name: 'Search plugins or templates' }))
       .toBeVisible()
     const header = screen.getByRole('banner').element()
-    const brand = screen.getByRole('link', { name: 'Dify Marketplace' }).element()
+    const brand = screen.getByRole('link', { name: 'Marketplace' }).element()
     const signIn = screen.getByRole('button', { name: 'Sign in' }).element()
     const searchInput = screen
       .getByRole('textbox', { name: 'Search plugins or templates' })

@@ -3,8 +3,6 @@
 import type { CreatorProfileViewModel, CreatorSocialPlatform } from './model'
 import { cn } from '@langgenius/dify-ui/cn'
 import { useTranslation } from '#i18n'
-import Partner from '@/app/components/plugins/base/badges/partner'
-import Verified from '@/app/components/plugins/base/badges/verified'
 import PublisherAvatar from './publisher-avatar'
 
 type CreatorSidebarProps = {
@@ -29,8 +27,6 @@ function SocialIcon({ platform }: { platform: CreatorSocialPlatform }) {
 export default function CreatorSidebar({ profile }: CreatorSidebarProps) {
   const { t } = useTranslation(['plugin'])
   const isOrganization = profile.kind === 'organization'
-  const isPartner = profile.badges.includes('partner')
-  const isVerified = profile.badges.includes('verified')
 
   return (
     <div className="relative flex min-w-0 flex-col gap-4 pt-11 md:w-[234px] md:pt-12">
@@ -40,7 +36,7 @@ export default function CreatorSidebar({ profile }: CreatorSidebarProps) {
         isOrganization={isOrganization}
         size={100}
         className={cn(
-          'absolute -top-12 -left-2 z-10 !size-20 border-[1.5px] border-components-panel-bg bg-background-default-dodge shadow-xs md:-top-[68px] md:!size-[100px]',
+          'absolute -inset-s-2 -top-12 z-10 !size-20 border-[1.5px] border-components-panel-bg bg-background-default-dodge shadow-xs md:-top-[68px] md:!size-[100px]',
           isOrganization && 'rounded-[10px]',
         )}
       />
@@ -52,18 +48,6 @@ export default function CreatorSidebar({ profile }: CreatorSidebarProps) {
             <span className="rounded-[5px] border border-divider-deep bg-components-badge-bg-dimm px-1.5 py-0.5 system-2xs-medium text-text-tertiary uppercase">
               {t(($) => $['marketplace.creatorProfile.organization'], { ns: 'plugin' })}
             </span>
-          )}
-          {isPartner && (
-            <Partner
-              className="size-[18px] shrink-0"
-              text={t(($) => $['marketplace.partnerTip'], { ns: 'plugin' })}
-            />
-          )}
-          {isVerified && (
-            <Verified
-              className="size-[18px] shrink-0"
-              text={t(($) => $['marketplace.verifiedTip'], { ns: 'plugin' })}
-            />
           )}
         </div>
         <span className="system-sm-regular text-text-tertiary">@{profile.handle}</span>

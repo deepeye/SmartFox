@@ -87,7 +87,7 @@ vi.mock('react-i18next', async () => {
   return {
     ...actual,
     ...createReactI18nextMock({
-      'onboarding.stepByStepTour.title': 'Get to know Dify',
+      'onboarding.stepByStepTour.title': 'Get to know SmartFox',
       'onboarding.stepByStepTour.duration': 'A quick tour — about 5 minutes',
       'onboarding.stepByStepTour.skip': 'Skip tour',
       'onboarding.stepByStepTour.minimize': 'Minimize tour',
@@ -96,9 +96,9 @@ vi.mock('react-i18next', async () => {
       'onboarding.stepByStepTour.skipRecovery.message':
         'Tour hidden. Turn it back on anytime in Help → Step-by-step Tour.',
       'onboarding.stepByStepTour.skipRecovery.dismiss': 'Got it',
-      'onboarding.stepByStepTour.tasks.home.title': 'Try a Learn Dify lesson',
+      'onboarding.stepByStepTour.tasks.home.title': 'Try a Tutorial lesson',
       'onboarding.stepByStepTour.tasks.home.description':
-        'Open a hands-on lesson from Learn Dify to see Dify in action.',
+        'Open a hands-on tutorial lesson to see SmartFox in action.',
       'onboarding.stepByStepTour.tasks.home.primaryActionLabel': 'Show me',
       'onboarding.stepByStepTour.tasks.studio.title': 'Manage your apps in Studio',
       'onboarding.stepByStepTour.tasks.studio.description':
@@ -806,7 +806,7 @@ describe('MainNav', () => {
         body: { action: 'disable_current_workspace' },
       })
     })
-    expect(screen.queryByRole('region', { name: 'Get to know Dify' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('region', { name: 'Get to know SmartFox' })).not.toBeInTheDocument()
     expect(screen.getByRole('menu')).toBeInTheDocument()
     expect(mockPush).not.toHaveBeenCalled()
     expect(mockTrackEvent).toHaveBeenCalledWith('step_tour', { action: 'tour_disabled' })
@@ -842,7 +842,7 @@ describe('MainNav', () => {
     await waitFor(() => {
       expect(screen.queryByRole('menu')).not.toBeInTheDocument()
     })
-    expect(await screen.findByRole('dialog', { name: 'Get to know Dify' })).toBeInTheDocument()
+    expect(await screen.findByRole('dialog', { name: 'Get to know SmartFox' })).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'navigation.mainNav.help.openMenu' }))
     expect(

@@ -96,7 +96,7 @@ describe('Marketplace home chrome', () => {
 
     const header = screen.getByRole('banner')
     await expect
-      .element(header.getByRole('link', { name: 'Dify Marketplace' }))
+      .element(header.getByRole('link', { name: 'Marketplace' }))
       .toHaveAttribute('href', '/')
     const headerTemplate = header.getByRole('link', { name: '模板', includeHidden: true })
     await expect.element(headerTemplate).toHaveAttribute('href', '/templates?language=zh-Hans')
@@ -115,7 +115,7 @@ describe('Marketplace home chrome', () => {
     const before = screen.getByRole('button', { name: 'Before header' })
     await before.click()
     await userEvent.tab()
-    await expect.element(header.getByRole('link', { name: 'Dify Marketplace' })).toHaveFocus()
+    await expect.element(header.getByRole('link', { name: 'Marketplace' })).toHaveFocus()
     await userEvent.tab()
     await expect.element(header.getByRole('link', { name: 'Creator Center' })).toHaveFocus()
     await userEvent.tab()
@@ -150,7 +150,7 @@ describe('Marketplace home chrome', () => {
     )
     const header = screen.getByRole('banner')
     await expect
-      .element(header.getByRole('link', { name: 'Dify Marketplace' }))
+      .element(header.getByRole('link', { name: 'Marketplace' }))
       .toHaveAttribute('href', '/marketplace')
     for (const link of header.getByRole('navigation').getByRole('link').all())
       await expect.element(link).not.toHaveAttribute('aria-current')

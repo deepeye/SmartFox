@@ -5,7 +5,6 @@ import { cn } from '@langgenius/dify-ui/cn'
 import { useBoolean } from 'ahooks'
 import { useCallback } from 'react'
 import AppIcon from '@/app/components/base/app-icon'
-import Partner from '@/app/components/plugins/base/badges/partner'
 import {
   getMarketplacePluginIconUrl,
   getMarketplaceTemplateIconUrl,
@@ -19,12 +18,11 @@ import { useOptionalTemplateDetailRoute } from './use-optional-template-detail-r
 type TemplateCardProps = {
   template: MarketplaceTemplate
   className?: string
-  partnerText: string
 }
 
 const MAX_VISIBLE_PLUGIN_DEPENDENCIES = 7
 
-export default function TemplateCard({ template, className, partnerText }: TemplateCardProps) {
+export default function TemplateCard({ template, className }: TemplateCardProps) {
   const router = useRouter()
   const navigation = useMarketplaceDetailNavigation()
   const externalHref = navigation.templateHref(template)
@@ -88,12 +86,9 @@ export default function TemplateCard({ template, className, partnerText }: Templ
           />
           <div className="flex min-w-0 flex-1 flex-col justify-center gap-0.5">
             <div className="flex items-center">
-              <span className="truncate text-left system-md-medium text-text-primary">
+              <span className="truncate text-start system-md-medium text-text-primary">
                 {template.template_name}
               </span>
-              {template.badges?.includes('partner') && (
-                <Partner className="relative z-[2] ml-0.5 size-4 shrink-0" text={partnerText} />
-              )}
             </div>
             <div className="flex items-center gap-2 system-xs-regular text-text-tertiary">
               {publisher && <span className="truncate">{publisher}</span>}

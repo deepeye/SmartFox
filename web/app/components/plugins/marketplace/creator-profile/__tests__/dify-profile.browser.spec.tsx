@@ -220,7 +220,7 @@ beforeEach(async () => {
 
 it('runs the Cloud header, installed card, close/reopen focus, and search result through one owner', async () => {
   const { screen } = await renderProfile()
-  const marketplace = screen.getByRole('link', { name: 'Dify Marketplace' })
+  const marketplace = screen.getByRole('link', { name: 'Marketplace' })
   await expect.element(marketplace).toHaveAttribute('href', '/marketplace')
   for (const name of ['plugin.marketplace.home.plugins', 'plugin.marketplace.home.templates']) {
     await expect.element(screen.getByRole('link', { name })).not.toHaveAttribute('aria-current')

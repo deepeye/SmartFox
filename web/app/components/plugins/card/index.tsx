@@ -9,8 +9,6 @@ import { currentWorkspaceIdAtom } from '@/context/workspace-state'
 import { useResolvedTheme } from '@/features/theme/hooks'
 import { renderI18nObject } from '@/i18n/metadata'
 import { formatNumber } from '@/utils/format'
-import Partner from '../base/badges/partner'
-import Verified from '../base/badges/verified'
 import Icon from '../card/base/card-icon'
 import { useCategories } from '../hooks'
 import { getPluginCardIconUrl } from '../utils'
@@ -90,14 +88,12 @@ const Card = ({
   const locale = useGetLanguage()
   const { t } = useTranslation(['plugin'])
   const { categoriesMap } = useCategories(true)
-  const { category, type, name, org, label, brief, icon, icon_dark, verified, from } = payload
-  const badges = payload.badges ?? []
+  const { category, type, name, org, label, brief, icon, icon_dark, from } = payload
   const theme = useResolvedTheme()
   const activeIcon = theme === 'dark' && icon_dark ? icon_dark : icon
   const pluginIdentity = { from, name, org, type }
   const getLocalizedText = (obj: Record<string, string> | undefined) =>
     obj ? renderI18nObject(obj, locale) : ''
-  const isPartner = badges.includes('partner')
   const effectiveDescriptionLineRows = descriptionLineRows ?? (compact ? 1 : 2)
   const isMarketplaceVariant = variant === 'marketplace'
   const cornerMarkText = categoriesMap[type === 'bundle' ? type : category]?.label ?? ''
@@ -130,18 +126,6 @@ const Card = ({
                 <div className="truncate system-md-medium text-text-primary">
                   {getLocalizedText(label)}
                 </div>
-                {isPartner && (
-                  <Partner
-                    className="ms-0.5 size-4"
-                    text={t(($) => $['marketplace.partnerTip'], { ns: 'plugin' })}
-                  />
-                )}
-                {verified && (
-                  <Verified
-                    className="ms-0.5 size-4"
-                    text={t(($) => $['marketplace.verifiedTip'], { ns: 'plugin' })}
-                  />
-                )}
                 {titleLeft}
               </div>
               <div className="flex h-4 min-w-0 items-center gap-2 system-xs-regular text-text-tertiary">
@@ -193,18 +177,6 @@ const Card = ({
           <div className="ms-3 w-0 grow">
             <div className="flex h-5 items-center">
               <Title title={getLocalizedText(label)} />
-              {isPartner && (
-                <Partner
-                  className="ms-0.5 size-4"
-                  text={t(($) => $['marketplace.partnerTip'], { ns: 'plugin' })}
-                />
-              )}
-              {verified && (
-                <Verified
-                  className="ms-0.5 size-4"
-                  text={t(($) => $['marketplace.verifiedTip'], { ns: 'plugin' })}
-                />
-              )}
               {titleLeft} {/* This can be version badge */}
             </div>
             <OrgInfo className="mt-0.5" orgName={org} packageName={name} />
