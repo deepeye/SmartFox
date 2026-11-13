@@ -68,9 +68,10 @@ describe('Agent task and declared outputs', () => {
     const user = userEvent.setup()
     renderPanel()
     await user.click(screen.getByRole('button', { name: 'workflowAgent.nodes.agent.task.label' }))
+    expect(await screen.findByText('workflowAgent.nodes.agent.task.learnMore')).toBeInTheDocument()
     expect(
-      await screen.findByRole('link', { name: 'workflowAgent.nodes.agent.task.learnMore' }),
-    ).toHaveAttribute('href', expect.stringContaining('/use-dify/nodes/agent#give-it-a-task'))
+      screen.queryByRole('link', { name: 'workflowAgent.nodes.agent.task.learnMore' }),
+    ).not.toBeInTheDocument()
   })
 
   it('saves task edits into the workflow graph', async () => {

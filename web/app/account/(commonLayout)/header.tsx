@@ -6,15 +6,13 @@ import { useTranslation } from 'react-i18next'
 import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import Link from '@/next/link'
+import { getApplicationTitle } from '@/utils/document-title'
 import Avatar from './avatar'
 
 const Header = () => {
   const { t } = useTranslation(['accountSettings', 'navigation'])
   const { data: systemFeatures } = useSuspenseQuery(systemFeaturesQueryOptions())
-  const logoLabel =
-    systemFeatures.branding.enabled && systemFeatures.branding.application_title
-      ? systemFeatures.branding.application_title
-      : 'Dify'
+  const logoLabel = getApplicationTitle(systemFeatures.branding)
 
   return (
     <div className="flex flex-1 items-center justify-between px-4">

@@ -3,7 +3,7 @@ import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { cloneElement, isValidElement } from 'react'
 import { renderWithConsoleQuery as render } from '@/test/console/query-data'
-import { createDocLinkMock, resolveDocLink } from '../../__tests__/i18n'
+import { createDocLinkMock } from '../../__tests__/i18n'
 import Status from '../status'
 
 const releaseGate = vi.hoisted(() => ({ enabled: true }))
@@ -175,10 +175,11 @@ describe('Status', () => {
   it('renders the exception learn-more link', () => {
     render(<Status status="exception" error="Bad request" />)
 
-    const learnMoreLink = screen.getByRole('link', { name: 'workflow.common.learnMore' })
-
     expect(screen.getByText('workflow.tracing.status.exception')).toBeInTheDocument()
-    expect(learnMoreLink).toHaveAttribute('href', resolveDocLink('/use-dify/debug/error-type'))
+    expect(screen.getByText('workflow.common.learnMore')).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: 'workflow.common.learnMore' }),
+    ).not.toBeInTheDocument()
   })
 
   it('requests pause details only for the paused run', async () => {

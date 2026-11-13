@@ -400,12 +400,7 @@ describe('AllStartBlocks', () => {
       expect(
         screen.getByText('workflow.nodes.startPlaceholder.noTriggersFound'),
       ).toBeInTheDocument()
-      expect(
-        screen.getByRole('link', { name: 'workflow.tabs.requestToCommunity' }),
-      ).toHaveAttribute(
-        'href',
-        'https://github.com/langgenius/dify-plugins/issues/new?template=plugin_request.yaml',
-      )
+      expect(screen.queryByRole('link', { name: 'workflow.tabs.requestToCommunity' })).toBeNull()
       expect(screen.getByRole('link', { name: /plugin\.findMoreInMarketplace/ })).toHaveAttribute(
         'href',
         'https://marketplace.test/plugins/trigger',

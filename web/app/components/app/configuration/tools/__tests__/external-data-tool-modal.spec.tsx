@@ -167,12 +167,10 @@ describe('ExternalDataToolModal', () => {
       }),
     )
 
+    expect(screen.getByText(/(?:^|\.)apiBasedExtension\.link(?=$|:)/)).toBeInTheDocument()
     expect(
-      screen.getByRole('link', { name: /(?:^|\.)apiBasedExtension\.link(?=$|:)/ }),
-    ).toHaveAttribute(
-      'href',
-      'https://docs.example.com/use-dify/workspace/api-extension/api-extension',
-    )
+      screen.queryByRole('link', { name: /(?:^|\.)apiBasedExtension\.link(?=$|:)/ }),
+    ).not.toBeInTheDocument()
   })
 
   it('should save code-based tools with schema values and support cancel', async () => {

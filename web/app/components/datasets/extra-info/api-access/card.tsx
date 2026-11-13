@@ -86,18 +86,20 @@ const Card = ({ apiEnabled }: CardProps) => {
       </div>
       <div className="h-px bg-divider-subtle"></div>
       <div className="p-1">
-        <Link
-          href={apiReferenceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex h-8 items-center space-x-1.75 rounded-lg px-2 text-text-tertiary hover:bg-state-base-hover"
-        >
-          <span className="i-ri-book-open-line size-3.5 shrink-0" />
-          <div className="grow truncate system-sm-regular">
-            {t(($) => $['overview.apiInfo.doc'], { ns: 'appOverview' })}
-          </div>
-          <span className="i-ri-arrow-right-up-line size-3.5 shrink-0" />
-        </Link>
+        {apiReferenceUrl && (
+          <Link
+            href={apiReferenceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-8 items-center space-x-1.75 rounded-lg px-2 text-text-tertiary hover:bg-state-base-hover"
+          >
+            <span className="i-ri-book-open-line size-3.5 shrink-0" />
+            <div className="grow truncate system-sm-regular">
+              {t(($) => $['overview.apiInfo.doc'], { ns: 'appOverview' })}
+            </div>
+            <span className="i-ri-arrow-right-up-line size-3.5 shrink-0" />
+          </Link>
+        )}
       </div>
     </div>
   )

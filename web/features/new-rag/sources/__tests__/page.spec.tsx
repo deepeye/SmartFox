@@ -830,7 +830,7 @@ describe('SourcesPage', () => {
 
     expect(screen.getByText('knowledgeSources.sourcesEmptyTitle')).toBeInTheDocument()
     expect(knowledgeSpaceTranslations.sourcesEmptyDescription).toBe(
-      'Connect a website, workspace, or drive — Dify keeps it synced and fresh, so retrieval never breaks.',
+      'Connect a website, workspace, or drive — SmartFox keeps it synced and fresh, so retrieval never breaks.',
     )
     expect(screen.getByRole('heading', { name: 'knowledgeSpace.sources' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'knowledgeSpace.addSource' })).toHaveAttribute(

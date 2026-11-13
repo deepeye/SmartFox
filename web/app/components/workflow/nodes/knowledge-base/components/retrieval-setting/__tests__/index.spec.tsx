@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { createDocLinkMock, resolveDocLink } from '@/app/components/workflow/__tests__/i18n'
+import { createDocLinkMock } from '@/app/components/workflow/__tests__/i18n'
 import { IndexMethodEnum, RetrievalSearchMethodEnum } from '../../../types'
 import RetrievalSetting from '../index'
 
@@ -29,12 +29,10 @@ describe('RetrievalSetting', () => {
     const user = userEvent.setup()
     render(<RetrievalSetting {...baseProps} indexMethod={IndexMethodEnum.QUALIFIED} />)
 
+    expect(screen.getByText('datasetSettings.form.retrievalSetting.learnMore')).toBeInTheDocument()
     expect(
-      screen.getByRole('link', { name: 'datasetSettings.form.retrievalSetting.learnMore' }),
-    ).toHaveAttribute(
-      'href',
-      resolveDocLink('/use-dify/knowledge/create-knowledge/setting-indexing-methods'),
-    )
+      screen.queryByRole('link', { name: 'datasetSettings.form.retrievalSetting.learnMore' }),
+    ).not.toBeInTheDocument()
     expect(screen.getByText('dataset.retrieval.semantic_search.title')).toBeInTheDocument()
     expect(screen.getByText('dataset.retrieval.full_text_search.title')).toBeInTheDocument()
     expect(screen.getByText('dataset.retrieval.hybrid_search.title')).toBeInTheDocument()

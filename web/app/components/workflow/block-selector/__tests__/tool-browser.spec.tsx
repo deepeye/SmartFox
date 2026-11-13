@@ -210,10 +210,7 @@ describe('ToolBrowser', () => {
     await waitFor(() => {
       expect(screen.getByText('workflow.tabs.noPluginsFound')).toBeInTheDocument()
     })
-    expect(screen.getByRole('link', { name: 'workflow.tabs.requestToCommunity' })).toHaveAttribute(
-      'href',
-      'https://github.com/langgenius/dify-plugins/issues/new?template=plugin_request.yaml',
-    )
+    expect(screen.queryByRole('link', { name: 'workflow.tabs.requestToCommunity' })).toBeNull()
   })
 
   it('keeps matching local tools visible while marketplace results are loading', async () => {

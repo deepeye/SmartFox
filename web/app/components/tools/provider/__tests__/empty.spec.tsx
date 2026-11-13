@@ -18,10 +18,8 @@ describe('Empty', () => {
     render(<Empty type={ToolType.Workflow} />)
 
     expect(screen.getByRole('link', { name: /goToStudio/i })).toHaveAttribute('href', '/apps')
-    expect(screen.getByRole('link', { name: /learnMore/i })).toHaveAttribute(
-      'href',
-      'https://docs.dify.ai/en/self-host/use-dify/workspace/tools#workflow',
-    )
+    expect(screen.getByText(/learnMore/i)).toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /learnMore/i })).not.toBeInTheDocument()
   })
 
   it('does not offer installation navigation in an agent empty state', () => {

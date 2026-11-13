@@ -127,11 +127,8 @@ describe('Marketplace home chrome', () => {
     const menu = screen.getByRole('menu')
     await expect.element(menu).toBeVisible()
     await expect
-      .element(menu.getByRole('menuitem', { name: 'Integration development guide' }))
-      .toHaveAttribute(
-        'href',
-        'https://docs.dify.ai/en/develop-plugin/getting-started/getting-started-dify-plugin',
-      )
+      .element(menu.getByRole('menuitem', { name: 'Template publishing guide' }))
+      .toHaveAttribute('href', 'https://creators.dify.ai/')
     await expect.element(screen.getByRole('tooltip')).not.toBeInTheDocument()
   })
 
@@ -158,21 +155,15 @@ describe('Marketplace home chrome', () => {
     const guide = header.getByRole('button', { name: 'Guide' })
     await guide.click()
     await expect
-      .element(screen.getByRole('menuitem', { name: 'Integration development guide' }))
-      .toHaveAttribute(
-        'href',
-        'https://docs.dify.ai/en/develop-plugin/getting-started/getting-started-dify-plugin',
-      )
+      .element(screen.getByRole('menuitem', { name: 'Template publishing guide' }))
+      .toHaveAttribute('href', 'https://creators.dify.ai/')
     await userEvent.keyboard('{Escape}')
     await expect.element(screen.getByRole('menu')).not.toBeInTheDocument()
     await expect.element(guide).toHaveFocus()
 
     await guide.click()
     await expect
-      .element(screen.getByRole('menuitem', { name: 'Integration development guide' }))
-      .toHaveAttribute(
-        'href',
-        'https://docs.dify.ai/en/develop-plugin/getting-started/getting-started-dify-plugin',
-      )
+      .element(screen.getByRole('menuitem', { name: 'Template publishing guide' }))
+      .toHaveAttribute('href', 'https://creators.dify.ai/')
   })
 })

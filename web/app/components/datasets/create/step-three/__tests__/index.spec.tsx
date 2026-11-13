@@ -32,11 +32,11 @@ describe('StepThree', () => {
   it('links to the document-processing documentation', () => {
     render(<StepThree />)
 
+    expect(screen.getByText('datasetPipeline.addDocuments.stepThree.learnMore')).toBeInTheDocument()
     expect(
-      screen.getByRole('link', { name: 'datasetPipeline.addDocuments.stepThree.learnMore' }),
-    ).toHaveAttribute(
-      'href',
-      'https://docs.dify.ai/use-dify/knowledge/integrate-knowledge-within-application',
-    )
+      screen.queryByRole('link', {
+        name: 'datasetPipeline.addDocuments.stepThree.learnMore',
+      }),
+    ).not.toBeInTheDocument()
   })
 })

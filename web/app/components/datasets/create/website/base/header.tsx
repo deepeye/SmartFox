@@ -43,17 +43,19 @@ const Header = ({
           {!isInPipeline && <span className="system-xs-medium">{buttonText}</span>}
         </Button>
       </div>
-      <a
-        className="flex items-center gap-x-1 overflow-hidden system-xs-medium text-text-accent"
-        href={docLink}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <RiBookOpenLine className="size-3.5 shrink-0" />
-        <span className="grow truncate" title={docTitle}>
-          {docTitle}
-        </span>
-      </a>
+      {docLink && (
+        <a
+          className="flex items-center gap-x-1 overflow-hidden system-xs-medium text-text-accent"
+          href={docLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <RiBookOpenLine className="size-3.5 shrink-0" />
+          <span className="grow truncate" title={docTitle}>
+            {docTitle}
+          </span>
+        </a>
+      )}
     </div>
   )
 }

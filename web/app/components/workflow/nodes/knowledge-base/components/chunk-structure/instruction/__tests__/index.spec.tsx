@@ -18,13 +18,13 @@ describe('ChunkStructureInstruction', () => {
       render(<Instruction />)
 
       expect(
-        screen.getByRole('link', {
+        screen.getByText('workflow.nodes.knowledgeBase.chunkStructureTip.learnMore'),
+      ).toBeInTheDocument()
+      expect(
+        screen.queryByRole('link', {
           name: 'workflow.nodes.knowledgeBase.chunkStructureTip.learnMore',
         }),
-      ).toHaveAttribute(
-        'href',
-        'https://docs.example.com/use-dify/knowledge/create-knowledge/chunking-and-cleaning-text',
-      )
+      ).not.toBeInTheDocument()
     })
   })
 })

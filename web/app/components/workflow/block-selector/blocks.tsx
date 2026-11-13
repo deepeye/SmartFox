@@ -11,6 +11,7 @@ import { Fragment, memo, useCallback, useId, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useStoreApi } from 'reactflow'
 import Badge from '@/app/components/base/badge'
+import { BRAND_NAME } from '@/features/branding'
 import BlockIcon from '../block-icon'
 import { useHumanInputMigration } from '../nodes/human-input-v2/migration/context'
 import { getHumanInputCreationPolicy } from '../nodes/human-input-v2/migration/policy'
@@ -55,7 +56,7 @@ const Blocks = ({
             sort: 0, // Default sort order
             type: block.type,
             title: block.title,
-            author: 'Dify',
+            author: BRAND_NAME,
             // @ts-expect-error Fix this missing field later
             description: block.description,
           },

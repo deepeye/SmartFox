@@ -504,10 +504,10 @@ describe('Agent sends and interruptions', () => {
       expect.objectContaining({ timeout: 0 }),
     )
     render(<>{api.error.mock.calls[0]?.[1]?.description}</>)
-    expect(screen.getByRole('link', { name: `${prefix}.rightPanel.learnMore` })).toHaveAttribute(
-      'href',
-      'https://docs.dify.ai/en/self-host/use-dify/build/new-agent/build#publish',
-    )
+    expect(screen.getByText(`${prefix}.rightPanel.learnMore`)).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: `${prefix}.rightPanel.learnMore` }),
+    ).not.toBeInTheDocument()
   })
 })
 

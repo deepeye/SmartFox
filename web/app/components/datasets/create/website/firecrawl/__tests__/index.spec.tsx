@@ -109,7 +109,7 @@ describe('FireCrawl', () => {
 
   // Helper to get URL input (first textbox with specific placeholder)
   const getUrlInput = () => {
-    return screen.getByPlaceholderText('https://docs.example.com')
+    return screen.getByPlaceholderText('https://')
   }
 
   // Configuration Button Tests

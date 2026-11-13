@@ -39,15 +39,17 @@ const Header = ({ docTitle, docLink, onClickConfiguration, pluginName, ...rest }
           <TooltipContent>{configurationTip}</TooltipContent>
         </Tooltip>
       </div>
-      <a
-        className="flex shrink-0 items-center gap-x-1 system-xs-medium text-text-accent"
-        href={docLink}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span aria-hidden className="i-ri-book-open-line size-3.5 shrink-0" />
-        <span title={docTitle}>{docTitle}</span>
-      </a>
+      {docLink && (
+        <a
+          className="flex shrink-0 items-center gap-x-1 system-xs-medium text-text-accent"
+          href={docLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span aria-hidden className="i-ri-book-open-line size-3.5 shrink-0" />
+          <span title={docTitle}>{docTitle}</span>
+        </a>
+      )}
     </div>
   )
 }

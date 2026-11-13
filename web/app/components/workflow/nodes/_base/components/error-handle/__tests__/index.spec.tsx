@@ -131,10 +131,7 @@ describe('error-handle path', () => {
       expect(
         screen.getByText('workflow.nodes.common.errorHandle.failBranch.customize'),
       ).toBeInTheDocument()
-      expect(screen.getByRole('link')).toHaveAttribute(
-        'href',
-        expect.stringContaining('/use-dify/debug/error-type'),
-      )
+      expect(screen.queryByRole('link')).not.toBeInTheDocument()
     })
 
     it('should edit a labeled string default and preserve the array editor', async () => {

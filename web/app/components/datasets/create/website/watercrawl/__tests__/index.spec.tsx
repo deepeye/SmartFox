@@ -138,7 +138,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const urlInput = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const urlInput = screen.getByPlaceholderText('https://')
       await user.type(urlInput, 'https://example.com')
 
       const runButton = screen.getByRole('button', { name: /run/i })
@@ -173,7 +173,7 @@ describe('WaterCrawl', () => {
       // Options should be visible initially
       expect(screen.getByText('datasetCreation.stepOne.website.crawlSubPage'))!.toBeInTheDocument()
 
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://example.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -273,7 +273,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps({ crawlOptions })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://api-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -302,7 +302,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps({ crawlOptions })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -327,7 +327,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://fail-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -353,7 +353,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://error-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -385,10 +385,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps({ crawlOptions: createDefaultCrawlOptions({ limit: 5 }) })
       const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
       render(<WaterCrawl {...props} />)
-      await user.type(
-        screen.getByPlaceholderText('https://docs.dify.ai/en/'),
-        'https://example.com',
-      )
+      await user.type(screen.getByPlaceholderText('https://'), 'https://example.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
       await waitFor(() => expect(screen.getByText(/totalPageScraped/)).toHaveTextContent('1/5'))
       expect(checkWatercrawlTaskStatus).toHaveBeenCalledExactlyOnceWith('limit-job')
@@ -411,7 +408,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://no-status-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -443,7 +440,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'invalid-url')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -457,7 +454,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'example.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -482,7 +479,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'http://example.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -498,7 +495,7 @@ describe('WaterCrawl', () => {
       })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://example.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -517,7 +514,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://exception-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -544,7 +541,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://empty-error-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -572,7 +569,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps({ onCheckedCrawlResultChange })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://empty-data-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -605,7 +602,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps({ onCheckedCrawlResultChange })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://null-data-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -631,7 +628,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps({ onCheckedCrawlResultChange })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://undefined-data-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -658,7 +655,7 @@ describe('WaterCrawl', () => {
       })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://zero-current-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -686,7 +683,7 @@ describe('WaterCrawl', () => {
       })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://zero-total-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -721,7 +718,7 @@ describe('WaterCrawl', () => {
       })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://both-zero-test.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -750,7 +747,7 @@ describe('WaterCrawl', () => {
       const props = createDefaultProps()
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://time.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -801,7 +798,7 @@ describe('WaterCrawl', () => {
       })
 
       render(<WaterCrawl {...props} />)
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://full-workflow.com')
       await user.click(screen.getByRole('button', { name: /run/i }))
 
@@ -863,7 +860,7 @@ describe('WaterCrawl', () => {
       render(<WaterCrawl {...props} />)
 
       // Step 1: Enter URL
-      const input = screen.getByPlaceholderText('https://docs.dify.ai/en/')
+      const input = screen.getByPlaceholderText('https://')
       await user.type(input, 'https://preview.com')
 
       // Step 2: Run crawl

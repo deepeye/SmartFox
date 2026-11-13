@@ -135,14 +135,14 @@ describe.each([false, true])('Human input share form with IM gate %s', (enabled)
     render(<FormContent />)
 
     expect(screen.getByLabelText('common.loading')).toBeInTheDocument()
-    expect(document.title).toBe('common.loading - Dify')
+    expect(document.title).toBe('common.loading - SmartFox')
     expect(screen.queryByRole('button', { name: 'Approve' })).not.toBeInTheDocument()
 
     await act(async () => resolve(formData))
 
     expect(await screen.findByRole('textbox', { name: 'summary' })).toHaveValue('initial summary')
     expect(mockGetForm).toHaveBeenCalledExactlyOnceWith('token-123')
-    expect(document.title).toBe('Review App - Dify')
+    expect(document.title).toBe('Review App - SmartFox')
     expect(screen.queryByLabelText('common.loading')).not.toBeInTheDocument()
   })
 
@@ -206,7 +206,7 @@ describe.each([false, true])('Human input share form with IM gate %s', (enabled)
 
       expect(await screen.findByText(title)).toBeInTheDocument()
       if (subtitle) expect(screen.getByText(subtitle)).toBeInTheDocument()
-      expect(document.title).toBe(`${subtitle ?? title} - Dify`)
+      expect(document.title).toBe(`${subtitle ?? title} - SmartFox`)
       expect(screen.queryByRole('button', { name: 'Approve' })).not.toBeInTheDocument()
       if (submissionID)
         expect(
@@ -248,7 +248,7 @@ describe.each([false, true])('Human input share form with IM gate %s', (enabled)
     expect(screen.getByText('share.humanInput.recorded')).toBeInTheDocument()
     expect(screen.getByText('share.humanInput.submissionID:{"id":"token-123"}')).toBeInTheDocument()
     expect(screen.queryByRole('textbox', { name: 'summary' })).not.toBeInTheDocument()
-    expect(document.title).toBe('share.humanInput.thanks - Dify')
+    expect(document.title).toBe('share.humanInput.thanks - SmartFox')
   })
 
   it('preserves initialized defaults when upload completes without a text edit', async () => {

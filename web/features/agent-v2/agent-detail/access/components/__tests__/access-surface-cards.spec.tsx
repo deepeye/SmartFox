@@ -578,10 +578,10 @@ describe('Agent access surface cards', () => {
         /NEXT_PUBLIC_API_URL=\s*'https:\/\/api\.example\.test\/v1'/,
       )
       expect(
-        within(dialog).getByRole('link', {
+        within(dialog).queryByRole('link', {
           name: /appOverview\.overview\.appInfo\.customize\.way1\.step1Operation/,
         }),
-      ).toHaveAttribute('href', 'https://github.com/langgenius/webapp-conversation')
+      ).not.toBeInTheDocument()
     })
 
     it('should open the embedded dialog with the Agent web app route', async () => {
@@ -967,10 +967,13 @@ describe('Agent access surface cards', () => {
         screen.getByRole('button', { name: 'agentV2.agentDetail.access.copyServiceEndpoint' }),
       ).toBeInTheDocument()
       expect(
-        screen.getByRole('link', {
+        screen.getByText('agentV2.agentDetail.access.serviceApi.actions.apiReference'),
+      ).toBeInTheDocument()
+      expect(
+        screen.queryByRole('link', {
           name: 'agentV2.agentDetail.access.serviceApi.actions.apiReference',
         }),
-      ).toHaveAttribute('href', 'https://docs.example.test/api-reference/guides/agent')
+      ).not.toBeInTheDocument()
       expect(screen.getByText('2')).toBeInTheDocument()
 
       const accessSwitch = screen.getByRole('switch', {
@@ -1330,10 +1333,13 @@ describe('Agent access surface cards', () => {
       ).toBeEnabled()
     })
     expect(
-      screen.getByRole('link', {
+      screen.getByText('agentV2.agentDetail.access.serviceApi.actions.apiReference'),
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', {
         name: 'agentV2.agentDetail.access.serviceApi.actions.apiReference',
       }),
-    ).toHaveAttribute('href', 'https://docs.example.test/api-reference/guides/agent')
+    ).not.toBeInTheDocument()
     const apiKeys = screen.getByRole('button', { name: /serviceApi.actions.apiKey/ })
     expect(apiKeys).toBeDisabled()
     await user.click(apiKeys)

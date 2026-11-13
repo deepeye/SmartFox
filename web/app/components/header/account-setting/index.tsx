@@ -27,6 +27,7 @@ import {
   isCurrentWorkspaceOwnerAtom,
 } from '@/context/workspace-state'
 import { env } from '@/env'
+import { DocLink } from '@/features/branding/doc-link'
 import { selectIMCentrallyManaged } from '@/features/contacts/im-capability'
 import { isContactsImPlatformEnabled } from '@/features/contacts/im-platform/feature-flag'
 import { canReadNetworkAccessAtom } from '@/features/network-access/permissions'
@@ -306,16 +307,14 @@ export default function AccountSetting({
                   {activeItem?.description && (
                     <p className="mt-1 system-sm-regular wrap-break-word whitespace-normal text-text-tertiary">
                       {activeItem.description}
-                      {activeItem?.docLink && (
-                        <a
+                      {activeItem?.docLink?.href && (
+                        <DocLink
                           href={activeItem.docLink.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
                           className="ms-0.5 inline-flex items-center text-text-accent focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-state-accent-solid focus-visible:outline-hidden"
                         >
                           {activeItem.docLink.label}
                           <span aria-hidden className="i-ri-external-link-line size-3" />
-                        </a>
+                        </DocLink>
                       )}
                     </p>
                   )}

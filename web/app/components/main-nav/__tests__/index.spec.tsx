@@ -861,7 +861,7 @@ describe('MainNav', () => {
 
     await user.click(screen.getByRole('button', { name: 'navigation.mainNav.help.openMenu' }))
 
-    await screen.findByText('navigation.mainNav.help.docs')
+    await screen.findByRole('menuitem', { name: /common\.userProfile\.about/ })
     expect(
       screen.queryByRole('menuitemcheckbox', { name: 'navigation.mainNav.help.stepByStepTour' }),
     ).not.toBeInTheDocument()
@@ -873,13 +873,13 @@ describe('MainNav', () => {
 
     await user.click(screen.getByRole('button', { name: 'navigation.mainNav.help.openMenu' }))
 
-    await screen.findByText('navigation.mainNav.help.docs')
+    await screen.findByRole('menuitem', { name: /common\.userProfile\.about/ })
     expect(
       screen.queryByRole('menuitemcheckbox', { name: 'navigation.mainNav.help.learnDify' }),
     ).not.toBeInTheDocument()
   })
 
-  it('opens Creator Center from the help menu above GitHub', async () => {
+  it('opens Creator Center from the help menu', async () => {
     const user = userEvent.setup()
     renderMainNav()
 
@@ -888,12 +888,13 @@ describe('MainNav', () => {
     const creatorCenter = await screen.findByRole('menuitem', {
       name: 'navigation.mainNav.help.creatorCenter',
     })
-    const github = screen.getByRole('menuitem', { name: /common\.userProfile\.github/ })
 
     expect(creatorCenter).toHaveAttribute('href', 'https://creators.dify.ai/')
     expect(creatorCenter).toHaveAttribute('target', '_blank')
     expect(creatorCenter).toHaveAttribute('rel', 'noopener noreferrer')
-    expect(creatorCenter.compareDocumentPosition(github)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
+    expect(
+      screen.queryByRole('menuitem', { name: /common\.userProfile\.github/ }),
+    ).not.toBeInTheDocument()
   })
 
   it('opens About from its real Help menu owner and restores focus when closed', async () => {
@@ -916,19 +917,6 @@ describe('MainNav', () => {
     ).toBeInTheDocument()
     expect(screen.queryByRole('menu')).not.toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'common.operation.close' })).toHaveFocus()
-    expect(screen.getByRole('link', { name: 'Privacy Policy' })).toHaveAttribute(
-      'href',
-      'https://dify.ai/privacy',
-    )
-    expect(screen.getByRole('link', { name: 'common.about.changeLog' })).toHaveAttribute(
-      'href',
-      'https://github.com/langgenius/dify/releases',
-    )
-    expect(screen.getByRole('link', { name: 'common.about.updateNow' })).toHaveAttribute(
-      'href',
-      'https://github.com/langgenius/dify/releases/tag/1.1.0',
-    )
-    expect(screen.queryByRole('button', { name: 'common.about.changeLog' })).not.toBeInTheDocument()
 
     await user.keyboard('{Escape}')
 
@@ -938,20 +926,6 @@ describe('MainNav', () => {
       ).not.toBeInTheDocument()
       expect(helpButton).toHaveFocus()
     })
-  })
-
-  it('shows the open-source license in About for non-Cloud editions', async () => {
-    const user = userEvent.setup()
-    renderMainNav({ deployment_edition: 'COMMUNITY' })
-
-    await user.click(screen.getByRole('button', { name: 'navigation.mainNav.help.openMenu' }))
-    await user.click(await screen.findByRole('menuitem', { name: /common\.userProfile\.about/ }))
-
-    expect(await screen.findByRole('link', { name: 'Open Source License' })).toHaveAttribute(
-      'href',
-      'https://github.com/langgenius/dify/blob/main/LICENSE',
-    )
-    expect(screen.queryByRole('link', { name: 'Privacy Policy' })).not.toBeInTheDocument()
   })
 
   it('closes the help menu from the support upgrade action', async () => {

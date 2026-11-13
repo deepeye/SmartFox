@@ -33,8 +33,8 @@ it('links to knowledge integration documentation when no applications use the da
   const user = userEvent.setup()
   render(<Statistics expand documentCount={12} relatedApps={{ total: 0, data: [] }} />)
   await user.click(screen.getByRole('button', { name: 'common.datasetMenus.relatedApp' }))
-  expect(await screen.findByRole('link', { name: 'common.datasetMenus.viewDoc' })).toHaveAttribute(
-    'href',
-    'https://docs.example.com/use-dify/knowledge/integrate-knowledge-within-application',
-  )
+  expect(await screen.findByText('common.datasetMenus.viewDoc')).toBeInTheDocument()
+  expect(
+    screen.queryByRole('link', { name: 'common.datasetMenus.viewDoc' }),
+  ).not.toBeInTheDocument()
 })

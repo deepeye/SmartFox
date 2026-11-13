@@ -58,10 +58,10 @@ describe('DebugInfo', () => {
     await user.click(trigger)
 
     expect(screen.getByText('plugin.debugInfo.title')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'plugin.debugInfo.viewDocs' })).toHaveAttribute(
-      'href',
-      'https://docs.example.com/develop-plugin/features-and-specs/plugin-types/remote-debug-a-plugin',
-    )
+    expect(screen.getByText('plugin.debugInfo.viewDocs')).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: 'plugin.debugInfo.viewDocs' }),
+    ).not.toBeInTheDocument()
     expect(screen.getByRole('group', { name: 'Port' })).toHaveTextContent('127.0.0.1:5001')
     expect(screen.getByRole('group', { name: 'Key' })).toHaveTextContent('12345678********87654321')
     expect(screen.queryByText('12345678abcdefghijklmnopqrst87654321')).not.toBeInTheDocument()

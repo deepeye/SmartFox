@@ -62,15 +62,17 @@ const ActionButtons: FC<{
 
   return (
     <div className="mt-6 flex flex-wrap items-center gap-2 py-2">
-      <Link
-        href={apiReferenceUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(buttonVariants(), 'w-fit')}
-      >
-        <RiTerminalBoxLine className="size-4" />
-        <span>Access the API</span>
-      </Link>
+      {apiReferenceUrl && (
+        <Link
+          href={apiReferenceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(buttonVariants(), 'w-fit')}
+        >
+          <RiTerminalBoxLine className="size-4" />
+          <span>Access the API</span>
+        </Link>
+      )}
       <Link
         href={documentsHref}
         className={cn(buttonVariants({ variant: 'primary' }), 'w-fit')}

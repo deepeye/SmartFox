@@ -203,13 +203,10 @@ describe('RetrievalSection', () => {
     )
 
     expect(screen.getByText('dataset.retrieval.semantic_search.title'))!.toBeInTheDocument()
-    const learnMoreLink = screen.getByRole('link', {
-      name: 'datasetSettings.form.retrievalSetting.learnMore',
-    })
-    expect(learnMoreLink)!.toHaveAttribute(
-      'href',
-      'https://docs.example/use-dify/knowledge/create-knowledge/setting-indexing-methods',
-    )
+    expect(screen.getByText('datasetSettings.form.retrievalSetting.learnMore')).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: 'datasetSettings.form.retrievalSetting.learnMore' }),
+    ).not.toBeInTheDocument()
     expect(docLink).toHaveBeenCalledWith(
       '/use-dify/knowledge/create-knowledge/setting-indexing-methods',
     )

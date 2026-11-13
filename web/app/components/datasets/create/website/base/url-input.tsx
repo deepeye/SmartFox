@@ -4,7 +4,6 @@ import { Button } from '@langgenius/dify-ui/button'
 import * as React from 'react'
 import { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useDocLink } from '@/context/i18n'
 import Input from './text-input'
 
 const I18N_PREFIX = 'stepOne.website'
@@ -16,7 +15,6 @@ type Props = Readonly<{
 
 const UrlInput: FC<Props> = ({ isRunning, onRun }) => {
   const { t } = useTranslation(['datasetCreation'])
-  const docLink = useDocLink()
   const [url, setUrl] = useState('')
   const handleUrlChange = useCallback((url: string | number) => {
     setUrl(url as string)
@@ -28,7 +26,7 @@ const UrlInput: FC<Props> = ({ isRunning, onRun }) => {
 
   return (
     <div className="flex items-center justify-between gap-x-2">
-      <Input value={url} onChange={handleUrlChange} placeholder={docLink()} />
+      <Input value={url} onChange={handleUrlChange} placeholder="https://" />
       <Button variant="primary" onClick={handleOnRun} loading={isRunning}>
         {t(($) => $[`${I18N_PREFIX}.run`], { ns: 'datasetCreation' })}
       </Button>

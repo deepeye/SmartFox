@@ -47,20 +47,22 @@ const CreateEntryCard = ({
           </div>
         </div>
       </button>
-      <a
-        href={linkUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        title={linkText}
-        className="flex h-8 items-center gap-0.5 border-t border-divider-subtle px-3 py-2 text-components-button-secondary-text outline-hidden hover:bg-components-panel-on-panel-item-bg-hover hover:text-text-accent focus-visible:ring-1 focus-visible:ring-components-input-border-hover"
-      >
-        <div className="min-w-0 flex-1 px-0.5">
-          <div className="truncate system-sm-medium" title={linkText}>
-            {linkText}
+      {linkUrl && (
+        <a
+          href={linkUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={linkText}
+          className="flex h-8 items-center gap-0.5 border-t border-divider-subtle px-3 py-2 text-components-button-secondary-text outline-hidden hover:bg-components-panel-on-panel-item-bg-hover hover:text-text-accent focus-visible:ring-1 focus-visible:ring-components-input-border-hover"
+        >
+          <div className="min-w-0 flex-1 px-0.5">
+            <div className="truncate system-sm-medium" title={linkText}>
+              {linkText}
+            </div>
           </div>
-        </div>
-        <RiArrowRightUpLine className="size-4 shrink-0 rtl:-scale-x-100" />
-      </a>
+          <RiArrowRightUpLine className="size-4 shrink-0 rtl:-scale-x-100" />
+        </a>
+      )}
     </div>
   )
 }

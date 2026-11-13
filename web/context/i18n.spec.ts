@@ -13,6 +13,11 @@ vi.mock('#i18n', () => ({
   useLocale: vi.fn(() => 'en-US'),
 }))
 
+// This suite covers URL composition, so keep documentation links enabled.
+vi.mock('@/features/branding', () => ({
+  DOC_LINKS_ENABLED: true,
+}))
+
 const renderHook = (callback: () => ReturnType<typeof useDocLink>) =>
   renderHookWithConsoleQuery(callback, {
     systemFeatures: { deployment_edition: mockDeploymentEdition.value },
