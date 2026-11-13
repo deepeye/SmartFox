@@ -7,7 +7,6 @@ import { Input } from '@langgenius/dify-ui/input'
 import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import Countdown from '@/app/components/signin/countdown'
-import Link from '@/next/link'
 import { useAccountDeleteStore, useConfirmDeleteAccount, useSendDeleteAccountEmail } from '../state'
 
 type DeleteAccountProps = {
@@ -48,12 +47,6 @@ export default function VerifyEmail(props: DeleteAccountProps) {
       <DialogBody>
         <div className="pt-1 body-md-medium text-text-destructive">
           {t(($) => $['account.deleteTip'], { ns: 'accountSettings' })}
-        </div>
-        <div className="pt-1 pb-2 body-md-regular text-text-secondary">
-          {t(($) => $['account.deletePrivacyLinkTip'], { ns: 'accountSettings' })}
-          <Link href="https://dify.ai/privacy" className="text-text-accent">
-            {t(($) => $['account.deletePrivacyLink'], { ns: 'accountSettings' })}
-          </Link>
         </div>
         <Field name="verificationCode" className="mt-3">
           <FieldLabel className="system-sm-semibold">

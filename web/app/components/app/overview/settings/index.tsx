@@ -58,7 +58,6 @@ import {
 } from '@/app/components/billing/pricing/query-params'
 import { deploymentEditionAtom } from '@/features/system-features/state'
 import { languages } from '@/i18n/language'
-import Link from '@/next/link'
 import { consoleQuery } from '@/service/console'
 
 type SettingsDialogProps = {
@@ -566,14 +565,7 @@ function SettingsForm({
               i18nKey={($) => $[`${prefixSettings}.more.privacyPolicyTip`]}
               ns="appOverview"
               components={{
-                privacyPolicyLink: (
-                  <Link
-                    href="https://dify.ai/privacy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-text-accent underline"
-                  />
-                ),
+                privacyPolicyLink: <span className="text-text-accent underline" />,
               }}
             />
           </FieldDescription>

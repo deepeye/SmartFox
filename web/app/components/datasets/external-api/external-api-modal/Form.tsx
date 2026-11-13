@@ -8,6 +8,7 @@ import { RiBookOpenLine } from '@remixicon/react'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 
 type ExternalAPIFormProps = {
   id: string
@@ -67,18 +68,18 @@ const ExternalAPIForm: FC<ExternalAPIFormProps> = React.memo(
               htmlFor={variable}
             >
               {label[i18n.language] || label.en_US}
-              {required && <span className="ml-1 text-red-500">*</span>}
+              {required && <span className="ms-1 text-red-500">*</span>}
             </label>
             {variable === 'endpoint' && (
-              <a
+              <DocLink
                 href={docLink('/use-dify/knowledge/external-knowledge-api') || '/'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center body-xs-regular text-text-accent"
               >
-                <RiBookOpenLine className="mr-1 size-3 text-text-accent" />
+                <RiBookOpenLine className="me-1 size-3 text-text-accent" />
                 {t(($) => $.externalAPIPanelDocumentation, { ns: 'dataset' })}
-              </a>
+              </DocLink>
             )}
           </div>
           <Input

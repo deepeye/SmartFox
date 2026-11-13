@@ -15,6 +15,7 @@ import RetrievalMethodConfig from '@/app/components/datasets/common/retrieval-me
 import { toast } from '@/app/notifications'
 import { useDatasetDetailContextWithSelector } from '@/context/dataset-detail'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { consoleQuery } from '@/service/console'
 import { ModelTypeEnum } from '../../header/account-setting/model-provider-page/declarations'
 import { checkShowMultiModalTip } from '../settings/utils'
@@ -109,14 +110,14 @@ const ModifyRetrievalModal: FC<Props> = ({ indexMethod, value, isShow, onHide, o
             {t(($) => $['form.retrievalSetting.title'], { ns: 'datasetSettings' })}
           </DrawerTitle>
           <div className="text-xs leading-4.5 font-normal text-text-tertiary">
-            <a
+            <DocLink
               target="_blank"
               rel="noopener noreferrer"
               href={docLink('/use-dify/knowledge/create-knowledge/setting-indexing-methods')}
               className="text-text-accent"
             >
               {t(($) => $['form.retrievalSetting.learnMore'], { ns: 'datasetSettings' })}
-            </a>
+            </DocLink>
             {t(($) => $['form.retrievalSetting.description'], { ns: 'datasetSettings' })}
           </div>
         </div>

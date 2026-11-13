@@ -249,14 +249,6 @@ function AllStartBlocks({
               <div className="text-sm font-medium text-text-secondary">
                 {t(($) => $['nodes.startPlaceholder.noTriggersFound'], { ns: 'workflow' })}
               </div>
-              <Link
-                className="inline-flex h-6 items-center rounded-md px-3 text-xs font-medium text-text-accent hover:bg-state-base-hover focus-visible:ring-2 focus-visible:ring-state-accent-solid focus-visible:outline-hidden"
-                href="https://github.com/langgenius/dify-plugins/issues/new?template=plugin_request.yaml"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t(($) => $['tabs.requestToCommunity'], { ns: 'workflow' })}
-              </Link>
             </div>
           )}
         </div>
@@ -294,7 +286,7 @@ function AllStartBlocks({
               ) : (
                 <>
                   <span>{t(($) => $.findMoreInMarketplace, { ns: 'plugin' })}</span>
-                  <span aria-hidden className="ml-0.5 i-ri-arrow-right-up-line size-3" />
+                  <span aria-hidden className="ms-0.5 i-ri-arrow-right-up-line size-3" />
                 </>
               )}
             </Link>

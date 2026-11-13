@@ -90,14 +90,6 @@ const ChangePasswordForm = () => {
               {t(($) => $.invalid, { ns: 'login' })}
             </h1>
           </div>
-          <div className="mx-auto mt-6 w-full">
-            <a
-              href="https://dify.ai"
-              className={cn(buttonVariants({ variant: 'primary' }), 'w-full text-sm!')}
-            >
-              {t(($) => $.explore, { ns: 'login' })}
-            </a>
-          </div>
         </div>
       )}
       {verifyTokenRes && verifyTokenRes.is_valid && !showSuccess && (

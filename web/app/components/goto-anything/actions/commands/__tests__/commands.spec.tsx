@@ -3,8 +3,6 @@ import { createInstance } from 'i18next'
 import { renderToString } from 'react-dom/server'
 import { accountCommand } from '../account'
 import { slashCommandRegistry } from '../catalog'
-import { discordCommand } from '../discord'
-import { docsCommand } from '../docs'
 import { goCommand } from '../go'
 import { languageCommand } from '../language'
 import { modelsCommand, SYSTEM_MODELS_PATH } from '../models'
@@ -41,7 +39,7 @@ describe('command journeys', () => {
   })
 
   it('uses the current destination for direct and search-result activation', async () => {
-    for (const command of [accountCommand, modelsCommand, docsCommand, discordCommand]) {
+    for (const command of [accountCommand, modelsCommand]) {
       const context = createCommandContext({
         getDocsHomeUrl: () => 'https://enterprise.example/help/zh',
       })
@@ -49,20 +47,10 @@ describe('command journeys', () => {
       await registry.execute(command.name, {}, context)
       const result = registry.search(`/${command.name}`, context)[0]!
       await registry.execute(result.data.command, result.data.args ?? {}, context)
-      const callback =
-        command === accountCommand || command === modelsCommand
-          ? context.navigate
-          : context.openExternal
-      const destination =
-        command === accountCommand
-          ? '/account'
-          : command === modelsCommand
-            ? SYSTEM_MODELS_PATH
-            : command === docsCommand
-              ? 'https://enterprise.example/help/zh'
-              : 'https://discord.gg/5AEfbxcd9k'
-      expect(callback).toHaveBeenCalledTimes(2)
-      expect(callback).toHaveBeenLastCalledWith(destination)
+      expect(context.navigate).toHaveBeenCalledTimes(2)
+      expect(context.navigate).toHaveBeenLastCalledWith(
+        command === accountCommand ? '/account' : SYSTEM_MODELS_PATH,
+      )
     }
   })
 
@@ -96,19 +84,13 @@ describe('command journeys', () => {
     },
   )
 
-  it('keeps language, permissions, docs links, and callbacks isolated between contexts', async () => {
-    const first = createCommandContext({
-      agentsAvailable: false,
-      getDocsHomeUrl: () => 'https://one.example/docs',
-    })
-    const second = createCommandContext({ getDocsHomeUrl: () => 'https://two.example/docs' })
+  it('keeps language, permissions, and callbacks isolated between contexts', async () => {
+    const first = createCommandContext({ agentsAvailable: false })
+    const second = createCommandContext()
     expect(goCommand.search('agents', first)).toEqual([])
     expect(goCommand.search('agents', second)).toHaveLength(1)
-    await docsCommand.execute({}, first)
-    await docsCommand.execute({}, second)
     executeResult('/theme dark', second)
-    expect(first.openExternal).toHaveBeenCalledExactlyOnceWith('https://one.example/docs')
-    expect(second.openExternal).toHaveBeenCalledExactlyOnceWith('https://two.example/docs')
+    expect(first.openExternal).not.toHaveBeenCalled()
     expect(first.setThemePreference).not.toHaveBeenCalled()
     expect(second.setThemePreference).toHaveBeenCalledExactlyOnceWith('dark')
   })

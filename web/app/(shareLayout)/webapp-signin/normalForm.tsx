@@ -170,27 +170,6 @@ const NormalForm = () => {
           )}
           {!systemFeatures.branding.enabled && (
             <>
-              <div className="mt-2 block w-full system-xs-regular text-text-tertiary">
-                {t(($) => $.tosDesc, { ns: 'login' })}
-                &nbsp;
-                <Link
-                  className="system-xs-medium text-text-secondary hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://dify.ai/terms"
-                >
-                  {t(($) => $.tos, { ns: 'login' })}
-                </Link>
-                &nbsp;&&nbsp;
-                <Link
-                  className="system-xs-medium text-text-secondary hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://dify.ai/privacy"
-                >
-                  {t(($) => $.pp, { ns: 'login' })}
-                </Link>
-              </div>
               {isNonCloudEdition && (
                 <div className="mt-2 block w-full system-xs-regular text-text-tertiary">
                   {t(($) => $.goToInit, { ns: 'login' })}

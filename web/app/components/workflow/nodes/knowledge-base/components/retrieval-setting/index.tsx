@@ -13,6 +13,7 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Field as WorkflowField } from '@/app/components/workflow/nodes/_base/components/layout'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { useRetrievalSetting } from './hooks'
 import { SearchMethodOption } from './search-method-option'
 
@@ -68,14 +69,14 @@ const RetrievalSetting = ({
         title: t(($) => $['form.retrievalSetting.title'], { ns: 'datasetSettings' }),
         subTitle: (
           <div className="flex items-center body-xs-regular text-text-tertiary">
-            <a
+            <DocLink
               target="_blank"
               rel="noopener noreferrer"
               href={docLink('/use-dify/knowledge/create-knowledge/setting-indexing-methods')}
               className="text-text-accent"
             >
               {t(($) => $['form.retrievalSetting.learnMore'], { ns: 'datasetSettings' })}
-            </a>
+            </DocLink>
             &nbsp;
             {t(($) => $['nodes.knowledgeBase.aboutRetrieval'], { ns: 'workflow' })}
           </div>

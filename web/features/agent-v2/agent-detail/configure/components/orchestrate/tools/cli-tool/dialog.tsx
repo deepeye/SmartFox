@@ -22,6 +22,7 @@ import { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from '@/app/notifications'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { EnvVariablesTable } from '../../advanced/env'
 
 type CliToolFormValues = {
@@ -236,7 +237,7 @@ export function CliToolDialog({
             </div>
           </DialogBody>
           <DialogFooter>
-            <a
+            <DocLink
               href={docLink()}
               target="_blank"
               rel="noreferrer"
@@ -244,7 +245,7 @@ export function CliToolDialog({
             >
               <span>{t(($) => $['agentDetail.configure.tools.cliDialog.learnMore'])}</span>
               <span aria-hidden className="i-ri-external-link-line size-3" />
-            </a>
+            </DocLink>
             {mode === 'edit' && tool && onDeleteCliTool && (
               <>
                 <Button type="button" tone="destructive" onClick={handleDelete}>

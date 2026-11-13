@@ -6,6 +6,7 @@ import { cn } from '@langgenius/dify-ui/cn'
 import { Popover, PopoverContent, PopoverTrigger } from '@langgenius/dify-ui/popover'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { useDebugKey } from '@/service/use-plugins'
 import KeyValueItem from '../base/key-value-item'
 import { PluginSidecarPanel } from './plugin-sidecar-panel'
@@ -62,7 +63,7 @@ function DebugInfo({
             <div className="flex w-full shrink-0 flex-col items-start">
               <div className="flex w-full shrink-0 items-center justify-end gap-2 px-4 pt-2 pb-4">
                 <div className="flex min-w-0 flex-1 items-center gap-1">
-                  <a
+                  <DocLink
                     href={docLink(
                       '/develop-plugin/features-and-specs/plugin-types/remote-debug-a-plugin',
                     )}
@@ -72,7 +73,7 @@ function DebugInfo({
                   >
                     <span>{t(($) => $[`${i18nPrefix}.viewDocs`], { ns: 'plugin' })}</span>
                     <span aria-hidden className="i-ri-arrow-right-up-line size-3" />
-                  </a>
+                  </DocLink>
                 </div>
               </div>
             </div>

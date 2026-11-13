@@ -25,6 +25,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { consoleQuery } from '@/service/console'
 import { getHttpErrorStatus } from '@/service/http-error'
 import { getErrorMessage } from '@/utils/error-message'
@@ -212,7 +213,7 @@ export default function TokenForm({
             {t(($) => $['personalAccessToken.copyNow'])}
           </p>
           <div className="mt-12 flex items-center justify-between gap-4">
-            <a
+            <DocLink
               href={docLink('/api-reference/guides/get-started')}
               target="_blank"
               rel="noopener noreferrer"
@@ -220,7 +221,7 @@ export default function TokenForm({
             >
               {t(($) => $['personalAccessToken.howToUseIt'])}
               <span aria-hidden="true" className="i-ri-arrow-right-up-line size-3" />
-            </a>
+            </DocLink>
           </div>
           <div className="mt-6 flex justify-end">
             <DialogClose render={<Button />}>{t(($) => $['resourceAccessToken.done'])}</DialogClose>

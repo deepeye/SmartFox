@@ -33,8 +33,6 @@ const commandPresentation = {
   theme: ['gotoAnything.actions.themeCategoryDesc', 'i-ri-contrast-2-line'],
   language: ['gotoAnything.actions.languageChangeDesc', 'i-ri-translate-2'],
   account: ['gotoAnything.actions.accountDesc', 'i-ri-user-line'],
-  docs: ['gotoAnything.actions.docDesc', 'i-ri-book-open-line'],
-  discord: ['gotoAnything.actions.discordDesc', 'i-ri-discord-line'],
   go: ['gotoAnything.actions.goDesc', 'i-ri-compass-3-line'],
 } as const
 

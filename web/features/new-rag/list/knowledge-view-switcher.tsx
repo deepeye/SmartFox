@@ -12,6 +12,7 @@ import { useIsClient } from 'foxact/use-is-client'
 import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import {
   useNewKnowledgeGuideDismissedValue,
   useSetNewKnowledgeGuideDismissed,
@@ -94,14 +95,14 @@ export function KnowledgeViewSwitcher({ value, onChange }: KnowledgeViewSwitcher
               {t(($) => $.guideDescription)}
             </PopoverDescription>
             <div className="mt-auto flex flex-wrap items-center justify-end gap-3 pt-3">
-              <a
+              <DocLink
                 href={docLink('/cloud/use-dify/knowledge-base/overview')}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-sm system-xs-regular text-text-accent focus-visible:ring-2 focus-visible:ring-state-accent-solid focus-visible:outline-hidden"
               >
                 {t(($) => $.learnMore)}
-              </a>
+              </DocLink>
               <Button ref={gotItRef} variant="primary" size="small" onClick={dismissGuide}>
                 {t(($) => $.gotIt)}
               </Button>

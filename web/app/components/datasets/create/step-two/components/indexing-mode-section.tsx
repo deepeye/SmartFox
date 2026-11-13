@@ -27,6 +27,7 @@ import {
 import RetrievalMethodConfig from '@/app/components/datasets/common/retrieval-method-config'
 import { ModelSelector } from '@/app/components/header/account-setting/model-provider-page/model-selector'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { ChunkingMode } from '@/models/datasets'
 import Link from '@/next/link'
 import { indexMethodIcon } from '../../icons'
@@ -131,7 +132,7 @@ export const IndexingModeSection: FC<IndexingModeSectionProps> = ({
                 {t(($) => $['stepTwo.qualified'], { ns: 'datasetCreation' })}
                 <Badge
                   className={cn(
-                    'ml-1 h-4.5',
+                    'ms-1 h-4.5',
                     !hasSetIndexType && indexType === IndexingType.QUALIFIED
                       ? 'border-text-accent-secondary text-text-accent-secondary'
                       : '',
@@ -140,7 +141,7 @@ export const IndexingModeSection: FC<IndexingModeSectionProps> = ({
                 >
                   {t(($) => $['stepTwo.recommend'], { ns: 'datasetCreation' })}
                 </Badge>
-                <span className="ml-auto">
+                <span className="ms-auto">
                   {!hasSetIndexType && <span className={cn(s.radio)} />}
                 </span>
               </div>
@@ -234,14 +235,14 @@ export const IndexingModeSection: FC<IndexingModeSectionProps> = ({
               {t(($) => $['form.retrievalSetting.title'], { ns: 'datasetSettings' })}
             </h2>
             <div className="body-xs-regular text-text-tertiary">
-              <a
+              <DocLink
                 target="_blank"
                 rel="noopener noreferrer"
                 href={docLink('/use-dify/knowledge/create-knowledge/setting-indexing-methods')}
                 className="text-text-accent"
               >
                 {t(($) => $['form.retrievalSetting.learnMore'], { ns: 'datasetSettings' })}
-              </a>
+              </DocLink>
               {t(($) => $['form.retrievalSetting.longDescription'], { ns: 'datasetSettings' })}
             </div>
           </div>

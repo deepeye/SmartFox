@@ -8,7 +8,6 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { userProfileQueryOptions } from '@/features/account-profile/client'
-import Link from '@/next/link'
 import { useSendDeleteAccountEmail } from '../state'
 
 type DeleteAccountProps = {
@@ -48,12 +47,6 @@ export default function CheckEmail(props: DeleteAccountProps) {
       <DialogBody>
         <div className="py-1 body-md-medium text-text-destructive">
           {t(($) => $['account.deleteTip'], { ns: 'accountSettings' })}
-        </div>
-        <div className="pt-1 pb-2 body-md-regular text-text-secondary">
-          {t(($) => $['account.deletePrivacyLinkTip'], { ns: 'accountSettings' })}
-          <Link href="https://dify.ai/privacy" className="text-text-accent">
-            {t(($) => $['account.deletePrivacyLink'], { ns: 'accountSettings' })}
-          </Link>
         </div>
         <Field name="email" className="mt-3">
           <FieldLabel className="system-sm-semibold">

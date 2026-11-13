@@ -4,6 +4,7 @@ import type { DefaultModel } from '@/app/components/header/account-setting/model
 import { cn } from '@langgenius/dify-ui/cn'
 import { useTranslation } from 'react-i18next'
 import { ModelFeatureEnum } from '@/app/components/header/account-setting/model-provider-page/declarations'
+import { DocLink } from '@/features/branding/doc-link'
 import {
   useMultimodalRetrievalGuidanceDismissedValue,
   useSetMultimodalRetrievalGuidanceDismissed,
@@ -74,16 +75,11 @@ export const MultimodalRetrievalGuidanceLearnMore = ({ className }: { className?
 
   return (
     <div className={cn('flex items-center body-xs-regular text-text-tertiary', className)}>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href={MULTIMODAL_RETRIEVAL_DOC_URL}
-        className="text-text-accent"
-      >
+      <DocLink href={MULTIMODAL_RETRIEVAL_DOC_URL} className="text-text-accent">
         {t(($) => $['form.multimodalRetrievalGuidance.helpLink'], {
           ns: 'datasetSettings',
         })}
-      </a>
+      </DocLink>
       &nbsp;
       {t(($) => $['form.multimodalRetrievalGuidance.helpDescription'], {
         ns: 'datasetSettings',

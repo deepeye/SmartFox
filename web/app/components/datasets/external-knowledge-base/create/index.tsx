@@ -7,6 +7,7 @@ import { Separator } from '@langgenius/dify-ui/separator'
 import { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import Link from '@/next/link'
 import { useRouter } from '@/next/navigation'
 import ExternalApiSelection from './ExternalApiSelection'
@@ -69,19 +70,19 @@ const ExternalKnowledgeBaseCreate: React.FC<ExternalKnowledgeBaseCreateProps> = 
                   {t(($) => $['connectHelper.helper2'], { ns: 'dataset' })}
                 </span>
                 <span>{t(($) => $['connectHelper.helper3'], { ns: 'dataset' })}</span>
-                <a
+                <DocLink
                   className="self-stretch system-sm-regular text-text-accent"
                   href={docLink('/use-dify/knowledge/connect-external-knowledge-base')}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {t(($) => $['connectHelper.helper4'], { ns: 'dataset' })}
-                </a>
+                </DocLink>
                 <span>{t(($) => $['connectHelper.helper5'], { ns: 'dataset' })} </span>
               </p>
               <IconButton
                 aria-label={t(($) => $['operation.back'], { ns: 'common' })}
-                className="absolute top-1 -left-11 rounded-full"
+                className="absolute -inset-s-11 top-1 rounded-full"
                 variant="tertiary"
                 size="lg"
                 onClick={navBackHandle}

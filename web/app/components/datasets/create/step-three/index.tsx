@@ -7,6 +7,7 @@ import * as React from 'react'
 import { useTranslation } from 'react-i18next'
 import AppIcon from '@/app/components/base/app-icon'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import EmbeddingProcess from '../embedding-process'
 
 type StepThreeProps = {
@@ -80,7 +81,7 @@ const StepThree = ({
           />
         </div>
       </div>
-      <div className="shrink-0 px-4 pb-8 text-xs sm:px-8 xl:pt-22 xl:pl-0">
+      <div className="shrink-0 px-4 pb-8 text-xs sm:px-8 xl:ps-0 xl:pt-22">
         <div className="flex w-full max-w-82 flex-col gap-3 rounded-xl bg-background-section p-6 text-text-tertiary">
           <div className="flex size-10 items-center justify-center rounded-[10px] bg-components-card-bg shadow-lg">
             <RiBookOpenLine className="size-5 text-text-accent" />
@@ -91,14 +92,14 @@ const StepThree = ({
           <div className="text-text-tertiary">
             {t(($) => $['stepThree.sideTipContent'], { ns: 'datasetCreation' })}
           </div>
-          <a
+          <DocLink
             href={docLink('/use-dify/knowledge/integrate-knowledge-within-application')}
             target="_blank"
             rel="noreferrer noopener"
             className="system-sm-regular text-text-accent"
           >
             {t(($) => $['addDocuments.stepThree.learnMore'], { ns: 'datasetPipeline' })}
-          </a>
+          </DocLink>
         </div>
       </div>
     </div>

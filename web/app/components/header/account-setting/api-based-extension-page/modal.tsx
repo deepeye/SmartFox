@@ -18,6 +18,7 @@ import { Input } from '@langgenius/dify-ui/input'
 import { useMutation } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { consoleQuery } from '@/service/console'
 
 type ApiBasedExtensionModalProps = {
@@ -128,7 +129,7 @@ export function ApiBasedExtensionModal(props: ApiBasedExtensionModalProps) {
                 })}
               />
               <FieldDescription>
-                <a
+                <DocLink
                   href={docLink('/use-dify/workspace/api-extension/api-extension')}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -139,7 +140,7 @@ export function ApiBasedExtensionModal(props: ApiBasedExtensionModalProps) {
                     aria-hidden="true"
                   />
                   {t(($) => $['apiBasedExtension.link'], { ns: 'common' })}
-                </a>
+                </DocLink>
               </FieldDescription>
               <FieldError match="valueMissing">
                 {t(($) => $['errorMsg.fieldRequired'], { ns: 'common', field: apiEndpointLabel })}

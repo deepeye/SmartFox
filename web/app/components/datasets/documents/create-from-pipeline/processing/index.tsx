@@ -5,6 +5,7 @@ import * as React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDatasetDetailContextWithSelector } from '@/context/dataset-detail'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import EmbeddingProcess from './embedding-process'
 
 type ProcessingProps = {
@@ -36,7 +37,7 @@ const Processing = ({ batchId, documents }: ProcessingProps) => {
           />
         </div>
       </div>
-      <div className="w-2/5 pt-22 pr-8">
+      <div className="w-2/5 pe-8 pt-22">
         <div className="flex w-82 flex-col gap-3 rounded-xl bg-background-section p-6">
           <div className="flex size-10 items-center justify-center rounded-[10px] bg-components-card-bg shadow-lg shadow-shadow-shadow-5">
             <RiBookOpenLine className="size-5 text-text-accent" />
@@ -48,14 +49,14 @@ const Processing = ({ batchId, documents }: ProcessingProps) => {
             <div className="system-sm-regular text-text-tertiary">
               {t(($) => $['stepThree.sideTipContent'], { ns: 'datasetCreation' })}
             </div>
-            <a
+            <DocLink
               href={docLink('/use-dify/knowledge/knowledge-pipeline/authorize-data-source')}
               target="_blank"
               rel="noreferrer noopener"
               className="system-sm-regular text-text-accent"
             >
               {t(($) => $['addDocuments.stepThree.learnMore'], { ns: 'datasetPipeline' })}
-            </a>
+            </DocLink>
           </div>
         </div>
       </div>

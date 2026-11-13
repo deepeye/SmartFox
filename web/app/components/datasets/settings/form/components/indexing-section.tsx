@@ -17,6 +17,7 @@ import {
 import RetrievalMethodConfig from '@/app/components/datasets/common/retrieval-method-config'
 import { ModelSelector } from '@/app/components/header/account-setting/model-provider-page/model-selector'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import { ChunkingMode } from '@/models/datasets'
 import { IndexingType } from '../../../create/step-two'
@@ -104,14 +105,14 @@ const IndexingSection = ({
                 {t(($) => $['form.chunkStructure.title'], { ns: 'datasetSettings' })}
               </div>
               <div className="body-xs-regular text-text-tertiary">
-                <a
+                <DocLink
                   target="_blank"
                   rel="noopener noreferrer"
                   href={docLink('/use-dify/knowledge/create-knowledge/chunking-and-cleaning-text')}
                   className="text-text-accent"
                 >
                   {t(($) => $['form.chunkStructure.learnMore'], { ns: 'datasetSettings' })}
-                </a>
+                </DocLink>
                 {t(($) => $['form.chunkStructure.description'], { ns: 'datasetSettings' })}
               </div>
             </div>
@@ -205,14 +206,14 @@ const IndexingSection = ({
                   {t(($) => $['form.retrievalSetting.title'], { ns: 'datasetSettings' })}
                 </div>
                 <div className="body-xs-regular text-text-tertiary">
-                  <a
+                  <DocLink
                     target="_blank"
                     rel="noopener noreferrer"
                     href={docLink('/use-dify/knowledge/create-knowledge/setting-indexing-methods')}
                     className="text-text-accent"
                   >
                     {t(($) => $['form.retrievalSetting.learnMore'], { ns: 'datasetSettings' })}
-                  </a>
+                  </DocLink>
                   {t(($) => $['form.retrievalSetting.description'], { ns: 'datasetSettings' })}
                 </div>
               </div>

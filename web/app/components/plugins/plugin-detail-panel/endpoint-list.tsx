@@ -9,6 +9,7 @@ import * as React from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from '@/app/notifications'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { consoleQuery } from '@/service/console'
 import { getErrorMessage } from '@/utils/error-message'
 import EndpointCard from './endpoint-card'
@@ -82,7 +83,7 @@ const EndpointListContent = ({ declaration, detail }: EndpointListContentProps) 
                 <div className="system-xs-regular text-text-tertiary">
                   {t(($) => $['detailPanel.endpointsTip'], { ns: 'plugin' })}
                 </div>
-                <a
+                <DocLink
                   href={docLink('/develop-plugin/getting-started/getting-started-dify-plugin')}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -90,7 +91,7 @@ const EndpointListContent = ({ declaration, detail }: EndpointListContentProps) 
                 >
                   <span aria-hidden className="i-ri-book-open-line size-3" />
                   {t(($) => $['detailPanel.endpointsDocLink'], { ns: 'plugin' })}
-                </a>
+                </DocLink>
               </div>
             </PopoverContent>
           </Popover>

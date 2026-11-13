@@ -29,6 +29,7 @@ import {
 } from '@/app/components/header/account-setting/query-params'
 import { toast } from '@/app/notifications'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { codeBasedExtensionsQueryOptions } from '@/features/code-based-extension/query'
 import { LanguagesSupported } from '@/i18n/language'
 import FormGeneration from './form-generation'
@@ -348,7 +349,7 @@ const ModerationSettingModal: FC<ModerationSettingModalProps> = ({ data, onCance
                     type="button"
                     key={provider.key}
                     className={cn(
-                      'flex min-h-17 flex-col items-start justify-center gap-1.5 rounded-xl border border-components-option-card-option-border bg-components-option-card-option-bg px-3 py-2 text-left text-text-secondary focus-visible:ring-2 focus-visible:ring-state-accent-solid focus-visible:outline-hidden',
+                      'flex min-h-17 flex-col items-start justify-center gap-1.5 rounded-xl border border-components-option-card-option-border bg-components-option-card-option-bg px-3 py-2 text-start text-text-secondary focus-visible:ring-2 focus-visible:ring-state-accent-solid focus-visible:outline-hidden',
                       localeData.type !== provider.key &&
                         'hover:border-components-option-card-option-border-hover hover:bg-components-option-card-option-bg-hover hover:shadow-xs',
                       localeData.type === provider.key &&
@@ -414,7 +415,7 @@ const ModerationSettingModal: FC<ModerationSettingModalProps> = ({ data, onCance
                       ns: 'appDebug',
                     })}
                   />
-                  <div className="absolute right-2 bottom-2 flex h-5 items-center rounded-md bg-background-section px-1 system-2xs-medium-uppercase text-text-quaternary">
+                  <div className="absolute inset-e-2 bottom-2 flex h-5 items-center rounded-md bg-background-section px-1 system-2xs-medium-uppercase text-text-quaternary">
                     <span>
                       {(localeData.config?.keywords || '').split('\n').filter(Boolean).length}
                     </span>
@@ -433,15 +434,15 @@ const ModerationSettingModal: FC<ModerationSettingModalProps> = ({ data, onCance
                   <div className="system-sm-medium text-text-secondary">
                     {t(($) => $['apiBasedExtension.selector.title'], { ns: 'common' })}
                   </div>
-                  <a
+                  <DocLink
                     href={docLink('/use-dify/workspace/api-extension/api-extension')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center system-xs-regular text-text-tertiary hover:text-primary-600"
                   >
-                    <span className="mr-1 i-custom-vender-line-education-book-open-01 size-3 text-text-tertiary group-hover:text-primary-600" />
+                    <span className="me-1 i-custom-vender-line-education-book-open-01 size-3 text-text-tertiary group-hover:text-primary-600" />
                     {t(($) => $['apiBasedExtension.link'], { ns: 'common' })}
-                  </a>
+                  </DocLink>
                 </div>
                 <ApiBasedExtensionSelector
                   value={localeData.config?.api_based_extension_id || ''}

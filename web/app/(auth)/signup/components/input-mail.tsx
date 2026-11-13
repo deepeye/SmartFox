@@ -3,12 +3,11 @@ import { Button } from '@langgenius/dify-ui/button'
 import { Field, FieldError, FieldLabel, FieldValidity } from '@langgenius/dify-ui/field'
 import { Form } from '@langgenius/dify-ui/form'
 import { Input } from '@langgenius/dify-ui/input'
-import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { useLocale } from '#i18n'
 import Split from '@/app/(auth)/signin/split'
 import { emailRegex } from '@/config'
-import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import Link from '@/next/link'
 import { useSearchParams } from '@/next/navigation'
 import { consoleQuery } from '@/service/console'
@@ -27,7 +26,6 @@ export default function SignupEmailForm({ onSuccess }: Props) {
   const searchParams = useSearchParams()
   const queryString = searchParams.toString()
   const signinHref = queryString ? `/signin?${queryString}` : '/signin'
-  const { data: systemFeatures } = useSuspenseQuery(systemFeaturesQueryOptions())
 
   const { mutateAsync: submitMail, isPending } = useMutation(
     consoleQuery.emailRegister.sendEmail.post.mutationOptions(),
@@ -82,32 +80,6 @@ export default function SignupEmailForm({ onSuccess }: Props) {
           {t(($) => $['signup.signIn'], { ns: 'login' })}
         </Link>
       </div>
-
-      {!systemFeatures.branding.enabled && (
-        <>
-          <div className="mt-3 block w-full system-xs-regular text-text-tertiary">
-            {t(($) => $.tosDesc, { ns: 'login' })}
-            &nbsp;
-            <Link
-              className="system-xs-medium text-text-secondary hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://dify.ai/terms"
-            >
-              {t(($) => $.tos, { ns: 'login' })}
-            </Link>
-            &nbsp;&&nbsp;
-            <Link
-              className="system-xs-medium text-text-secondary hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://dify.ai/privacy"
-            >
-              {t(($) => $.pp, { ns: 'login' })}
-            </Link>
-          </div>
-        </>
-      )}
     </Form>
   )
 }

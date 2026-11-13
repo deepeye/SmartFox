@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { LoadingPlaceholder } from '@/app/components/base/loading-placeholder'
 import { useDocLink } from '@/context/i18n'
 import { useModalContext } from '@/context/modal-context'
+import { DocLink } from '@/features/branding/doc-link'
 import { consoleQuery } from '@/service/console'
 import ExternalKnowledgeAPICard from '../external-knowledge-api-card'
 
@@ -45,10 +46,13 @@ const ExternalAPIPanel: React.FC<ExternalAPIPanelProps> = ({
   }
 
   return (
-    <div tabIndex={-1} className={cn('absolute top-14 right-0 bottom-2 z-10 flex outline-hidden')}>
+    <div
+      tabIndex={-1}
+      className={cn('absolute inset-e-0 top-14 bottom-2 z-10 flex outline-hidden')}
+    >
       <div
         className={cn(
-          'relative flex h-full w-105 flex-col rounded-l-2xl border border-components-panel-border bg-components-panel-bg-alt',
+          'relative flex h-full w-105 flex-col rounded-s-2xl border border-components-panel-border bg-components-panel-bg-alt',
         )}
       >
         <div className="flex items-start self-stretch p-4 pb-0">
@@ -59,7 +63,7 @@ const ExternalAPIPanel: React.FC<ExternalAPIPanelProps> = ({
             <div className="self-stretch body-xs-regular text-text-tertiary">
               {t(($) => $.externalAPIPanelDescription, { ns: 'dataset' })}
             </div>
-            <a
+            <DocLink
               className="flex cursor-pointer items-center justify-center gap-1 self-stretch"
               href={docLink('/use-dify/knowledge/external-knowledge-api')}
               target="_blank"
@@ -68,7 +72,7 @@ const ExternalAPIPanel: React.FC<ExternalAPIPanelProps> = ({
               <div className="grow body-xs-regular text-text-accent">
                 {t(($) => $.externalAPIPanelDocumentation, { ns: 'dataset' })}
               </div>
-            </a>
+            </DocLink>
           </div>
           <div className="flex items-center">
             <IconButton

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { STEP_BY_STEP_TOUR_TARGETS } from '@/app/components/step-by-step-tour/target-registry'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 
 export function Empty() {
   const { t } = useTranslation(['common'])
@@ -21,7 +22,7 @@ export function Empty() {
         <div className="system-xs-regular text-text-primary">
           {t(($) => $['apiBasedExtension.title'], { ns: 'common' })}
         </div>
-        <a
+        <DocLink
           className="flex items-center gap-1 system-xs-regular text-text-accent"
           href={docLink('/use-dify/workspace/api-extension/api-extension')}
           target="_blank"
@@ -29,7 +30,7 @@ export function Empty() {
         >
           {t(($) => $['apiBasedExtension.link'], { ns: 'common' })}
           <span aria-hidden className="i-ri-external-link-line size-3" />
-        </a>
+        </DocLink>
       </div>
     </div>
   )

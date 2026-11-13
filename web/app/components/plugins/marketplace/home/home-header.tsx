@@ -60,7 +60,7 @@ const HomeHeader = ({
           )}
         >
           <HomeCreatorCenter />
-          <HomeGuide isMarketplacePlatform={isMarketplacePlatform} />
+          <HomeGuide />
         </div>
         {actions}
       </div>

@@ -11,6 +11,7 @@ import EconomicalRetrievalMethodConfig from '@/app/components/datasets/common/ec
 import RetrievalMethodConfig from '@/app/components/datasets/common/retrieval-method-config'
 import { IndexingType } from '@/app/components/datasets/create/step-two'
 import RetrievalSettings from '@/app/components/datasets/external-knowledge-base/create/RetrievalSettings'
+import { DocLink } from '@/features/branding/doc-link'
 
 type RetrievalTranslate = TFunction<['datasetSettings']>
 
@@ -131,14 +132,14 @@ const InternalRetrievalSection: FC<InternalRetrievalSectionProps> = ({
           {t(($) => $['form.retrievalSetting.title'], { ns: 'datasetSettings' })}
         </div>
         <div className="text-xs leading-4.5 font-normal text-text-tertiary">
-          <a
+          <DocLink
             target="_blank"
             rel="noopener noreferrer"
             href={docLink('/use-dify/knowledge/create-knowledge/setting-indexing-methods')}
             className="text-text-accent"
           >
             {t(($) => $['form.retrievalSetting.learnMore'], { ns: 'datasetSettings' })}
-          </a>
+          </DocLink>
           {t(($) => $['form.retrievalSetting.description'], { ns: 'datasetSettings' })}
         </div>
       </div>
@@ -232,7 +233,7 @@ export const RetrievalChangeTip: FC<RetrievalChangeTipProps> = ({
   if (!visible) return null
 
   return (
-    <div className="absolute right-7.5 bottom-19 left-7.5 z-10">
+    <div className="absolute inset-s-7.5 inset-e-7.5 bottom-19 z-10">
       <Alert type="warning">
         <AlertTitle>{message}</AlertTitle>
         <AlertClose

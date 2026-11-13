@@ -2,6 +2,7 @@ import { cn } from '@langgenius/dify-ui/cn'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import Line from './line'
 
 type InstructionProps = {
@@ -24,10 +25,10 @@ const Instruction = ({ className }: InstructionProps) => {
           aria-hidden
           className="i-custom-vender-knowledge-add-chunks size-5 text-text-accent"
         />
-        <Line className="absolute -bottom-19 -left-px" type="vertical" />
-        <Line className="absolute -right-px -bottom-19" type="vertical" />
-        <Line className="absolute -top-px -right-46" type="horizontal" />
-        <Line className="absolute -right-46 -bottom-px" type="horizontal" />
+        <Line className="absolute -inset-s-px -bottom-19" type="vertical" />
+        <Line className="absolute -inset-e-px -bottom-19" type="vertical" />
+        <Line className="absolute -inset-e-46 -top-px" type="horizontal" />
+        <Line className="absolute -inset-e-46 -bottom-px" type="horizontal" />
       </div>
       <div className="flex flex-col gap-y-1">
         <div className="system-sm-medium text-text-secondary">
@@ -37,14 +38,14 @@ const Instruction = ({ className }: InstructionProps) => {
           <p className="text-text-tertiary">
             {t(($) => $['nodes.knowledgeBase.chunkStructureTip.message'], { ns: 'workflow' })}
           </p>
-          <a
+          <DocLink
             href={docLink('/use-dify/knowledge/create-knowledge/chunking-and-cleaning-text')}
             target="_blank"
             rel="noopener noreferrer"
             className="text-text-accent"
           >
             {t(($) => $['nodes.knowledgeBase.chunkStructureTip.learnMore'], { ns: 'workflow' })}
-          </a>
+          </DocLink>
         </div>
       </div>
     </div>

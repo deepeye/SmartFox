@@ -29,6 +29,7 @@ import Chip from '@/app/components/base/chip'
 import { SearchInput } from '@/app/components/base/search-input'
 import { Sort } from '@/app/components/base/sort'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { consoleQuery } from '@/service/console'
 import { AgentDetailSectionSurface } from '../section-surface'
 import { AgentLogDetailPanel } from './components/log-detail-panel'
@@ -131,7 +132,7 @@ export function AgentLogsPage({ agentId }: AgentLogsPageProps) {
           </h2>
           <p className="mt-1 flex min-w-0 flex-wrap items-center gap-x-0.5 system-xs-regular text-text-tertiary">
             <span>{t(($) => $['agentDetail.logs.description'])}</span>
-            <a
+            <DocLink
               href={docLink('/use-dify/monitor/logs')}
               target="_blank"
               rel="noreferrer"
@@ -139,7 +140,7 @@ export function AgentLogsPage({ agentId }: AgentLogsPageProps) {
             >
               {t(($) => $['agentDetail.logs.learnMore'])}
               <span aria-hidden className="i-ri-external-link-line size-3" />
-            </a>
+            </DocLink>
           </p>
         </div>
 

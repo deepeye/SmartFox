@@ -11,6 +11,7 @@ import { AccessPointUrl } from '@/app/components/base/access-point/url'
 import { toast } from '@/app/notifications'
 import { useDocLink } from '@/context/i18n'
 import { useAgentPermissions } from '@/features/agent-v2/permissions'
+import { DocLink } from '@/features/branding/doc-link'
 import { consoleQuery } from '@/service/console'
 import { getErrorMessage } from '@/utils/error-message'
 import { AgentApiKeyDialogContent } from './agent-api-key-dialog-content'
@@ -166,7 +167,7 @@ export function ServiceApiAccessCard({ agentId }: { agentId: string }) {
               }}
             />
           </Dialog>
-          <a
+          <DocLink
             href={docLink('/api-reference/guides/agent')}
             target="_blank"
             rel="noopener noreferrer"
@@ -179,7 +180,7 @@ export function ServiceApiAccessCard({ agentId }: { agentId: string }) {
             <span aria-hidden className="i-ri-book-open-line size-4" />
             {t(($) => $['agentDetail.access.serviceApi.actions.apiReference'])}
             <span aria-hidden className="i-ri-arrow-right-up-line size-3.5" />
-          </a>
+          </DocLink>
           {apiAccessQuery.isError && (
             <Button
               variant="secondary"

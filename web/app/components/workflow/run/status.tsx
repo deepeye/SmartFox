@@ -8,6 +8,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import StatusContainer from '@/app/components/workflow/run/status-container'
 import { ENABLE_HITL_IM } from '@/config'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { resolveConsoleHumanInputFormURL } from '@/features/human-input/console/links'
 import { consoleQuery } from '@/service/console'
 import { basePath } from '@/utils/var'
@@ -225,14 +226,14 @@ const StatusPanel: FC<ResultProps> = ({
           <div className="my-2 h-[0.5px] bg-divider-deep" />
           <div className="system-xs-medium text-text-warning">
             {error}
-            <a
+            <DocLink
               href={docLink('/use-dify/debug/error-type')}
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-accent"
             >
               {t(($) => $['common.learnMore'], { ns: 'workflow' })}
-            </a>
+            </DocLink>
           </div>
         </>
       )}

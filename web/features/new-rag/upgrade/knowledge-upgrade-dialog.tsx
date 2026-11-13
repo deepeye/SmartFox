@@ -19,6 +19,7 @@ import { skipToken, useMutation, useQuery } from '@tanstack/react-query'
 import { useId, useRef } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { ModelCostNotice } from '@/features/new-rag/components/model-cost-notice'
 import { CreationModelField } from '@/features/new-rag/create/model-settings'
 import { createRequestId } from '@/features/new-rag/request-id'
@@ -163,14 +164,14 @@ export function KnowledgeUpgradeDialog({
                 />
               </li>
             </ul>
-            <a
+            <DocLink
               href={docLink('/cloud/use-dify/knowledge-base/upgrade-from-classic')}
               target="_blank"
               rel="noreferrer"
               className="mt-3 inline-block text-text-accent underline-offset-4 hover:underline focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-state-accent-solid"
             >
               {t(($) => $.learnMore, { ns: 'knowledgeSpace' })}
-            </a>
+            </DocLink>
             {(discoveryQuery.isError || startMutation.isError) && (
               <p role="alert" className="mt-3 system-sm-regular text-text-destructive">
                 {modelsRejected

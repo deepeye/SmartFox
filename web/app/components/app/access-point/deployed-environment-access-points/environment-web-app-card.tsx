@@ -188,7 +188,6 @@ export function EnvironmentWebAppCard({
             <CustomizeDialog
               appId={appId}
               api_base_url={apiQuery.data?.base_url ?? ''}
-              mode={appInfo?.mode}
               disabled={!actionsAvailable || !apiQuery.isSuccess || !canManageAccessPoint}
             />
             <SettingsDialog

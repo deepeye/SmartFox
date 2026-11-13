@@ -33,6 +33,7 @@ import {
 } from '@/app/components/base/icon-picker'
 import { ApiBasedExtensionSelector } from '@/app/components/header/account-setting/api-based-extension-page/selector'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { codeBasedExtensionsQueryOptions } from '@/features/code-based-extension/query'
 import {
   buildProviders,
@@ -167,7 +168,7 @@ const ExternalDataToolModal: FC<ExternalDataToolModalProps> = ({
               <input
                 value={localeData.label || ''}
                 onChange={(e) => handleValueChange({ label: e.target.value })}
-                className="mr-2 block h-9 grow appearance-none rounded-lg bg-components-input-bg-normal px-3 text-sm text-components-input-text-filled outline-hidden"
+                className="me-2 block h-9 grow appearance-none rounded-lg bg-components-input-bg-normal px-3 text-sm text-components-input-text-filled outline-hidden"
                 placeholder={t(($) => $['feature.tools.modal.name.placeholder'], {
                   ns: 'appDebug',
                 })}
@@ -218,7 +219,7 @@ const ExternalDataToolModal: FC<ExternalDataToolModalProps> = ({
             <div className="py-2">
               <div className="flex h-9 items-center justify-between text-sm font-medium text-text-primary">
                 {t(($) => $['apiBasedExtension.selector.title'], { ns: 'common' })}
-                <a
+                <DocLink
                   href={docLink('/use-dify/workspace/api-extension/api-extension')}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -226,10 +227,10 @@ const ExternalDataToolModal: FC<ExternalDataToolModalProps> = ({
                 >
                   <span
                     aria-hidden
-                    className="mr-1 i-custom-vender-line-education-book-open-01 size-3 text-text-tertiary group-hover:text-text-accent"
+                    className="me-1 i-custom-vender-line-education-book-open-01 size-3 text-text-tertiary group-hover:text-text-accent"
                   />
                   {t(($) => $['apiBasedExtension.link'], { ns: 'common' })}
-                </a>
+                </DocLink>
               </div>
               <ApiBasedExtensionSelector
                 value={localeData.config?.api_based_extension_id || ''}

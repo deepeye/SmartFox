@@ -1,7 +1,6 @@
 'use client'
 import type { Locale } from '@/i18n'
-import { Button, buttonVariants } from '@langgenius/dify-ui/button'
-import { cn } from '@langgenius/dify-ui/cn'
+import { Button } from '@langgenius/dify-ui/button'
 import { Field, FieldError, FieldLabel } from '@langgenius/dify-ui/field'
 import { Form } from '@langgenius/dify-ui/form'
 import { Input } from '@langgenius/dify-ui/input'
@@ -196,14 +195,6 @@ export default function InviteSettingsPage() {
           <h1 className="title-4xl-semi-bold text-text-primary">
             {t(($) => $.invalid, { ns: 'login' })}
           </h1>
-        </div>
-        <div className="mx-auto mt-6 w-full">
-          <a
-            href="https://dify.ai"
-            className={cn(buttonVariants({ variant: 'primary' }), 'w-full text-sm!')}
-          >
-            {t(($) => $.explore, { ns: 'login' })}
-          </a>
         </div>
       </div>
     )

@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next'
 import PromptEditor from '@/app/components/base/prompt-editor'
 import { $createCustomTextNode } from '@/app/components/base/prompt-editor/plugins/custom-text/node'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { useWorkflowVariableType } from '../../../hooks/use-workflow-variables'
 import { BlockEnum } from '../../../types'
 import useAvailableVarList from '../../_base/hooks/use-available-var-list'
@@ -106,7 +107,7 @@ export function AgentTaskField({
           <InfotipTrigger aria-labelledby={taskLabelId} />
           <InfotipContent aria-labelledby={taskLabelId}>
             {t(($) => $[`${i18nPrefix}.task.tooltip`], { ns: 'workflowAgent' })}{' '}
-            <a
+            <DocLink
               href={docLink('/use-dify/nodes/agent#give-it-a-task')}
               target="_blank"
               rel="noreferrer"
@@ -114,7 +115,7 @@ export function AgentTaskField({
             >
               {t(($) => $[`${i18nPrefix}.task.learnMore`], { ns: 'workflowAgent' })}
               <span aria-hidden className="i-ri-external-link-line size-3" />
-            </a>
+            </DocLink>
           </InfotipContent>
         </Infotip>
       </div>

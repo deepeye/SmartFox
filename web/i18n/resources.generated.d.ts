@@ -6749,7 +6749,7 @@ export default interface Resources {
   workflowHumanInput: {
     'nodes.humanInput.deliveryMethod.added': 'Added'
     'nodes.humanInput.deliveryMethod.contactTip1': 'Missing a delivery method you need?'
-    'nodes.humanInput.deliveryMethod.contactTip2': 'Tell us at <email>support@dify.ai</email>.'
+    'nodes.humanInput.deliveryMethod.contactTip2': 'Contact your administrator for help.'
     'nodes.humanInput.deliveryMethod.emailConfigure.allMembers': 'All members ({{workspaceName}})'
     'nodes.humanInput.deliveryMethod.emailConfigure.body': 'Body'
     'nodes.humanInput.deliveryMethod.emailConfigure.bodyMustContainRequestURL': 'Body must contain {{field}}'

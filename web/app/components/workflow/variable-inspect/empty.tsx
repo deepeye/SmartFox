@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 
 const Empty: FC = () => {
   const { t } = useTranslation(['workflowDebug'])
@@ -21,14 +22,14 @@ const Empty: FC = () => {
         <div className="system-xs-regular text-text-tertiary">
           {t(($) => $['debug.variableInspect.emptyTip'], { ns: 'workflowDebug' })}
         </div>
-        <a
+        <DocLink
           className="cursor-pointer system-xs-regular text-text-accent"
           href={docLink('/use-dify/debug/variable-inspect')}
           target="_blank"
           rel="noopener noreferrer"
         >
           {t(($) => $['debug.variableInspect.emptyLink'], { ns: 'workflowDebug' })}
-        </a>
+        </DocLink>
       </div>
     </div>
   )

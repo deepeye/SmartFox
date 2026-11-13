@@ -16,6 +16,7 @@ import { Input } from '@langgenius/dify-ui/input'
 import { useId, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { canRetainCredential } from './credential-draft'
 import { useSaveContactImCredentials, useTestContactImConnection } from './hooks'
 import {
@@ -145,14 +146,14 @@ export function ContactEmailConfigContent({
             i18nKey={($) => $['imPlatform.email.description']}
             components={{ emphasis: <span className="text-text-secondary" /> }}
           />{' '}
-          <a
+          <DocLink
             className="text-text-accent hover:underline focus-visible:ring-2 focus-visible:ring-state-accent-solid focus-visible:outline-hidden"
             href={docLink('/use-dify/nodes/human-input')}
             rel="noreferrer"
             target="_blank"
           >
             {t(($) => $['imPlatform.learnMore'])}
-          </a>
+          </DocLink>
         </DialogDescription>
       </DialogHeader>
 

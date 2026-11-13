@@ -248,7 +248,6 @@ export function WebAppAccessCard({
               <CustomizeDialog
                 appId={customizeConfig.appId}
                 api_base_url={customizeConfig.apiBaseUrl}
-                sourceCodeRepository="webapp-conversation"
                 disabled={!canUseIntegrationActions}
                 triggerLabel={t(($) => $['agentDetail.access.webApp.actions.customFrontend'])}
               />

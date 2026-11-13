@@ -2,6 +2,7 @@ import { RiApps2AddLine, RiBookOpenLine } from '@remixicon/react'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 
 const NoLinkedAppsPanel = () => {
   const { t } = useTranslation(['common'])
@@ -15,15 +16,15 @@ const NoLinkedAppsPanel = () => {
       <div className="my-2 text-xs text-text-tertiary">
         {t(($) => $['datasetMenus.emptyTip'], { ns: 'common' })}
       </div>
-      <a
+      <DocLink
         className="mt-2 inline-flex cursor-pointer items-center text-xs text-text-accent"
         href={docLink('/use-dify/knowledge/integrate-knowledge-within-application')}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <RiBookOpenLine className="mr-1 size-4 text-text-accent" />
+        <RiBookOpenLine className="me-1 size-4 text-text-accent" />
         {t(($) => $['datasetMenus.viewDoc'], { ns: 'common' })}
-      </a>
+      </DocLink>
     </div>
   )
 }

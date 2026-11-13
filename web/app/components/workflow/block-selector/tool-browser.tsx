@@ -67,7 +67,7 @@ function ToolCategoryEmptyState({ type }: { type: ToolType }) {
             className="inline-flex items-center rounded-md system-xs-regular text-text-tertiary hover:text-text-accent focus-visible:ring-2 focus-visible:ring-state-accent-solid focus-visible:outline-hidden"
           >
             <span>{tip}</span>
-            <span aria-hidden className="ml-0.5 i-ri-arrow-right-up-line size-3" />
+            <span aria-hidden className="ms-0.5 i-ri-arrow-right-up-line size-3" />
           </Link>
         ) : undefined
       }
@@ -359,19 +359,7 @@ function ToolBrowser({
           </div>
 
           {shouldShowEmptyState && (
-            <ToolsEmptyState
-              title={t(($) => $['tabs.noPluginsFound'], { ns: 'workflow' })}
-              action={
-                <Link
-                  href="https://github.com/langgenius/dify-plugins/issues/new?template=plugin_request.yaml"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-6 items-center justify-center rounded-md border-[0.5px] border-components-button-secondary-border bg-components-button-secondary-bg px-3 text-xs font-medium text-components-button-secondary-accent-text shadow-xs hover:border-components-button-secondary-border-hover hover:bg-components-button-secondary-bg-hover focus-visible:ring-2 focus-visible:ring-state-accent-solid focus-visible:outline-hidden"
-                >
-                  {t(($) => $['tabs.requestToCommunity'], { ns: 'workflow' })}
-                </Link>
-              }
-            />
+            <ToolsEmptyState title={t(($) => $['tabs.noPluginsFound'], { ns: 'workflow' })} />
           )}
         </div>
         {marketplace && !hasFilter && (
@@ -383,7 +371,7 @@ function ToolBrowser({
               rel="noopener noreferrer"
             >
               <span>{t(($) => $.findMoreInMarketplace, { ns: 'plugin' })}</span>
-              <span aria-hidden className="ml-0.5 i-ri-arrow-right-up-line size-3" />
+              <span aria-hidden className="ms-0.5 i-ri-arrow-right-up-line size-3" />
             </Link>
           </footer>
         )}

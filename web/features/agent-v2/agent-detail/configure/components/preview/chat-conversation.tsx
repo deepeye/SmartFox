@@ -22,6 +22,7 @@ import { getLastAnswer, isValidGeneratedAnswer } from '@/app/components/base/cha
 import { toast } from '@/app/notifications'
 import { useDocLink } from '@/context/i18n'
 import { userProfileQueryOptions } from '@/features/account-profile/client'
+import { DocLink } from '@/features/branding/doc-link'
 import { consoleClient, consoleQuery } from '@/service/console'
 import { getAvatarInitial } from '@/utils/avatar'
 import { getAgentSoulInputs, getAgentSoulInputsForm } from './chat-config'
@@ -223,14 +224,14 @@ export function AgentPreviewChatConversation({
                   : t(($) => $['agentDetail.configure.preview.errors.agentRunLimitExceeded'])
                 toast.error(errorMessage, {
                   description: (
-                    <a
+                    <DocLink
                       href={docLink('/use-dify/build/new-agent/build#publish')}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-text-accent hover:underline"
                     >
                       {t(($) => $['agentDetail.configure.rightPanel.learnMore'])}
-                    </a>
+                    </DocLink>
                   ),
                   timeout: 0,
                 })

@@ -1,7 +1,6 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import type { DocPathWithoutLang } from '@/types/doc-paths'
 import { IconButton } from '@langgenius/dify-ui/icon-button'
 import {
   Menu,
@@ -13,7 +12,6 @@ import {
 import { Tooltip, TooltipContent, TooltipTrigger } from '@langgenius/dify-ui/tooltip'
 import { Fragment, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useDocLink } from '@/context/i18n'
 import { marketplaceLinks } from '@/features/marketplace/links'
 
 type GuideMenuItemProps = {
@@ -32,38 +30,19 @@ function GuideMenuItem({ href, icon, text }: GuideMenuItemProps) {
     >
       {icon}
       <span className="system-sm-medium text-text-secondary">{text}</span>
-      <span className="ml-auto i-ri-arrow-right-up-line size-4 shrink-0 text-text-tertiary" />
+      <span className="ms-auto i-ri-arrow-right-up-line size-4 shrink-0 text-text-tertiary" />
     </MenuLinkItem>
   )
 }
 
-type OptionLabelKey =
-  | 'requestAPlugin'
-  | 'pluginDevelopmentGuide'
-  | 'pluginPublishGuide'
-  | 'templatePublishingGuide'
+type OptionLabelKey = 'templatePublishingGuide'
 
-function getOptions(docLink: (path: DocPathWithoutLang) => string): {
+function getOptions(): {
   href: string
   icon: ReactNode
   labelKey: OptionLabelKey
 }[] {
   return [
-    {
-      href: 'https://github.com/langgenius/dify-plugins/issues/new?template=plugin_request.yaml',
-      icon: <span className="i-ri-plug-line size-4 shrink-0 text-text-tertiary" />,
-      labelKey: 'requestAPlugin',
-    },
-    {
-      href: docLink('/develop-plugin/getting-started/getting-started-dify-plugin'),
-      icon: <span className="i-ri-book-open-line size-4 shrink-0 text-text-tertiary" />,
-      labelKey: 'pluginDevelopmentGuide',
-    },
-    {
-      href: docLink('/develop-plugin/publishing/marketplace-listing/release-overview'),
-      icon: <span className="i-ri-book-open-line size-4 shrink-0 text-text-tertiary" />,
-      labelKey: 'pluginPublishGuide',
-    },
     {
       href: marketplaceLinks.creatorCenter,
       icon: <span className="i-ri-book-open-line size-4 shrink-0 text-text-tertiary" />,
@@ -76,16 +55,13 @@ type SubmitRequestMenuProps = {
   dividerAfterFirst?: boolean
 }
 
-type SubmitRequestMenuViewProps = SubmitRequestMenuProps & {
-  docLink: (path: DocPathWithoutLang) => string
-}
+type SubmitRequestMenuViewProps = SubmitRequestMenuProps
 
-// Presentational menu. Callers that cannot use useDocLink() -- standalone
-// Marketplace SSR -- pass a locale-composed docLink instead.
-export function SubmitRequestMenuView({ dividerAfterFirst, docLink }: SubmitRequestMenuViewProps) {
+// Presentational menu used by both the console and standalone Marketplace SSR.
+export function SubmitRequestMenuView({ dividerAfterFirst }: SubmitRequestMenuViewProps) {
   const { t } = useTranslation(['plugin'])
   const [open, setOpen] = useState(false)
-  const options = getOptions(docLink)
+  const options = getOptions()
   const guideLabel = t(($) => $['marketplace.home.guide'], { ns: 'plugin' })
 
   return (
@@ -127,6 +103,5 @@ export function SubmitRequestMenuView({ dividerAfterFirst, docLink }: SubmitRequ
 }
 
 export function SubmitRequestMenu({ dividerAfterFirst }: SubmitRequestMenuProps) {
-  const docLink = useDocLink()
-  return <SubmitRequestMenuView dividerAfterFirst={dividerAfterFirst} docLink={docLink} />
+  return <SubmitRequestMenuView dividerAfterFirst={dividerAfterFirst} />
 }

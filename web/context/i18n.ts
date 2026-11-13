@@ -4,6 +4,7 @@ import type { DocLanguage, DocPathWithoutLang, DocsProduct } from '@/types/doc-p
 import { useAtomValue } from 'jotai'
 import { useCallback } from 'react'
 import { useLocale } from '#i18n'
+import { DOC_LINKS_ENABLED } from '@/features/branding'
 import { deploymentEditionAtom } from '@/features/system-features/state'
 import { getDocLanguage } from '@/i18n/language'
 import { getPluginLanguage } from '@/i18n/metadata'
@@ -114,6 +115,8 @@ export const useDocLink = (
   baseDocUrl = baseDocUrl.endsWith('/') ? baseDocUrl.slice(0, -1) : baseDocUrl
   return useCallback(
     (path?: DocPathWithoutLang, pathMap?: DocPathMap): string => {
+      if (!DOC_LINKS_ENABLED) return ''
+
       const docLanguage = getDocLanguage(locale)
       const pathUrl = path || ''
       let targetPath = pathMap ? pathMap[locale] || pathUrl : pathUrl

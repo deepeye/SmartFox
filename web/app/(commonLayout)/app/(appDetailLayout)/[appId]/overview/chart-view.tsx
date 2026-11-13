@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next'
 import { TIME_PERIOD_MAPPING as LONG_TIME_PERIOD_MAPPING } from '@/app/components/app/log/filter'
 import { AppCharts } from '@/app/components/app/overview/app-chart'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import LongTimeRangePicker from './long-time-range-picker'
 import TimeRangePicker from './time-range-picker'
@@ -93,7 +94,7 @@ function ChartViewContent({
             <p className="min-w-0 truncate">
               {t(($) => $['monitoring.description'], { ns: 'appLog' })}
             </p>
-            <a
+            <DocLink
               href={docLink('/use-dify/monitor/analysis')}
               target="_blank"
               rel="noopener noreferrer"
@@ -101,10 +102,10 @@ function ChartViewContent({
             >
               <span>{t(($) => $['operation.learnMore'], { ns: 'common' })}</span>
               <span className="i-ri-external-link-line size-3" aria-hidden="true" />
-            </a>
+            </DocLink>
           </div>
         </div>
-        <div className="mt-1 flex h-10 items-center justify-between pr-10 pl-6">
+        <div className="mt-1 flex h-10 items-center justify-between ps-6 pe-10">
           {isCloudEdition && (
             <TimeRangePicker
               ranges={TIME_PERIOD_MAPPING}

@@ -1,6 +1,4 @@
 'use client'
-import { buttonVariants } from '@langgenius/dify-ui/button'
-import { cn } from '@langgenius/dify-ui/cn'
 import { skipToken, useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -59,14 +57,6 @@ const ActivateForm = () => {
             <h2 className="text-[32px] font-bold text-text-primary">
               {t(($) => $.invalid, { ns: 'login' })}
             </h2>
-          </div>
-          <div className="mx-auto mt-6 w-full">
-            <a
-              href="https://dify.ai"
-              className={cn(buttonVariants({ variant: 'primary' }), 'w-full text-sm!')}
-            >
-              {t(($) => $.explore, { ns: 'login' })}
-            </a>
           </div>
         </div>
       )}

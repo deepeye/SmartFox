@@ -223,7 +223,6 @@ export function WebAppAccessPointCard({
             <CustomizeDialog
               appId={appInfo.id}
               api_base_url={appInfo.api_base_url}
-              mode={appInfo.mode}
               disabled={!actionsAvailable || !canManageAccessPoint}
             />
             <SettingsDialog

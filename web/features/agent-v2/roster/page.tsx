@@ -8,6 +8,7 @@ import { useQueryState } from 'nuqs'
 import { useId } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import useDocumentTitle from '@/hooks/use-document-title'
 import { consoleQuery } from '@/service/console'
 import { AgentRosterList } from './components/agent-roster-list'
@@ -109,7 +110,7 @@ export default function RosterPage() {
           >
             {pageTitle}
           </h1>
-          <a
+          <DocLink
             href={docLink('/use-dify/build/new-agent/overview')}
             target="_blank"
             rel="noreferrer"
@@ -123,7 +124,7 @@ export default function RosterPage() {
               aria-hidden
               className="i-ri-external-link-line hidden size-3 sm:inline-block [&:dir(rtl)]:-scale-x-100"
             />
-          </a>
+          </DocLink>
         </div>
         <div className="mt-3.5">
           <RosterToolbar publicationCounts={publicationCounts} />

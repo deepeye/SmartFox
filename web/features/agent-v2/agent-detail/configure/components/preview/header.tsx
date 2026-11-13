@@ -7,6 +7,7 @@ import { Separator } from '@langgenius/dify-ui/separator'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@langgenius/dify-ui/tooltip'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { AgentConfigureClearSessionConfirmDialog } from '../confirm-clear-session-dialog'
 
 type AgentConfigureRightPanelMode = 'build' | 'preview'
@@ -179,14 +180,14 @@ export function AgentPreviewHeader({
               >
                 <>
                   {buildTipBody}{' '}
-                  <a
+                  <DocLink
                     href={docLink('/use-dify/build/new-agent/build#build-by-chatting')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="body-xs-regular text-text-accent hover:underline"
                   >
                     {learnMoreLabel}
-                  </a>
+                  </DocLink>
                 </>
               </AgentModeTipSection>
               <AgentModeTipSection

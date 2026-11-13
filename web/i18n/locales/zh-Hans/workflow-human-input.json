@@ -1,7 +1,7 @@
 {
   "nodes.humanInput.deliveryMethod.added": "已添加",
   "nodes.humanInput.deliveryMethod.contactTip1": "缺少所需的提交方式？",
-  "nodes.humanInput.deliveryMethod.contactTip2": "请告诉我们 <email>support@dify.ai</email>",
+  "nodes.humanInput.deliveryMethod.contactTip2": "请联系管理员获取帮助。",
   "nodes.humanInput.deliveryMethod.emailConfigure.allMembers": "所有成员（{{workspaceName}}）",
   "nodes.humanInput.deliveryMethod.emailConfigure.body": "邮件正文",
   "nodes.humanInput.deliveryMethod.emailConfigure.bodyMustContainRequestURL": "正文必须包含 {{field}}",

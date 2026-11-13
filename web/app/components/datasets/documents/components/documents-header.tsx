@@ -16,6 +16,7 @@ import IndexFailed from '@/app/components/datasets/common/document-status-with-a
 import StatusWithAction from '@/app/components/datasets/common/document-status-with-action/status-with-action'
 import DatasetMetadataDrawer from '@/app/components/datasets/metadata/metadata-dataset/dataset-metadata-drawer'
 import { useDocLink } from '@/context/i18n'
+import { DocLink } from '@/features/branding/doc-link'
 import { DataSourceType } from '@/models/datasets'
 import { useIndexStatus } from '../status-item/hooks'
 
@@ -139,7 +140,7 @@ const DocumentsHeader: FC<DocumentsHeaderProps> = ({
         </h1>
         <div className="flex items-center space-x-0.5 text-sm font-normal text-text-tertiary">
           <span>{t(($) => $['list.desc'], { ns: 'datasetDocuments' })}</span>
-          <a
+          <DocLink
             className="flex items-center text-text-accent"
             target="_blank"
             rel="noopener noreferrer"
@@ -147,7 +148,7 @@ const DocumentsHeader: FC<DocumentsHeaderProps> = ({
           >
             <span>{t(($) => $['list.learnMore'], { ns: 'datasetDocuments' })}</span>
             <span className="i-ri-external-link-line size-3" />
-          </a>
+          </DocLink>
         </div>
       </div>
 

@@ -11,6 +11,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { useDocLink } from '@/context/i18n'
 import { getAgentACLCapabilities } from '@/features/agent-v2/acl'
+import { DocLink } from '@/features/branding/doc-link'
 import { AccessControlEntry } from '@/features/network-access/app-binding'
 import { consoleQuery } from '@/service/console'
 import { AgentDetailSectionSurface } from '../section-surface'
@@ -46,7 +47,7 @@ export function AgentAccessPage({ agentId }: AgentAccessPageProps) {
           </h2>
           <p className="mt-1 flex min-w-0 flex-wrap items-center gap-x-0.5 system-xs-regular text-text-tertiary">
             <span>{t(($) => $['agentDetail.access.description'])}</span>
-            <a
+            <DocLink
               href={docLink('/use-dify/publish/webapp/web-app-settings')}
               target="_blank"
               rel="noreferrer"
@@ -54,7 +55,7 @@ export function AgentAccessPage({ agentId }: AgentAccessPageProps) {
             >
               {t(($) => $['agentDetail.access.learnMore'])}
               <span aria-hidden className="i-ri-external-link-line size-3" />
-            </a>
+            </DocLink>
           </p>
         </div>
         {agent?.app_id && !agent.hidden_app_backed && capabilities.canViewAccessPoint && (
