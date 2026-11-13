@@ -3,7 +3,7 @@ import { buttonVariants } from '@langgenius/dify-ui/button'
 import { cn } from '@langgenius/dify-ui/cn'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import Link from '@/next/link'
 import Avatar from './avatar'
@@ -31,7 +31,7 @@ const Header = () => {
               alt=""
             />
           ) : (
-            <DifyLogo alt="" />
+            <SmartFoxLogo alt="" />
           )}
         </Link>
         <div className="h-4 w-px origin-center rotate-[11.31deg] bg-divider-regular" />

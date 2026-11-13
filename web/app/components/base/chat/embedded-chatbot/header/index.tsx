@@ -9,7 +9,7 @@ import * as React from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ViewFormDropdown from '@/app/components/base/chat/embedded-chatbot/inputs-form/view-form-dropdown'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import { isClient } from '@/utils/client'
 import { useEmbeddedChatbotContext } from '../context'
@@ -112,7 +112,7 @@ const Header: FC<IHeaderProps> = ({
                     className="block h-5 w-auto"
                   />
                 ) : (
-                  <DifyLogo alt="Dify" size="small" />
+                  <SmartFoxLogo alt="SmartFox" size="small" />
                 )}
               </div>
             )}

@@ -8,7 +8,7 @@ import { useAtomValue } from 'jotai'
 import { lazy, Suspense, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import Badge from '@/app/components/base/badge'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import EnvNav from '@/app/components/header/env-nav'
 import StepByStepTourMount from '@/app/components/step-by-step-tour/mount'
 import {
@@ -18,6 +18,7 @@ import {
 import { userProfileQueryOptions } from '@/features/account-profile/client'
 import { isAgentV2Enabled } from '@/features/agent-v2/feature-flag'
 import { isContactsManagementEnabled } from '@/features/contacts/management/feature-flag'
+import { getApplicationTitle } from '@/utils/document-title'
 import { useMarketplace } from '@/features/marketplace/client'
 import { useCanViewSkills } from '@/features/skills/permissions'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
@@ -39,8 +40,7 @@ export function MainNavLogo() {
     ...systemFeaturesQueryOptions(),
     select: (data) => data.branding,
   })
-  const appTitle =
-    branding.enabled && branding.application_title ? branding.application_title : 'Dify'
+  const appTitle = getApplicationTitle(branding)
 
   return (
     <Link
@@ -51,7 +51,7 @@ export function MainNavLogo() {
       {branding.enabled && branding.workspace_logo ? (
         <img src={branding.workspace_logo} className="block h-5.5 w-auto object-contain" alt="" />
       ) : (
-        <DifyLogo alt="" />
+        <SmartFoxLogo alt="" />
       )}
     </Link>
   )

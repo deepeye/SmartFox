@@ -13,7 +13,7 @@ import {
 } from '@langgenius/dify-ui/dialog'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import Link from '@/next/link'
 
 type AccountAboutDialogProps = {
@@ -43,7 +43,7 @@ export default function AccountAboutDialog({
           <DialogHeaderCloseButton aria-label={t(($) => $['operation.close'], { ns: 'common' })} />
         </DialogHeader>
         <DialogBody className="flex flex-col items-center gap-4">
-          <DifyLogo alt="Dify" size="large" className="mx-auto" />
+          <SmartFoxLogo alt="SmartFox" size="large" className="mx-auto" />
 
           <div className="text-center system-xs-regular text-text-tertiary">
             Version {langGeniusVersionInfo.current_version}

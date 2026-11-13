@@ -19,7 +19,7 @@ import { useTranslation } from 'react-i18next'
 import AppIcon from '@/app/components/base/app-icon'
 import List from '@/app/components/base/chat/chat-with-history/sidebar/list'
 import RenameModal from '@/app/components/base/chat/chat-with-history/sidebar/rename-modal'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import TextGenerationMenu from '@/app/components/share/text-generation/text-generation-menu'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import { useChatWithHistoryContext } from '../context'
@@ -187,7 +187,7 @@ const Sidebar = ({ isPanel, toggleButtonRef }: Props) => {
                   className="block h-5 w-auto"
                 />
               ) : (
-                <DifyLogo alt="Dify" size="small" />
+                <SmartFoxLogo alt="SmartFox" size="small" />
               )}
             </div>
           )}

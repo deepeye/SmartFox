@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 
 type BrandingFooterProps = {
   variant?: 'form' | 'status' | 'legacy-status'
@@ -31,7 +31,7 @@ const BrandingFooter = ({
         {replaceWebappLogo ? (
           <img src={replaceWebappLogo} alt="logo" className="block h-5 w-auto" />
         ) : (
-          <DifyLogo alt="Dify" size="small" />
+          <SmartFoxLogo alt="SmartFox" size="small" />
         )}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 
 type PoweredByBrandProps = {
   webappBrandRemoved?: boolean
@@ -23,7 +23,7 @@ const PoweredByBrand = ({
       {previewLogo ? (
         <img src={previewLogo} alt="logo" className="block h-5 w-auto" />
       ) : (
-        <DifyLogo alt="Dify" size="small" />
+        <SmartFoxLogo alt="SmartFox" size="small" />
       )}
     </>
   )

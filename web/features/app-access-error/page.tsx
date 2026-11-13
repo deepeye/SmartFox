@@ -8,7 +8,7 @@ import resourcesToBackend from 'i18next-resources-to-backend'
 import { Suspense, useEffect, useState } from 'react'
 import { I18nextProvider, Trans, useTranslation } from 'react-i18next'
 import { LoadingPlaceholder } from '@/app/components/base/loading-placeholder'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import { I18nDirectionProvider } from '@/app/components/provider/i18n-direction'
 import { ThemeSelector } from '@/features/theme/theme-selector'
 import { loadI18nResource } from '@/i18n/load-resource'
@@ -61,7 +61,7 @@ function PageContent({ clientIp, embedded }: AppNotAccessibleProps) {
     >
       <div className="flex min-h-full min-w-0 flex-col rounded-lg border border-effects-highlight bg-background-default-subtle">
         <header className="flex shrink-0 items-center justify-between gap-2 ps-6 pe-3 pt-4 pb-3">
-          <DifyLogo alt="Dify" size="large" className="w-15.75 shrink-0" />
+          <SmartFoxLogo alt="SmartFox" size="large" className="shrink-0" />
           <div className="flex min-w-0 items-center gap-1">
             <LocaleMenu
               locale={i18n.language as Locale}

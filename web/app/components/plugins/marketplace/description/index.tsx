@@ -6,7 +6,7 @@ import { domAnimation, LazyMotion, useMotionValue, useSpring, useTransform } fro
 import * as m from 'motion/react-m'
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import { useLocale, useTranslation } from '#i18n'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import { SubmitRequestMenu } from '@/app/components/plugins/plugin-page/nav-operations'
 import { MARKETPLACE_CONTAINER_ID } from '../constants'
 import PluginTypeSwitch from '../plugin-type-switch'
@@ -233,7 +233,7 @@ const Description = ({
       <div className="flex h-15 w-full items-center rounded-lg border-[0.5px] border-white/50 bg-components-panel-bg-blur backdrop-blur-[6px]">
         <div className="flex h-full min-w-0 flex-1 items-center px-5 py-2">
           <div className="flex shrink-0 items-center gap-1.5">
-            <DifyLogo alt="Dify" className="h-6 w-13" />
+            <SmartFoxLogo alt="SmartFox" size="medium" />
             <span className="max-w-0 overflow-hidden title-3xl-semi-bold whitespace-nowrap text-text-primary opacity-0 transition-all duration-200 md:max-w-37.5 md:opacity-100">
               {tCommon(($) => $['mainNav.marketplace'], { ns: 'navigation' })}
             </span>

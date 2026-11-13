@@ -1,6 +1,7 @@
 import type { BrandingModel } from '@dify/contracts/api/console/system-features/types.gen'
+import { BRAND_NAME } from '@/features/branding'
 
-const DEFAULT_APPLICATION_TITLE = 'Dify'
+const DEFAULT_APPLICATION_TITLE = BRAND_NAME
 
 export const getApplicationTitle = (
   branding?: Pick<BrandingModel, 'application_title' | 'enabled'>,

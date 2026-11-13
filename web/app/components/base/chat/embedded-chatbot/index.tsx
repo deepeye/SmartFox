@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import ChatWrapper from '@/app/components/base/chat/embedded-chatbot/chat-wrapper'
 import Header from '@/app/components/base/chat/embedded-chatbot/header'
 import { LoadingPlaceholder } from '@/app/components/base/loading-placeholder'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import LogoHeader from '@/app/components/base/logo/logo-embedded-chat-header'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import useDocumentTitle from '@/hooks/use-document-title'
@@ -87,7 +87,7 @@ const Chatbot = () => {
                   className="block h-5 w-auto"
                 />
               ) : (
-                <DifyLogo alt="Dify" size="small" />
+                <SmartFoxLogo alt="SmartFox" size="small" />
               )}
             </div>
           )}

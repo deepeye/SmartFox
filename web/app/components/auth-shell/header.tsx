@@ -2,7 +2,7 @@
 import { Separator } from '@langgenius/dify-ui/separator'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useLocale } from '#i18n'
-import { DifyLogo } from '@/app/components/base/logo/dify-logo'
+import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import { ThemeSelector } from '@/features/theme/theme-selector'
 import { setLocaleOnClient } from '@/i18n/client'
@@ -24,7 +24,7 @@ const Header = () => {
           alt={systemFeatures.branding.application_title || ''}
         />
       ) : (
-        <DifyLogo alt="Dify" size="large" />
+        <SmartFoxLogo alt="SmartFox" size="large" />
       )}
       <div className="flex min-w-0 items-center gap-1">
         <LocaleMenu
