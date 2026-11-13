@@ -944,8 +944,8 @@ class UpdateConfig(BaseSettings):
     """
 
     CHECK_UPDATE_URL: str = Field(
-        description="URL to check for application updates",
-        default="https://updates.dify.ai",
+        description="URL to check for application updates; leave empty to disable external checks",
+        default="",
     )
 
 
@@ -956,7 +956,7 @@ class CommunityTelemetryConfig(BaseSettings):
 
     DISABLE_TELEMETRY: bool = Field(
         description="Disable anonymous community telemetry",
-        default=False,
+        default=True,
     )
     DO_NOT_TRACK: bool = Field(
         description="Respect the standard do-not-track opt-out signal for telemetry",
