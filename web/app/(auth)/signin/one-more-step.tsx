@@ -20,9 +20,7 @@ import { useReducer } from 'react'
 import { useTranslation } from 'react-i18next'
 import { resolvePostLoginRedirect } from '@/app/(auth)/signin/utils/post-login-redirect'
 import { toast } from '@/app/notifications'
-import { LICENSE_LINK } from '@/constants/link'
 import { languages } from '@/i18n/language'
-import Link from '@/next/link'
 import { useRouter, useSearchParams } from '@/next/navigation'
 import { consoleQuery } from '@/service/console'
 import { getHttpErrorStatus } from '@/service/http-error'
@@ -201,18 +199,6 @@ const OneMoreStep = () => {
           <Button type="submit" variant="primary" className="w-full" loading={isPending}>
             {t(($) => $.go, { ns: 'login' })}
           </Button>
-          <div className="mt-2 block w-full system-xs-regular text-text-tertiary">
-            {t(($) => $['license.tip'], { ns: 'login' })}
-            &nbsp;
-            <Link
-              className="system-xs-medium text-text-accent-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={LICENSE_LINK}
-            >
-              {t(($) => $['license.link'], { ns: 'login' })}
-            </Link>
-          </div>
         </Form>
       </div>
     </>

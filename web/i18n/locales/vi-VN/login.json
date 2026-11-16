@@ -48,8 +48,6 @@
   "joinTipEnd": "đội ngũ tại Dify",
   "joinTipStart": "Mời bạn tham gia",
   "joinWorkspace": "Tham gia {{workspaceName}}",
-  "license.link": "Giấy phép mã nguồn mở trên GitHub",
-  "license.tip": "Trước khi bắt đầu sử dụng Phiên bản Cộng đồng của Dify, vui lòng đọc",
   "licenseExpired": "Giấy phép đã hết hạn",
   "licenseExpiredTip": "Giấy phép Dify Enterprise cho không gian làm việc của bạn đã hết hạn. Vui lòng liên hệ với quản trị viên của bạn để tiếp tục sử dụng Dify.",
   "licenseInactive": "Giấy phép không hoạt động",

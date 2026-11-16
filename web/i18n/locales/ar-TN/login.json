@@ -48,8 +48,6 @@
   "joinTipEnd": " فريق على Dify",
   "joinTipStart": "يدعوك للانضمام إلى ",
   "joinWorkspace": "الانضمام إلى {{workspaceName}}",
-  "license.link": "ترخيص مفتوح المصدر",
-  "license.tip": "قبل بدء تشغيل Dify Community Edition، اقرأ GitHub",
   "licenseExpired": "انتهت صلاحية الترخيص",
   "licenseExpiredTip": "انتهت صلاحية ترخيص Dify Enterprise لمساحة العمل الخاصة بك. يرجى الاتصال بالمسؤول لمواصلة استخدام Dify.",
   "licenseInactive": "الترخيص غير نشط",

@@ -48,8 +48,6 @@
   "joinTipEnd": " komandasına qoşulmağa dəvət edirik.",
   "joinTipStart": "Sizi Dify-da ",
   "joinWorkspace": "{{workspaceName}} iş məkanına qoşul",
-  "license.link": "Açıq mənbə lisenziyası",
-  "license.tip": "Dify Community Edition ilə işə başlamazdan əvvəl GitHub-dakı bu lisenziyanı oxuyun:",
   "licenseExpired": "Lisenziyanın vaxtı bitib",
   "licenseExpiredTip": "İş məkanınızın Dify Enterprise lisenziyasının vaxtı bitib. Dify-dan istifadəyə davam etmək üçün inzibatçınızla əlaqə saxlayın.",
   "licenseInactive": "Lisenziya qeyri-aktivdir",

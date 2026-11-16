@@ -4346,8 +4346,6 @@ export default interface Resources {
     joinTipEnd: ' team on SmartFox'
     joinTipStart: 'Invite you join '
     joinWorkspace: 'Join {{workspaceName}}'
-    'license.link': 'Open-source License'
-    'license.tip': 'Before starting SmartFox Community Edition, read the GitHub'
     licenseExpired: 'License Expired'
     licenseExpiredTip: 'The SmartFox Enterprise license for your workspace has expired. Please contact your administrator to continue using SmartFox.'
     licenseInactive: 'License Inactive'

@@ -20,9 +20,7 @@ import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import * as z from 'zod'
 import { validPassword } from '@/config'
-import { LICENSE_LINK } from '@/constants/link'
 import useDocumentTitle from '@/hooks/use-document-title'
-import Link from '@/next/link'
 import { useRouter } from '@/next/navigation'
 import { consoleClient, consoleQuery } from '@/service/console'
 import { encryptPassword as encodePassword } from '@/utils/encryption'
@@ -168,18 +166,6 @@ const InstallForm = () => {
               </Button>
             </div>
           </Form>
-          <div className="mt-2 block w-full text-xs text-text-secondary">
-            {t(($) => $['license.tip'], { ns: 'login' })}
-            &nbsp;
-            <Link
-              className="text-text-accent"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={LICENSE_LINK}
-            >
-              {t(($) => $['license.link'], { ns: 'login' })}
-            </Link>
-          </div>
         </div>
       </div>
     </>

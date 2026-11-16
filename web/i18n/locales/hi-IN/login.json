@@ -48,8 +48,6 @@
   "joinTipEnd": "टीम पर Dify",
   "joinTipStart": "आपको आमंत्रित करते हैं",
   "joinWorkspace": "{{workspaceName}} में शामिल हों",
-  "license.link": "ओपन-सोर्स लाइसेंस",
-  "license.tip": "Dify Community Edition शुरू करने से पहले, GitHub पर",
   "licenseExpired": "लाइसेंस की समय सीमा समाप्त हो गई",
   "licenseExpiredTip": "आपके कार्यस्थल के लिए डिफाई एंटरप्राइज लाइसेंस समाप्त हो गया है। कृपया डिफाई का उपयोग जारी रखने के लिए अपने प्रशासक से संपर्क करें।",
   "licenseInactive": "लाइसेंस निष्क्रिय",

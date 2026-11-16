@@ -48,8 +48,6 @@
   "joinTipEnd": " 团队",
   "joinTipStart": "邀请你加入 ",
   "joinWorkspace": "加入 {{workspaceName}}",
-  "license.link": "开源协议",
-  "license.tip": "启动 SmartFox 社区版之前，请阅读 GitHub 上的",
   "licenseExpired": "许可证已过期",
   "licenseExpiredTip": "您所在空间的 SmartFox Enterprise 许可证已过期，请联系管理员以继续使用 SmartFox。",
   "licenseInactive": "许可证未激活",

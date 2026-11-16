@@ -48,8 +48,6 @@
   "joinTipEnd": " ທີມໃນ Dify",
   "joinTipStart": "ເຊີນທ່ານເຂົ້າຮ່ວມ ",
   "joinWorkspace": "ເຂົ້າຮ່ວມ {{workspaceName}}",
-  "license.link": "ໃບອະນຸຍາດແບບ Open-source",
-  "license.tip": "ກ່ອນຈະເລີ່ມໃຊ້ Dify ລຸ້ນ Community, ກະລຸນາອ່ານ GitHub",
   "licenseExpired": "ໃບອະນຸຍາດໝົດອາຍຸ",
   "licenseExpiredTip": "ໃບອະນຸຍາດ Dify Enterprise ສຳລັບພື້ນທີ່ເຮັດວຽກຂອງທ່ານໝົດອາຍຸແລ້ວ. ກະລຸນາຕິດຕໍ່ຜູ້ດູແລລະບົບຂອງທ່ານເພື່ອໃຊ້ງານ Dify ຕໍ່ໄປ.",
   "licenseInactive": "ໃບອະນຸຍາດບໍ່ມີການເຄື່ອນໄຫວ",

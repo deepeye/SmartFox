@@ -13,19 +13,16 @@ import {
   SelectLabel,
   SelectTrigger,
 } from '@langgenius/dify-ui/select'
-import { useQuery, useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocale } from '#i18n'
 import { LoadingPlaceholder } from '@/app/components/base/loading-placeholder'
-import { LICENSE_LINK } from '@/constants/link'
 import { userProfileQueryOptions } from '@/features/account-profile/client'
-import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import useDocumentTitle from '@/hooks/use-document-title'
 import { i18n } from '@/i18n'
 import { setLocaleOnClient } from '@/i18n/client'
 import { languages } from '@/i18n/language'
-import Link from '@/next/link'
 import { useRouter, useSearchParams } from '@/next/navigation'
 import { consoleClient, consoleQuery } from '@/service/console'
 import { isUnauthorizedError } from '@/service/http-error'
@@ -65,7 +62,6 @@ const getInitialLanguage = (locale: Locale): Locale => {
 
 export default function InviteSettingsPage() {
   const { t } = useTranslation(['common', 'login'])
-  const { data: systemFeatures } = useSuspenseQuery(systemFeaturesQueryOptions())
   const router = useRouter()
   const queryClient = useQueryClient()
   const searchParams = useSearchParams()
@@ -280,20 +276,6 @@ export default function InviteSettingsPage() {
           {workspaceInvitationTitle}
         </Button>
       </Form>
-      {!systemFeatures.branding.enabled && (
-        <div className="mt-2 block w-full system-xs-regular text-text-tertiary">
-          {t(($) => $['license.tip'], { ns: 'login' })}
-          &nbsp;
-          <Link
-            className="system-xs-medium text-text-accent-secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={LICENSE_LINK}
-          >
-            {t(($) => $['license.link'], { ns: 'login' })}
-          </Link>
-        </div>
-      )}
     </div>
   )
 }
