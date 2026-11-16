@@ -48,6 +48,8 @@ for (const jsxRoot of jsxRoots) {
     const text = fs.readFileSync(path.join(root, file), 'utf8')
     if (/alt="Dify"|aria-label="Dify/.test(text))
       issues.push(`${file}: Dify alt/aria-label`)
+    if (/LangGenius, Inc\./.test(text))
+      issues.push(`${file}: LangGenius copyright`)
   }
 }
 

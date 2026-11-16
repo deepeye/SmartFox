@@ -11,6 +11,7 @@ import {
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import { SmartFoxLogo } from '@/app/components/base/logo/smartfox-logo'
+import { BRAND_NAME } from '@/features/branding'
 
 type AccountAboutDialogProps = {
   open: boolean
@@ -41,7 +42,9 @@ export default function AccountAboutDialog({
             Version {langGeniusVersionInfo.current_version}
           </div>
           <div className="flex flex-col items-center gap-2 text-center system-xs-regular text-text-secondary">
-            <div>©{dayjs().year()} LangGenius, Inc., Contributors.</div>
+            <div>
+              © {dayjs().year()} {BRAND_NAME}. All rights reserved.
+            </div>
           </div>
         </DialogBody>
       </DialogContent>

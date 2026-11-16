@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import { BRAND_NAME } from '@/features/branding'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import Header from './header'
 
@@ -33,7 +34,7 @@ export function AuthShell({ children, header = true, wide = false }: AuthShellPr
         </main>
         {!systemFeatures.branding.enabled && (
           <footer className="px-4 py-6 system-xs-regular text-text-tertiary sm:px-8">
-            © {copyrightYear} LangGenius, Inc. All rights reserved.
+            © {copyrightYear} {BRAND_NAME}. All rights reserved.
           </footer>
         )}
       </div>
